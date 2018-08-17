@@ -10,6 +10,13 @@ Generate the XRM form model for use with xrm-mock testing framework.
 + Choose an entity
 + Select forms
 + Generate model
++ Build the model before testing
+
+```js
+const builder = new XrmModel.ModelBuilder(new XrmModel.account());
+builder.selectForm("Account");
+builder.buildModel();
+```
 
 A detailed guide will be released soon.
 
