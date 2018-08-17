@@ -12,7 +12,7 @@ Generate the XRM form model for use with xrm-mock testing framework.
 + Generate model
 + Build the model before testing
 
-```js
+```ts
 const builder = new XrmModel.ModelBuilder(new XrmModel.account());
 builder.selectForm("Account");
 builder.buildModel();
