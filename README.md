@@ -2,7 +2,7 @@
 ### Version: 1.0.0
 ---
 
-Generate the XRM form model for use with xrm-mock testing framework.
+An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
 
 ## Usage
 
