@@ -2,7 +2,7 @@
 ### Version: 1.0.3.2
 ---
 
-Generate the XRM form model for use with xrm-mock testing framework.
+An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
 
 ## Usage
 
@@ -10,6 +10,13 @@ Generate the XRM form model for use with xrm-mock testing framework.
 + Choose an entity
 + Select forms
 + Generate model
++ Build the model before testing
+
+```ts
+const builder = new XrmModel.ModelBuilder(new XrmModel.account());
+builder.selectForm("Account");
+builder.buildModel();
+```
 
 A detailed guide will be released soon.
 
