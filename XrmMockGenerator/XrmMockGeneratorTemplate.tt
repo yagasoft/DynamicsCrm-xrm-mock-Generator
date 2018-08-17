@@ -1,0 +1,568 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.CodeDom"#>
+<#@ import namespace="System.CodeDom.Compiler"#>
+<#@ import namespace="System.IO"#>
+<#@ import namespace="Yagasoft.XrmMockGenerator.Model"#>
+<#@ import namespace="Yagasoft.XrmMockGenerator.Model.Control"#>
+import { AttributeMock, IAttributeComponents, StringControlMock, IEntityComponents, EntityMock, ItemCollectionMock, IUiComponents, UiMock, FormSelectorMock, FormItemMock, IStringControlComponents, ClientContextMock, ContextMock, EventContextMock, UserSettingsMock, IGridControlComponents, StepMock, ProcessMock, StageMock, ProcessManagerMock, IContextComponents, ControlMock, OptionSetValueMock } from "../../src/xrm-mock";
+import { IXrmGeneratorComponents, XrmMockGenerator } from "../../src/xrm-mock-generator";
+import FormContext from "../../src/xrm-mock-generator/formcontext";
+import Ui from "../../src/xrm-mock-generator/ui";
+const sinon = require('sinon');
+
+export namespace XrmModel
+{
+	abstract class CrmEntityModel<TFormNames>
+	{
+		abstract entityName: string;
+		abstract context: Context;
+		abstract crmAttributes: CrmAttribute[];
+		abstract forms: Form[];
+		activeForm: TFormNames;
+	}
+
+	interface IHasId { id: string; }
+	interface IHasLabels { labels: Map<number, string>; }
+	interface ICanVisible { isVisible: boolean; }
+	interface ICanDisabled { isDisabled: boolean; }
+
+	class Form implements IHasId
+	{
+		id: string;
+		name: string;
+		tabs: Tab[];
+
+		constructor(obj: Form)
+		{
+			Object.assign<Form, Form>(this, obj);
+		}
+	}
+
+	class Tab implements IHasId, IHasLabels, ICanVisible
+	{
+		id: string;
+		labels: Map<number, string>;
+		isVisible: boolean;
+		sections: Section[];
+
+		constructor(obj: Tab)
+		{
+			Object.assign<Tab, Tab>(this, obj);
+		}
+	}
+
+	class Section implements IHasId, IHasLabels, ICanVisible
+	{
+		id: string;
+		labels: Map<number, string>;
+		isVisible: boolean;
+		controls: Control[];
+
+		constructor(obj: Section)
+		{
+			Object.assign<Section, Section>(this, obj);
+		}
+	}
+
+	class CrmAttribute
+	{
+		attributeType: string;
+		name: string;
+		requiredLevel: string;
+		format: string;
+		options: Map<number, Map<number, string>>;
+
+		constructor(obj: CrmAttribute)
+		{
+			Object.assign<CrmAttribute, CrmAttribute>(this, obj);
+		}
+	}
+
+	abstract class Control implements IHasLabels, ICanVisible
+	{
+		name: string;
+		labels: Map<number, string>;
+		isVisible: boolean;
+
+		constructor(obj: Control)
+		{
+			Object.assign<Control, Control>(this, obj);
+		}
+	}
+
+	class FieldControl extends Control implements ICanDisabled
+	{
+		isDisabled: boolean;
+
+		constructor(obj: FieldControl)
+		{
+			super(obj);
+			Object.assign<FieldControl, FieldControl>(this, obj);
+		}
+	}
+
+	class GridControl extends Control
+	{
+		constructor(obj: GridControl)
+		{
+			super(obj);
+			Object.assign<GridControl, GridControl>(this, obj);
+		}
+	}
+
+	class Context
+	{ 
+		userId: string;
+		username: string;
+		userFullName: string;
+		isGuidedHelpEnabled: boolean;
+		userLanguageCode: number;
+		timeZoneBias: number;
+		userRoles: string[];
+		organisationUrl: string;
+		isAutoSaveEnabled: boolean;
+		orgLanguageCode: number;
+		organisationName: string;
+		themeName: string;
+		crmVersion: string;
+
+		constructor(obj: Context)
+		{
+			Object.assign<Context, Context>(this, obj);
+		}
+	}
+
+	export class ContextParams
+	{
+		client: Xrm.Client;
+		clientState: Xrm.ClientState;
+		userSettings: UserSettingsMock;
+	}
+
+	export class ModelBuilder<TEntity extends CrmEntityModel<TEntity["activeForm"]>>
+	{
+		private recordId: string;
+		private entity: EntityMock;
+		private context: ContextMock;
+		private ui: Ui;
+		private attributes: Xrm.Attributes.Attribute[] = [];
+		private form: Form;
+
+		private formType: XrmEnum.FormType
+		private isBuilt: boolean;
+
+		private controlCreatorFunction =
+			new Map<string, Function>(
+				[
+					["boolean", () => { throw new Error("Not implemented!") }],
+					["datetime", XrmMockGenerator.Control.createDate],
+					["decimal", XrmMockGenerator.Control.createNumber],
+					["double", XrmMockGenerator.Control.createNumber],
+					["integer", XrmMockGenerator.Control.createNumber],
+					["lookup", XrmMockGenerator.Control.createLookup],
+					["memo", XrmMockGenerator.Control.createString],
+					["money", XrmMockGenerator.Control.createNumber],
+					["optionset", XrmMockGenerator.Control.createOptionSet],
+					["string", XrmMockGenerator.Control.createString]
+				]);
+
+		constructor(private rawModel: TEntity, recordId: string = "00000000-0000-0000-0000-000000000000")
+		{
+			this.recordId = recordId;
+			this.form = this.rawModel.forms.find(form => true);
+		}
+
+		selectForm(formName: TEntity["activeForm"])
+		{
+			if (this.isBuilt)
+			{
+				throw new Error("Model already built.");
+			}
+
+			this.form = this.rawModel.forms.find(form => form.name === formName);
+		}
+
+		buildContext(parameters?: ContextMock | ContextParams)
+		{
+			if (this.isBuilt)
+			{
+				throw new Error("Model already built.");
+			}
+
+			const rawContext = this.rawModel.context;
+
+			if (parameters == null)
+			{
+				this.context = new ContextMock(<IContextComponents>
+					{
+						clientContext: new ClientContextMock("Web", "Online"),
+						userSettings: new UserSettingsMock(
+							{
+								isGuidedHelpEnabled: rawContext.isGuidedHelpEnabled,
+								isHighContrastEnabled: false,
+								isRTL: false,
+								userId: rawContext.userId,
+								userName: rawContext.username,
+								languageId: rawContext.userLanguageCode,
+								securityRoles: rawContext.userRoles
+							}),
+						clientUrl: rawContext.organisationUrl,
+						currentTheme: rawContext.themeName,
+						isAutoSaveEnabled: rawContext.isAutoSaveEnabled,
+						orgLcid: rawContext.orgLanguageCode,
+						orgUniqueName: rawContext.organisationName,
+						timeZoneOffset: rawContext.timeZoneBias,
+						userId: rawContext.userId,
+						userLcid: rawContext.userLanguageCode,
+						userName: rawContext.userFullName,
+						userRoles: rawContext.userRoles,
+						version: rawContext.crmVersion
+					});
+			}
+			else if (parameters instanceof ContextMock)
+			{
+				this.context = parameters;
+			}
+			else if (parameters instanceof ContextParams)
+			{
+				parameters = <ContextParams>parameters;
+
+				this.context = new ContextMock(<IContextComponents>
+					{
+						clientContext: new ClientContextMock(parameters.client, parameters.clientState),
+						userSettings: parameters.userSettings,
+						clientUrl: rawContext.organisationUrl,
+						currentTheme: rawContext.themeName,
+						isAutoSaveEnabled: rawContext.isAutoSaveEnabled,
+						orgLcid: rawContext.orgLanguageCode,
+						orgUniqueName: rawContext.organisationName,
+						timeZoneOffset: rawContext.timeZoneBias,
+						userId: parameters.userSettings.userId,
+						userLcid: parameters.userSettings.languageId,
+						userName: parameters.userSettings.userName,
+						userRoles: parameters.userSettings.securityRoles,
+						version: rawContext.crmVersion
+					});
+			}
+		}
+
+		buildModel(): void
+		{
+			if (this.isBuilt)
+			{
+				throw new Error("Model already built.");
+			}
+
+			this.buildAttributes();
+			this.buildEntity();
+			this.buildUi();
+
+			if (this.context == null)
+			{
+				this.buildContext();
+			}
+
+			XrmMockGenerator.initialise(<IXrmGeneratorComponents>
+				{
+					entity: this.entity,
+					ui: this.ui,
+					context: this.context,
+					process: null
+				});
+			
+			this.buildTabs();
+		}
+
+		private buildAttributes(): void
+		{
+			for (const attribute of this.rawModel.crmAttributes)
+			{
+				this.attributes.push(
+					new AttributeMock(<IAttributeComponents<StringControlMock, string>>
+						{
+							name: attribute.name,
+							requiredLevel: attribute.requiredLevel
+						}));
+			}
+		}
+
+		private buildEntity(): void
+		{
+			this.entity = new EntityMock(<IEntityComponents>
+				{
+					entityName: `${this.rawModel.entityName}`,
+					id: `{${this.recordId}}`,
+					attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>(this.attributes)
+				});
+		}
+
+		private buildUi(): void
+		{
+			this.ui = new UiMock(<IUiComponents>
+				{
+					formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>(
+						this.rawModel.forms.map(form =>
+							new FormItemMock(
+								{
+									currentItem: form.id === this.form.id,
+									formType: this.formType,
+									id: form.id,
+									label: form.name,
+								}))))
+				});
+		}
+
+		private buildTabs(): void
+		{
+			for (const tab of this.form.tabs) 
+			{
+				XrmMockGenerator.Tab.createTab(tab.id, tab.labels[this.context.userLcid], tab.isVisible, "collapsed", null,
+					new ItemCollectionMock<Xrm.Controls.Section>(this.buildSections(tab)));
+			}
+		}
+
+		private buildSections(tab: Tab): Xrm.Controls.Section[]
+		{
+			const sections: Xrm.Controls.Section[] = [];
+
+			for (const section of tab.sections)
+			{
+				sections.push(
+					XrmMockGenerator.Section.createSection(section.id, section.labels[this.context.userLcid], section.isVisible, null,
+						new ItemCollectionMock<Xrm.Controls.Control>(this.buildControls(section))));
+			}
+
+			return sections;
+		}
+
+		private buildControls(section: Section): Xrm.Controls.Control[]
+		{
+			const controls: Xrm.Controls.Control[] = [];
+
+			for (const control of section.controls)
+			{
+				const controlParams: any = { name: control.name, label: control.labels[this.context.userLcid], visible: control.isVisible };
+				let controlMock: ControlMock;
+
+				if (control instanceof GridControl)
+				{
+					controlParams.entityName = this.entity;
+					controlMock = XrmMockGenerator.Control.createGrid(controlParams);
+				}
+				else if (control instanceof FieldControl)
+				{
+					const attribute = this.attributes.find(attribute => attribute.getName() === control.name);
+					controlParams.attribute = attribute;
+
+					const fieldcontrol = <FieldControl>control;
+					controlParams.disabled = fieldcontrol.isDisabled
+
+					const rawAttribute = this.rawModel.crmAttributes.find(attribute => attribute.name === control.name);
+					const attributeType = rawAttribute.attributeType;
+
+					switch (attributeType)
+					{
+						case "optionset":
+							const optionsMock: OptionSetValueMock[] = []
+							rawAttribute.options.forEach((value, key) => { optionsMock.push(new OptionSetValueMock(value[this.context.userLcid], key)) });
+							controlParams.options = optionsMock;
+						case "datetime":
+							controlParams.showTime = attribute.getFormat() === "datetime";
+					}
+
+					controlMock = this.controlCreatorFunction[attributeType](controlParams);
+				}
+
+				controls.push(controlMock);
+			}
+
+			return controls;
+		}
+	}
+	<# 
+		foreach (var model in models)
+		{
+	#> 
+	type <#=CheckString(model.EntityName)#>_Forms =
+		<# foreach (var form in model.Forms) { #>"<#=CheckString(form.Name)#>" |  <# } #>null;
+
+	export class <#=CheckString(model.EntityName)#> extends CrmEntityModel<<#=CheckString(model.EntityName)#>_Forms>
+	{
+		entityName = "<#=CheckString(model.EntityName)#>";
+		context = new Context(<Context>
+			{
+				userId: "<#=CheckString(model.Context.UserId.ToString())#>",
+				username: <#=ToLiteral(CheckString(model.Context.Username))#>,
+				userFullName: <#=ToLiteral(CheckString(model.Context.UserFullName))#>,
+				isGuidedHelpEnabled: <#=CheckString(model.Context.IsGuidedHelpEnabled.ToString().ToLower())#>,
+				userLanguageCode: <#=CheckString(model.Context.UserLanguageCode.ToString())#>,
+				timeZoneBias: <#=CheckString(model.Context.TimeZoneBias.ToString())#>,
+				userRoles:
+					[
+			<#
+				foreach (var role in model.Context.UserRoles)
+				{
+			#>			"<#=CheckString(role.ToString())#>",
+			<#
+				}
+			#>		],
+				organisationUrl: "<#=CheckString(model.Context.OrganisationUrl)#>",
+				isAutoSaveEnabled: <#=CheckString(model.Context.IsAutoSaveEnabled.ToString().ToLower())#>,
+				orgLanguageCode: <#=CheckString(model.Context.OrgLanguageCode.ToString())#>,
+				organisationName: "<#=CheckString(model.Context.OrganisationName)#>",
+				themeName: <#=ToLiteral(CheckString(model.Context.ThemeName))#>,
+				crmVersion: "<#=CheckString(model.Context.CrmVersion)#>"
+			});
+		crmAttributes =
+			[
+			<#
+				foreach (var attribute in model.CrmAttributes)
+				{
+			#>	new CrmAttribute(<CrmAttribute>
+					{
+						attributeType: "<#=CheckString(attribute.AttributeType)#>", name: "<#=CheckString(attribute.Name)#>", requiredLevel: "<#=CheckString(attribute.RequiredLevel, "none")#>", format: "<#=CheckString(attribute.Format)#>",
+						options: new Map(
+							[
+				<#
+					if (attribute.Options != null) {
+					foreach (var option in attribute.Options)
+					{
+				#>				[<#=CheckString(option.Key.ToString())#>,
+									new Map(
+										[
+					<#
+						foreach (var label in option.Value)
+						{
+					#>						[<#=CheckString(label.Key.ToString())#>, <#=ToLiteral(CheckString(label.Value))#>]
+					<#
+						}
+					#>					])
+								],
+				<#
+					}
+					}
+				#>			])
+					}),
+			<#
+				}
+			#>];
+		forms =
+			[
+			<#
+				foreach (var form in model.Forms)
+				{
+			#>	new Form(<Form>
+					{
+						id: "<#=CheckString(form.Id)#>", name: "<#=CheckString(form.Name)#>",
+						tabs:
+							[
+				<#
+					foreach (var tab in form.Tabs)
+					{
+				#>				new Tab(<Tab>
+									{
+										id: "<#=CheckString(tab.Id)#>", isVisible: <#=CheckString(tab.IsVisible.ToString().ToLower())#>,
+										labels: new Map(
+											[
+					<#
+						foreach (var label in tab.Labels)
+						{
+					#>							[<#=label.Key#>, <#=ToLiteral(CheckString(label.Value))#>],
+					<#
+						}
+					#>						]),
+										sections:
+											[
+						<#
+							foreach (var section in tab.Sections)
+							{
+						#>						new Section(<Section>
+													{
+														id: "<#=CheckString(section.Id)#>", isVisible: <#=CheckString(section.IsVisible.ToString().ToLower())#>,
+														labels: new Map(
+															[
+							<#
+								foreach (var label in section.Labels)
+								{
+							#>									[<#=label.Key#>, <#=ToLiteral(CheckString(label.Value))#>],
+							<#
+								}
+							#>								]),
+														controls:
+															[
+								<#
+									foreach (var control in section.Controls.OfType<FieldControl>())
+									{
+								#>								new FieldControl(<FieldControl>
+																	{
+																		name: "<#=CheckString(control.Name)#>", isVisible: <#=CheckString(control.IsVisible.ToString().ToLower())#>, isDisabled: <#=CheckString(control.IsDisabled.ToString().ToLower())#>,
+																		labels: new Map(
+																			[
+									<#
+										foreach (var label in control.Labels)
+										{
+									#>											[<#=label.Key#>, <#=ToLiteral(CheckString(label.Value))#>],
+																			])
+									<#
+										}
+									#>								}),
+								<#
+									}
+								#><#
+									foreach (var control in section.Controls.OfType<GridControl>())
+									{
+								#>								new GridControl(<GridControl>
+																	{
+																		name: "<#=CheckString(control.Name)#>", isVisible: <#=CheckString(control.IsVisible.ToString().ToLower())#>,
+																		labels: new Map(
+																			[
+									<#
+										foreach (var label in control.Labels)
+										{
+									#>											[<#=label.Key#>, <#=ToLiteral(CheckString(label.Value))#>],
+																			])
+									<#
+										}
+									#>								}),
+								<#
+									}
+								#>							]
+													})
+											]
+						<#
+							}
+						#>			}),
+				<#
+					}
+				#>			]
+					}),
+			<#
+				}
+			#>];
+	}
+<#
+		}
+#>}
+<#+
+    // Credit :http://stackoverflow.com/questions/323640/can-i-convert-a-c-sharp-string-value-to-an-escaped-string-literal
+    private static string ToLiteral(string input)
+    {
+        using (var writer = new StringWriter())
+        {
+            using (var provider = CodeDomProvider.CreateProvider("CSharp"))
+            {
+                provider.GenerateCodeFromExpression(new CodePrimitiveExpression(input), writer, null);
+                return writer.ToString();
+            }
+        }
+    }
+
+	public string CheckString(string value, string defaultValue = "null")
+	{
+		return value ?? defaultValue;
+	}
+#>
