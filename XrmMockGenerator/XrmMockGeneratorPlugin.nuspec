@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+
+<package>
+  <metadata>
+    <id>xrm-mock-Generator</id>
+    <title>xrm-mock Generator</title>
+    <version>1.0.3.2</version>
+    <authors>Ahmed el-Sawalhy</authors>
+    <owners>Ahmed el-Sawalhy</owners>
+    <projectUrl>https://github.com/yagasoft/DynamicsCrm-xrm-mock-Generator</projectUrl>
+    <iconUrl>http://blog.yagasoft.com/xrm-mock-generator_128</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>xrm-mock Generator</summary>
+    <description>An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.</description>
+    <copyright>Copyright 2018 Yagasoft</copyright>
+    <tags>XrmToolBox plugin,tool,CRM,Dynamics,365,yagasoft,xrm,mock,test,testing,javascript,form</tags>
+    <releaseNotes>
+      * 1.0.3.2
+      Initial release
+    </releaseNotes>
+    <dependencies>
+      <dependency id="XrmToolBox" version="1.2018.7.28" />
+    </dependencies>
+    </metadata>
+  <files>
+    <file src="bin\Release\Yagasoft.XrmMockGenerator.dll" target="lib\net452\Plugins" />
+  </files>
+</package>

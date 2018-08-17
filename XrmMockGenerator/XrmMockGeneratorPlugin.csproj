@@ -160,21 +160,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="buildscripts\publish-nuget-packages.ps1" />
     <None Include="CrmSchema.dat" />
     <None Include="packages.config" />
+    <None Include="XrmMockGeneratorPlugin.nuspec" />
     <None Include="XrmToolBox.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CrmSchema.tt">
+    <None Include="CrmSchema.tt">
       <Generator>CrmCodeGenerator2011</Generator>
       <LastGenOutput>CrmSchema.cs</LastGenOutput>
-    </Content>
-    <Content Include="XrmMockGeneratorTemplate.tt">
+    </None>
+    <None Include="XrmMockGeneratorTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>XrmMockGeneratorTemplate.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -186,10 +188,17 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Debug (
+    <PostBuildEvent>IF "$(ConfigurationName)" == "Debug" (
   IF NOT EXIST "$(SolutionDir)XrmToolBox\Plugins" mkdir "$(SolutionDir)XrmToolBox\Plugins"
   move /Y Yagasoft.XrmMockGenerator.dll "$(SolutionDir)XrmToolBox\Plugins"
   move /Y Yagasoft.XrmMockGenerator.pdb "$(SolutionDir)XrmToolBox\Plugins"
+)
+IF "$(ConfigurationName)" == "Release" (
+  $(SolutionDir)lib/nuget.exe pack $(ProjectPath) -Prop Configuration=Release
+  copy /Y "$(TargetDir)*.nupkg" "C:\Nuget.Local\"
 )</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>del "$(TargetDir)*.nupkg"</PreBuildEvent>
   </PropertyGroup>
 </Project>

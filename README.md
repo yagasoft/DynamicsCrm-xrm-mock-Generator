@@ -1,5 +1,5 @@
 # DynamicsCrm-xrm-mock-Generator
-### Version: 1.0.0
+### Version: 1.0.3.2
 ---
 
 Generate the XRM form model for use with xrm-mock testing framework.
@@ -21,7 +21,7 @@ A detailed guide will be released soon.
 		
 ### Changes
 
-#### _v1.0.0 (2018-08-17)_
+#### _v1.0.3.2 (2018-08-17)_
 + Initial commit
 
 ---
