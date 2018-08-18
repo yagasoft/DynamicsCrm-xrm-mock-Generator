@@ -17,6 +17,7 @@ using Yagasoft.XrmMockGenerator.Generator;
 using Yagasoft.XrmMockGenerator.Helpers;
 using Yagasoft.XrmMockGenerator.Model;
 using Yagasoft.XrmMockGenerator.Model.Generator;
+using Yagasoft.XrmMockGenerator.Model.ViewModel;
 
 #endregion
 
@@ -42,6 +43,8 @@ namespace Yagasoft.XrmMockGenerator.Control
 		private DataGridView dataGridSelectedForms;
 		private Label label5;
 		private ToolStripButton buttonGenerate;
+		private TextBox textBoxFilterEntities;
+		private Button buttonClearFilter;
 		private ToolStrip toolBar;
 
 		#region Base tool implementation
@@ -101,6 +104,8 @@ namespace Yagasoft.XrmMockGenerator.Control
 			buttonRemove = new Button();
 			dataGridSelectedForms = new DataGridView();
 			label5 = new Label();
+			textBoxFilterEntities = new TextBox();
+			buttonClearFilter = new Button();
 			toolBar.SuspendLayout();
 			((ISupportInitialize)(dataGridSelectedForms)).BeginInit();
 			SuspendLayout();
@@ -210,9 +215,9 @@ namespace Yagasoft.XrmMockGenerator.Control
 			listBoxEntities.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom)
 				| AnchorStyles.Left)));
 			listBoxEntities.FormattingEnabled = true;
-			listBoxEntities.Location = new Point(10, 72);
+			listBoxEntities.Location = new Point(10, 98);
 			listBoxEntities.Name = "listBoxEntities";
-			listBoxEntities.Size = new Size(196, 394);
+			listBoxEntities.Size = new Size(196, 368);
 			listBoxEntities.TabIndex = 4;
 			listBoxEntities.SelectedIndexChanged += new EventHandler(listBoxEntities_SelectedIndexChanged);
 			listBoxEntities.DoubleClick += new EventHandler(listBoxEntities_DoubleClick);
@@ -297,8 +302,28 @@ namespace Yagasoft.XrmMockGenerator.Control
 			label5.TabIndex = 11;
 			label5.Text = "Selected Forms";
 			// 
+			// textBoxFilterEntities
+			// 
+			textBoxFilterEntities.Location = new Point(10, 72);
+			textBoxFilterEntities.Name = "textBoxFilterEntities";
+			textBoxFilterEntities.Size = new Size(154, 20);
+			textBoxFilterEntities.TabIndex = 12;
+			textBoxFilterEntities.KeyUp += new KeyEventHandler(textBoxFilterEntities_KeyUp);
+			// 
+			// buttonClearFilter
+			// 
+			buttonClearFilter.Location = new Point(166, 70);
+			buttonClearFilter.Name = "buttonClearFilter";
+			buttonClearFilter.Size = new Size(40, 23);
+			buttonClearFilter.TabIndex = 13;
+			buttonClearFilter.Text = "Clear";
+			buttonClearFilter.UseVisualStyleBackColor = true;
+			buttonClearFilter.Click += new EventHandler(buttonClearFilter_Click);
+			// 
 			// PluginControl
 			// 
+			Controls.Add(buttonClearFilter);
+			Controls.Add(textBoxFilterEntities);
 			Controls.Add(label5);
 			Controls.Add(dataGridSelectedForms);
 			Controls.Add(buttonRemove);
@@ -324,6 +349,8 @@ namespace Yagasoft.XrmMockGenerator.Control
 
 		public event EventHandler<StatusBarMessageEventArgs> SendMessageToStatusBar;
 
+		#region Event handlers
+
 		private void buttonFetchData_Click(object sender, EventArgs e)
 		{
 			ExecuteMethod(FetchData);
@@ -341,19 +368,17 @@ namespace Yagasoft.XrmMockGenerator.Control
 			AddSelectedForm();
 		}
 
-		private void ListEntityForms()
+		private void textBoxFilterEntities_KeyUp(object sender, KeyEventArgs e)
 		{
-			listBoxForms.SelectedIndex = -1;
-			listBoxForms.Items.Clear();
-			listBoxForms.Items
-				.AddRange(ControlData.Forms
-					.Where(f => f.ObjectTypeCode == (string)listBoxEntities.SelectedItem)
-					.OrderBy(p => p.Name).ToArray());
-
-			if (listBoxForms.Items.Count > 0)
+			if (e.KeyCode == Keys.Enter)
 			{
-				listBoxForms.SelectedIndex = 0;
+				FilterEntities(textBoxFilterEntities.Text);
 			}
+		}
+
+		private void buttonClearFilter_Click(object sender, EventArgs e)
+		{
+			ClearEntityFilter();
 		}
 
 		private void listBoxForms_SelectedIndexChanged(object sender, EventArgs e)
@@ -379,38 +404,6 @@ namespace Yagasoft.XrmMockGenerator.Control
 			}
 
 			RefreshDataGrid();
-		}
-
-		private void AddSelectedForm()
-		{
-			var selectedForm = (SystemFormViewModel)listBoxForms.SelectedItem;
-
-			if (ControlData.SelectedForms.Any(f => f.Id == selectedForm.Id))
-			{
-				return;
-			}
-
-			ControlData.SelectedForms.Add(selectedForm);
-			RefreshDataGrid();
-		}
-
-		private void RefreshDataGrid()
-		{
-			dataGridSelectedForms.Rows.Clear();
-
-			foreach (var form in ControlData.SelectedForms.OrderBy(f => f.ObjectTypeCode).ThenBy(f => f.Name))
-			{
-				dataGridSelectedForms.Rows.Add(form.Id, form.ObjectTypeCode, form.Name);
-			}
-
-			Invoke(new Action(
-				() =>
-				{
-					var isEnabled = ControlData.SelectedForms.Any();
-					buttonRemove.Enabled = isEnabled;
-					buttonGenerate.Enabled = isEnabled;
-					buttonSaveSettings.Enabled = isEnabled;
-				}));
 		}
 
 		private void buttonGenerate_Click(object sender, EventArgs eArgs)
@@ -509,17 +502,30 @@ namespace Yagasoft.XrmMockGenerator.Control
 
 		private void buttonSaveSettings_Click(object sender, EventArgs e)
 		{
+			SettingsManager.Instance.TryLoad(typeof(XrmMockGeneratorPlugin), out PluginSettings pluginSettings);
+
 			var saveDialogue =
 				new SaveFileDialog
 				{
 					Title = "Save models ...",
 					OverwritePrompt = true,
 					Filter = "JSON files (*.json)|*.json",
-					FileName = "xrm-mock-generator-settings.json"
+					
 				};
-			saveDialogue.ShowDialog();
 
-			if (saveDialogue.FileName.IsNotEmpty())
+			if (pluginSettings?.LatestPath.IsNotEmpty() == true)
+			{
+				saveDialogue.FileName = Path.GetFileName(pluginSettings.LatestPath);
+				saveDialogue.InitialDirectory = Path.GetDirectoryName(pluginSettings.LatestPath);
+			}
+			else
+			{
+				saveDialogue.FileName = "xrm-mock-generator-settings.json";
+			}
+
+			var result = saveDialogue.ShowDialog();
+
+			if (result == DialogResult.OK && saveDialogue.FileName.IsNotEmpty())
 			{
 				var settings =
 					new Settings
@@ -528,26 +534,47 @@ namespace Yagasoft.XrmMockGenerator.Control
 						SelectedForms = ControlData.SelectedForms.Select(f => f.Id.GetValueOrDefault()).ToList()
 					};
 
+				if (!Path.HasExtension(saveDialogue.FileName))
+				{
+					saveDialogue.FileName += ".json";
+				}
+
 				using (var stream = (FileStream)saveDialogue.OpenFile())
 				{
 					var array = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(settings));
 					stream.Write(array, 0, array.Length);
 				}
+
+				if (pluginSettings == null)
+				{
+					pluginSettings = new PluginSettings();
+				}
+
+				pluginSettings.LatestPath = saveDialogue.FileName;
+				SettingsManager.Instance.Save(typeof(XrmMockGeneratorPlugin), pluginSettings);
 			}
 		}
 
 		private void buttonLoadSettings_Click(object sender, EventArgs e)
 		{
+			SettingsManager.Instance.TryLoad(typeof(XrmMockGeneratorPlugin), out PluginSettings pluginSettings);
+
 			var openDialogue =
 				new OpenFileDialog
 				{
 					Title = "Load models ...",
 					Filter = "JSON files (*.json)|*.json",
-					FileName = "xrm-mock-generator-settings.json"
 				};
+
+			if (pluginSettings?.LatestPath.IsNotEmpty() == true)
+			{
+				openDialogue.FileName = Path.GetFileName(pluginSettings.LatestPath);
+				openDialogue.InitialDirectory = Path.GetDirectoryName(pluginSettings.LatestPath);
+			}
+
 			var result = openDialogue.ShowDialog();
 
-			if (result == DialogResult.OK)
+			if (result == DialogResult.OK && openDialogue.FileName.IsNotEmpty())
 			{
 				using (var reader = new StreamReader(openDialogue.FileName))
 				{
@@ -556,8 +583,18 @@ namespace Yagasoft.XrmMockGenerator.Control
 						.Where(f => settings.SelectedForms.Any(ff => f.Id == ff)).ToList();
 					RefreshDataGrid();
 				}
+
+				if (pluginSettings == null)
+				{
+					pluginSettings = new PluginSettings();
+				}
+
+				pluginSettings.LatestPath = openDialogue.FileName;
+				SettingsManager.Instance.Save(typeof(XrmMockGeneratorPlugin), pluginSettings);
 			}
 		}
+
+		#endregion
 
 		private void FetchData()
 		{
@@ -583,12 +620,15 @@ namespace Yagasoft.XrmMockGenerator.Control
 							var users = DataHelpers.RetrieveUsers(Service);
 							w.ReportProgress(50, $"Retrieving forms ...");
 							var forms = DataHelpers.RetrieveForms(Service);
+							w.ReportProgress(90, $"Retrieving entity names ...");
+							var entityNames = DataHelpers.RetrieveEntityNames(Service);
 
 							e.Result =
 								new RetrieveResult
 								{
 									Users = users,
-									Forms = forms
+									Forms = forms,
+									EntityNames = entityNames
 								};
 						},
 					ProgressChanged =
@@ -608,19 +648,92 @@ namespace Yagasoft.XrmMockGenerator.Control
 							SendMessageToStatusBar?.Invoke(this, new StatusBarMessageEventArgs(""));
 							var result = (RetrieveResult)e.Result;
 
-							comboBoxUsers.Items.AddRange(result.Users.ToArray());
+							var users = result.Users.Cast<object>().ToArray();
+							comboBoxUsers.Items.AddRange(users);
+							comboBoxUsers.SelectedIndex =
+								comboBoxUsers.SelectedIndex < 0 && users.Any() ? 0 : comboBoxUsers.SelectedIndex;
 
-							ControlData.Forms = result.Forms;
-							listBoxEntities.Items.AddRange(result.Forms.Select(f => f.ObjectTypeCode).Distinct().OrderBy(p => p).ToArray());
+							ControlData.Forms = result.Forms.ToList();
+
+							var formEntities = ControlData.Forms.Select(f => f.ObjectTypeCode).Distinct().ToArray();
+							ControlData.EntityNames = result.EntityNames
+								.Where(n => formEntities.Contains(n.LogicalName)).ToList();
 
 							Invoke(new Action(
-								() => { buttonLoadSettings.Enabled = true; }));
+								() =>
+								{
+									ClearEntityFilter();
+									buttonLoadSettings.Enabled = true;
+								}));
 						},
 					AsyncArgument = null,
 					IsCancelable = false,
 					MessageWidth = 340,
 					MessageHeight = 150
 				});
+		}
+
+		private void ListEntityForms()
+		{
+			listBoxForms.SelectedIndex = -1;
+			listBoxForms.Items.Clear();
+			listBoxForms.Items
+				.AddRange(ControlData.Forms
+					.Where(f => f.ObjectTypeCode == ((EntityNameViewModel)listBoxEntities.SelectedItem)?.LogicalName)
+					.OrderBy(p => p.Name).Cast<object>().ToArray());
+
+			if (listBoxForms.Items.Count > 0)
+			{
+				listBoxForms.SelectedIndex = 0;
+			}
+		}
+
+		private void FilterEntities(string keyword)
+		{
+			listBoxEntities.SelectedIndex = -1;
+			listBoxEntities.Items.Clear();
+			listBoxEntities.Items
+				.AddRange(ControlData.EntityNames
+					.Where(e => e.LogicalName.Contains(keyword) || e.DisplayName.Contains(keyword))
+					.OrderBy(e => e).Cast<object>().ToArray());
+		}
+
+		private void ClearEntityFilter()
+		{
+			textBoxFilterEntities.Text = string.Empty;
+			FilterEntities(string.Empty);
+		}
+
+		private void AddSelectedForm()
+		{
+			var selectedForm = (SystemFormViewModel)listBoxForms.SelectedItem;
+
+			if (ControlData.SelectedForms.Any(f => f.Id == selectedForm.Id))
+			{
+				return;
+			}
+
+			ControlData.SelectedForms.Add(selectedForm);
+			RefreshDataGrid();
+		}
+
+		private void RefreshDataGrid()
+		{
+			dataGridSelectedForms.Rows.Clear();
+
+			foreach (var form in ControlData.SelectedForms.OrderBy(f => f.ObjectTypeCode).ThenBy(f => f.Name))
+			{
+				dataGridSelectedForms.Rows.Add(form.Id, form.ObjectTypeCode, form.Name);
+			}
+
+			Invoke(new Action(
+				() =>
+				{
+					var isEnabled = ControlData.SelectedForms.Any();
+					buttonRemove.Enabled = isEnabled;
+					buttonGenerate.Enabled = isEnabled;
+					buttonSaveSettings.Enabled = isEnabled;
+				}));
 		}
 	}
 }
