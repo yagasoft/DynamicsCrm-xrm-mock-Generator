@@ -26,7 +26,7 @@ A detailed guide will be released soon.
   + xrm-mock
   + https://github.com/camelCaseDave/xrm-mock
 		
-### Changes
+## Changes
 
 #### _v1.1.2.1 (2018-08-19)_
 + Fixed: control creation error in template
