@@ -1,5 +1,5 @@
 # DynamicsCrm-xrm-mock-Generator
-### Version: 1.1.2.1
+### Version: 1.1.2.2
 ---
 
 An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
@@ -28,7 +28,7 @@ A detailed guide will be released soon.
 		
 ## Changes
 
-#### _v1.1.2.1 (2018-08-19)_
+#### _v1.1.2.2 (2018-08-19)_
 + Fixed: control creation error in template
 + Fixed: sections array error in template
 + Fixed: misidentifying grids in form XML

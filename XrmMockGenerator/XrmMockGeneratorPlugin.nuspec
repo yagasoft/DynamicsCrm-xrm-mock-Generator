@@ -4,7 +4,7 @@
   <metadata>
     <id>xrm-mock-Generator</id>
     <title>xrm-mock Generator</title>
-    <version>1.1.2.1</version>
+    <version>1.1.2.2</version>
     <authors>Ahmed el-Sawalhy</authors>
     <owners>Ahmed el-Sawalhy</owners>
     <projectUrl>https://github.com/yagasoft/DynamicsCrm-xrm-mock-Generator</projectUrl>
@@ -15,7 +15,7 @@
     <copyright>Copyright 2018 Yagasoft</copyright>
     <tags>XrmToolBox plugin,tool,CRM,Dynamics,365,yagasoft,xrm,mock,test,testing,javascript,form</tags>
     <releaseNotes>
-      * 1.1.2.1
+      * 1.1.2.2
       Fixed: control creation error in template
       Fixed: sections array error in template
       Fixed: misidentifying grids in form XML
