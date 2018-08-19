@@ -23,7 +23,7 @@ namespace Yagasoft.XrmMockGenerator.Generator.Control
 					e => e.SelectSingleNode("@description")?.Value);
 
 			return
-				controlXml.SelectSingleNode("@indicationOfSubgrid")?.Value == "true"
+				FormXmlContants.GridClassIds.Contains(controlXml.SelectSingleNode("@classid")?.Value)
 					? new GridControl
 					  {
 						  Name = controlName,

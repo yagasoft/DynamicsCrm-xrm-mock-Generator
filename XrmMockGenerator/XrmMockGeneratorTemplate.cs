@@ -23,7 +23,7 @@ namespace Yagasoft.XrmMockGenerator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+    #line 1 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class XrmMockGeneratorTemplate : XrmMockGeneratorTemplateBase
     {
@@ -41,132 +41,144 @@ namespace Yagasoft.XrmMockGenerator
                     " \"../../src/xrm-mock\";\r\nimport { IXrmGeneratorComponents, XrmMockGenerator } fro" +
                     "m \"../../src/xrm-mock-generator\";\r\nimport FormContext from \"../../src/xrm-mock-g" +
                     "enerator/formcontext\";\r\nimport Ui from \"../../src/xrm-mock-generator/ui\";\r\nconst" +
-                    " sinon = require(\'sinon\');\r\n\r\nexport namespace XrmModel\r\n{\r\n\tabstract class CrmE" +
-                    "ntityModel<TFormNames>\r\n\t{\r\n\t\tabstract entityName: string;\r\n\t\tabstract context: " +
-                    "Context;\r\n\t\tabstract crmAttributes: CrmAttribute[];\r\n\t\tabstract forms: Form[];\r\n" +
-                    "\t\tactiveForm: TFormNames;\r\n\t}\r\n\r\n\tinterface IHasId { id: string; }\r\n\tinterface I" +
-                    "HasLabels { labels: Map<number, string>; }\r\n\tinterface ICanVisible { isVisible: " +
-                    "boolean; }\r\n\tinterface ICanDisabled { isDisabled: boolean; }\r\n\r\n\tclass Form impl" +
-                    "ements IHasId\r\n\t{\r\n\t\tid: string;\r\n\t\tname: string;\r\n\t\ttabs: Tab[];\r\n\r\n\t\tconstruct" +
-                    "or(obj: Form)\r\n\t\t{\r\n\t\t\tObject.assign<Form, Form>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass " +
-                    "Tab implements IHasId, IHasLabels, ICanVisible\r\n\t{\r\n\t\tid: string;\r\n\t\tlabels: Map" +
-                    "<number, string>;\r\n\t\tisVisible: boolean;\r\n\t\tsections: Section[];\r\n\r\n\t\tconstructo" +
-                    "r(obj: Tab)\r\n\t\t{\r\n\t\t\tObject.assign<Tab, Tab>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass Sect" +
-                    "ion implements IHasId, IHasLabels, ICanVisible\r\n\t{\r\n\t\tid: string;\r\n\t\tlabels: Map" +
-                    "<number, string>;\r\n\t\tisVisible: boolean;\r\n\t\tcontrols: Control[];\r\n\r\n\t\tconstructo" +
-                    "r(obj: Section)\r\n\t\t{\r\n\t\t\tObject.assign<Section, Section>(this, obj);\r\n\t\t}\r\n\t}\r\n\r" +
-                    "\n\tclass CrmAttribute\r\n\t{\r\n\t\tattributeType: string;\r\n\t\tname: string;\r\n\t\trequiredL" +
-                    "evel: string;\r\n\t\tformat: string;\r\n\t\toptions: Map<number, Map<number, string>>;\r\n" +
-                    "\r\n\t\tconstructor(obj: CrmAttribute)\r\n\t\t{\r\n\t\t\tObject.assign<CrmAttribute, CrmAttri" +
-                    "bute>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tabstract class Control implements IHasLabels, ICa" +
-                    "nVisible\r\n\t{\r\n\t\tname: string;\r\n\t\tlabels: Map<number, string>;\r\n\t\tisVisible: bool" +
-                    "ean;\r\n\r\n\t\tconstructor(obj: Control)\r\n\t\t{\r\n\t\t\tObject.assign<Control, Control>(thi" +
-                    "s, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass FieldControl extends Control implements ICanDisabled" +
-                    "\r\n\t{\r\n\t\tisDisabled: boolean;\r\n\r\n\t\tconstructor(obj: FieldControl)\r\n\t\t{\r\n\t\t\tsuper(" +
-                    "obj);\r\n\t\t\tObject.assign<FieldControl, FieldControl>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tcla" +
-                    "ss GridControl extends Control\r\n\t{\r\n\t\tconstructor(obj: GridControl)\r\n\t\t{\r\n\t\t\tsup" +
-                    "er(obj);\r\n\t\t\tObject.assign<GridControl, GridControl>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tcl" +
-                    "ass Context\r\n\t{ \r\n\t\tuserId: string;\r\n\t\tusername: string;\r\n\t\tuserFullName: string" +
-                    ";\r\n\t\tisGuidedHelpEnabled: boolean;\r\n\t\tuserLanguageCode: number;\r\n\t\ttimeZoneBias:" +
-                    " number;\r\n\t\tuserRoles: string[];\r\n\t\torganisationUrl: string;\r\n\t\tisAutoSaveEnable" +
-                    "d: boolean;\r\n\t\torgLanguageCode: number;\r\n\t\torganisationName: string;\r\n\t\tthemeNam" +
-                    "e: string;\r\n\t\tcrmVersion: string;\r\n\r\n\t\tconstructor(obj: Context)\r\n\t\t{\r\n\t\t\tObject" +
-                    ".assign<Context, Context>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\texport class ContextParams\r\n\t" +
-                    "{\r\n\t\tclient: Xrm.Client;\r\n\t\tclientState: Xrm.ClientState;\r\n\t\tuserSettings: UserS" +
-                    "ettingsMock;\r\n\t}\r\n\r\n\texport class ModelBuilder<TEntity extends CrmEntityModel<TE" +
-                    "ntity[\"activeForm\"]>>\r\n\t{\r\n\t\tprivate recordId: string;\r\n\t\tprivate entity: Entity" +
-                    "Mock;\r\n\t\tprivate context: ContextMock;\r\n\t\tprivate ui: Ui;\r\n\t\tprivate attributes:" +
-                    " Xrm.Attributes.Attribute[] = [];\r\n\t\tprivate form: Form;\r\n\r\n\t\tprivate formType: " +
-                    "XrmEnum.FormType\r\n\t\tprivate isBuilt: boolean;\r\n\r\n\t\tprivate controlCreatorFunctio" +
-                    "n =\r\n\t\t\tnew Map<string, Function>(\r\n\t\t\t\t[\r\n\t\t\t\t\t[\"boolean\", () => { throw new Er" +
-                    "ror(\"Not implemented!\") }],\r\n\t\t\t\t\t[\"datetime\", XrmMockGenerator.Control.createDa" +
-                    "te],\r\n\t\t\t\t\t[\"decimal\", XrmMockGenerator.Control.createNumber],\r\n\t\t\t\t\t[\"double\", " +
-                    "XrmMockGenerator.Control.createNumber],\r\n\t\t\t\t\t[\"integer\", XrmMockGenerator.Contr" +
-                    "ol.createNumber],\r\n\t\t\t\t\t[\"lookup\", XrmMockGenerator.Control.createLookup],\r\n\t\t\t\t" +
-                    "\t[\"memo\", XrmMockGenerator.Control.createString],\r\n\t\t\t\t\t[\"money\", XrmMockGenerat" +
-                    "or.Control.createNumber],\r\n\t\t\t\t\t[\"optionset\", XrmMockGenerator.Control.createOpt" +
-                    "ionSet],\r\n\t\t\t\t\t[\"string\", XrmMockGenerator.Control.createString]\r\n\t\t\t\t]);\r\n\r\n\t\tc" +
-                    "onstructor(private rawModel: TEntity, recordId: string = \"00000000-0000-0000-000" +
-                    "0-000000000000\")\r\n\t\t{\r\n\t\t\tthis.recordId = recordId;\r\n\t\t\tthis.form = this.rawMode" +
-                    "l.forms.find(form => true);\r\n\t\t}\r\n\r\n\t\tselectForm(formName: TEntity[\"activeForm\"]" +
-                    ")\r\n\t\t{\r\n\t\t\tif (this.isBuilt)\r\n\t\t\t{\r\n\t\t\t\tthrow new Error(\"Model already built.\");" +
-                    "\r\n\t\t\t}\r\n\r\n\t\t\tthis.form = this.rawModel.forms.find(form => form.name === formName" +
-                    ");\r\n\t\t}\r\n\r\n\t\tbuildContext(parameters?: ContextMock | ContextParams)\r\n\t\t{\r\n\t\t\tif " +
-                    "(this.isBuilt)\r\n\t\t\t{\r\n\t\t\t\tthrow new Error(\"Model already built.\");\r\n\t\t\t}\r\n\r\n\t\t\tc" +
-                    "onst rawContext = this.rawModel.context;\r\n\r\n\t\t\tif (parameters == null)\r\n\t\t\t{\r\n\t\t" +
-                    "\t\tthis.context = new ContextMock(<IContextComponents>\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tclientConte" +
-                    "xt: new ClientContextMock(\"Web\", \"Online\"),\r\n\t\t\t\t\t\tuserSettings: new UserSetting" +
-                    "sMock(\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tisGuidedHelpEnabled: rawContext.isGuidedHelpEnabled,\r\n" +
-                    "\t\t\t\t\t\t\t\tisHighContrastEnabled: false,\r\n\t\t\t\t\t\t\t\tisRTL: false,\r\n\t\t\t\t\t\t\t\tuserId: ra" +
-                    "wContext.userId,\r\n\t\t\t\t\t\t\t\tuserName: rawContext.username,\r\n\t\t\t\t\t\t\t\tlanguageId: ra" +
-                    "wContext.userLanguageCode,\r\n\t\t\t\t\t\t\t\tsecurityRoles: rawContext.userRoles\r\n\t\t\t\t\t\t\t" +
-                    "}),\r\n\t\t\t\t\t\tclientUrl: rawContext.organisationUrl,\r\n\t\t\t\t\t\tcurrentTheme: rawContex" +
-                    "t.themeName,\r\n\t\t\t\t\t\tisAutoSaveEnabled: rawContext.isAutoSaveEnabled,\r\n\t\t\t\t\t\torgL" +
-                    "cid: rawContext.orgLanguageCode,\r\n\t\t\t\t\t\torgUniqueName: rawContext.organisationNa" +
-                    "me,\r\n\t\t\t\t\t\ttimeZoneOffset: rawContext.timeZoneBias,\r\n\t\t\t\t\t\tuserId: rawContext.us" +
-                    "erId,\r\n\t\t\t\t\t\tuserLcid: rawContext.userLanguageCode,\r\n\t\t\t\t\t\tuserName: rawContext." +
-                    "userFullName,\r\n\t\t\t\t\t\tuserRoles: rawContext.userRoles,\r\n\t\t\t\t\t\tversion: rawContext" +
-                    ".crmVersion\r\n\t\t\t\t\t});\r\n\t\t\t}\r\n\t\t\telse if (parameters instanceof ContextMock)\r\n\t\t\t" +
-                    "{\r\n\t\t\t\tthis.context = parameters;\r\n\t\t\t}\r\n\t\t\telse if (parameters instanceof Conte" +
-                    "xtParams)\r\n\t\t\t{\r\n\t\t\t\tparameters = <ContextParams>parameters;\r\n\r\n\t\t\t\tthis.context" +
-                    " = new ContextMock(<IContextComponents>\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tclientContext: new Client" +
-                    "ContextMock(parameters.client, parameters.clientState),\r\n\t\t\t\t\t\tuserSettings: par" +
-                    "ameters.userSettings,\r\n\t\t\t\t\t\tclientUrl: rawContext.organisationUrl,\r\n\t\t\t\t\t\tcurre" +
-                    "ntTheme: rawContext.themeName,\r\n\t\t\t\t\t\tisAutoSaveEnabled: rawContext.isAutoSaveEn" +
-                    "abled,\r\n\t\t\t\t\t\torgLcid: rawContext.orgLanguageCode,\r\n\t\t\t\t\t\torgUniqueName: rawCont" +
-                    "ext.organisationName,\r\n\t\t\t\t\t\ttimeZoneOffset: rawContext.timeZoneBias,\r\n\t\t\t\t\t\tuse" +
-                    "rId: parameters.userSettings.userId,\r\n\t\t\t\t\t\tuserLcid: parameters.userSettings.la" +
-                    "nguageId,\r\n\t\t\t\t\t\tuserName: parameters.userSettings.userName,\r\n\t\t\t\t\t\tuserRoles: p" +
-                    "arameters.userSettings.securityRoles,\r\n\t\t\t\t\t\tversion: rawContext.crmVersion\r\n\t\t\t" +
-                    "\t\t});\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tbuildModel(): void\r\n\t\t{\r\n\t\t\tif (this.isBuilt)\r\n\t\t\t{\r\n\t\t\t\tt" +
-                    "hrow new Error(\"Model already built.\");\r\n\t\t\t}\r\n\r\n\t\t\tthis.buildAttributes();\r\n\t\t\t" +
-                    "this.buildEntity();\r\n\t\t\tthis.buildUi();\r\n\r\n\t\t\tif (this.context == null)\r\n\t\t\t{\r\n\t" +
-                    "\t\t\tthis.buildContext();\r\n\t\t\t}\r\n\r\n\t\t\tXrmMockGenerator.initialise(<IXrmGeneratorCo" +
-                    "mponents>\r\n\t\t\t\t{\r\n\t\t\t\t\tentity: this.entity,\r\n\t\t\t\t\tui: this.ui,\r\n\t\t\t\t\tcontext: th" +
-                    "is.context,\r\n\t\t\t\t\tprocess: null\r\n\t\t\t\t});\r\n\t\t\t\r\n\t\t\tthis.buildTabs();\r\n\t\t}\r\n\r\n\t\tpr" +
-                    "ivate buildAttributes(): void\r\n\t\t{\r\n\t\t\tfor (const attribute of this.rawModel.crm" +
-                    "Attributes)\r\n\t\t\t{\r\n\t\t\t\tthis.attributes.push(\r\n\t\t\t\t\tnew AttributeMock(<IAttribute" +
-                    "Components<StringControlMock, string>>\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tname: attribute.name,\r\n\t" +
-                    "\t\t\t\t\t\trequiredLevel: attribute.requiredLevel\r\n\t\t\t\t\t\t}));\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tprivate" +
-                    " buildEntity(): void\r\n\t\t{\r\n\t\t\tthis.entity = new EntityMock(<IEntityComponents>\r\n" +
-                    "\t\t\t\t{\r\n\t\t\t\t\tentityName: `${this.rawModel.entityName}`,\r\n\t\t\t\t\tid: `{${this.record" +
-                    "Id}}`,\r\n\t\t\t\t\tattributes: new ItemCollectionMock<Xrm.Attributes.Attribute>(this.a" +
-                    "ttributes)\r\n\t\t\t\t});\r\n\t\t}\r\n\r\n\t\tprivate buildUi(): void\r\n\t\t{\r\n\t\t\tthis.ui = new UiM" +
-                    "ock(<IUiComponents>\r\n\t\t\t\t{\r\n\t\t\t\t\tformSelector: new FormSelectorMock(new ItemColl" +
-                    "ectionMock<FormItemMock>(\r\n\t\t\t\t\t\tthis.rawModel.forms.map(form =>\r\n\t\t\t\t\t\t\tnew For" +
-                    "mItemMock(\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tcurrentItem: form.id === this.form.id,\r\n\t\t\t\t\t\t\t\t" +
-                    "\tformType: this.formType,\r\n\t\t\t\t\t\t\t\t\tid: form.id,\r\n\t\t\t\t\t\t\t\t\tlabel: form.name,\r\n\t\t" +
-                    "\t\t\t\t\t\t}))))\r\n\t\t\t\t});\r\n\t\t}\r\n\r\n\t\tprivate buildTabs(): void\r\n\t\t{\r\n\t\t\tfor (const tab" +
-                    " of this.form.tabs) \r\n\t\t\t{\r\n\t\t\t\tXrmMockGenerator.Tab.createTab(tab.id, tab.label" +
-                    "s[this.context.userLcid], tab.isVisible, \"collapsed\", null,\r\n\t\t\t\t\tnew ItemCollec" +
-                    "tionMock<Xrm.Controls.Section>(this.buildSections(tab)));\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tprivat" +
-                    "e buildSections(tab: Tab): Xrm.Controls.Section[]\r\n\t\t{\r\n\t\t\tconst sections: Xrm.C" +
-                    "ontrols.Section[] = [];\r\n\r\n\t\t\tfor (const section of tab.sections)\r\n\t\t\t{\r\n\t\t\t\tsec" +
-                    "tions.push(\r\n\t\t\t\t\tXrmMockGenerator.Section.createSection(section.id, section.lab" +
-                    "els[this.context.userLcid], section.isVisible, null,\r\n\t\t\t\t\t\tnew ItemCollectionMo" +
-                    "ck<Xrm.Controls.Control>(this.buildControls(section))));\r\n\t\t\t}\r\n\r\n\t\t\treturn sect" +
-                    "ions;\r\n\t\t}\r\n\r\n\t\tprivate buildControls(section: Section): Xrm.Controls.Control[]\r" +
-                    "\n\t\t{\r\n\t\t\tconst controls: Xrm.Controls.Control[] = [];\r\n\r\n\t\t\tfor (const control o" +
-                    "f section.controls)\r\n\t\t\t{\r\n\t\t\t\tconst controlParams: any = { name: control.name, " +
-                    "label: control.labels[this.context.userLcid], visible: control.isVisible };\r\n\t\t\t" +
-                    "\tlet controlMock: ControlMock;\r\n\r\n\t\t\t\tif (control instanceof GridControl)\r\n\t\t\t\t{" +
-                    "\r\n\t\t\t\t\tcontrolParams.entityName = this.entity;\r\n\t\t\t\t\tcontrolMock = XrmMockGenera" +
-                    "tor.Control.createGrid(controlParams);\r\n\t\t\t\t}\r\n\t\t\t\telse if (control instanceof F" +
-                    "ieldControl)\r\n\t\t\t\t{\r\n\t\t\t\t\tconst attribute = this.attributes.find(attribute => at" +
-                    "tribute.getName() === control.name);\r\n\t\t\t\t\tcontrolParams.attribute = attribute;\r" +
-                    "\n\r\n\t\t\t\t\tconst fieldcontrol = <FieldControl>control;\r\n\t\t\t\t\tcontrolParams.disabled" +
-                    " = fieldcontrol.isDisabled\r\n\r\n\t\t\t\t\tconst rawAttribute = this.rawModel.crmAttribu" +
-                    "tes.find(attribute => attribute.name === control.name);\r\n\t\t\t\t\tconst attributeTyp" +
-                    "e = rawAttribute.attributeType;\r\n\r\n\t\t\t\t\tswitch (attributeType)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tca" +
-                    "se \"optionset\":\r\n\t\t\t\t\t\t\tconst optionsMock: OptionSetValueMock[] = []\r\n\t\t\t\t\t\t\traw" +
-                    "Attribute.options.forEach((value, key) => { optionsMock.push(new OptionSetValueM" +
-                    "ock(value[this.context.userLcid], key)) });\r\n\t\t\t\t\t\t\tcontrolParams.options = opti" +
-                    "onsMock;\r\n\t\t\t\t\t\tcase \"datetime\":\r\n\t\t\t\t\t\t\tcontrolParams.showTime = attribute.getF" +
-                    "ormat() === \"datetime\";\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcontrolMock = this.controlCreatorFunctio" +
-                    "n[attributeType](controlParams);\r\n\t\t\t\t}\r\n\r\n\t\t\t\tcontrols.push(controlMock);\r\n\t\t\t}" +
-                    "\r\n\r\n\t\t\treturn controls;\r\n\t\t}\r\n\t}\r\n\t");
+                    " sinon = require(\'sinon\');\r\n\r\n/**\r\n * Model generated by the \"xrm-mock Generator" +
+                    "\" tool available in the XrmToolBox or as the NuGet package \"xrm-mock-Generator\"\r" +
+                    "\n */\r\nexport namespace XrmModel\r\n{\r\n\tabstract class CrmEntityModel<TFormNames>\r\n" +
+                    "\t{\r\n\t\tabstract entityName: string;\r\n\t\tabstract context: Context;\r\n\t\tabstract crm" +
+                    "Attributes: CrmAttribute[];\r\n\t\tabstract forms: Form[];\r\n\t\tactiveForm: TFormNames" +
+                    ";\r\n\t}\r\n\r\n\tinterface IHasId { id: string; }\r\n\tinterface IHasLabels { labels: Map<" +
+                    "number, string>; }\r\n\tinterface ICanVisible { isVisible: boolean; }\r\n\tinterface I" +
+                    "CanDisabled { isDisabled: boolean; }\r\n\r\n\tclass Form implements IHasId\r\n\t{\r\n\t\tid:" +
+                    " string;\r\n\t\tname: string;\r\n\t\ttabs: Tab[];\r\n\r\n\t\tconstructor(obj: Form)\r\n\t\t{\r\n\t\t\tO" +
+                    "bject.assign<Form, Form>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass Tab implements IHasId, I" +
+                    "HasLabels, ICanVisible\r\n\t{\r\n\t\tid: string;\r\n\t\tlabels: Map<number, string>;\r\n\t\tisV" +
+                    "isible: boolean;\r\n\t\tsections: Section[];\r\n\r\n\t\tconstructor(obj: Tab)\r\n\t\t{\r\n\t\t\tObj" +
+                    "ect.assign<Tab, Tab>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass Section implements IHasId, I" +
+                    "HasLabels, ICanVisible\r\n\t{\r\n\t\tid: string;\r\n\t\tlabels: Map<number, string>;\r\n\t\tisV" +
+                    "isible: boolean;\r\n\t\tcontrols: Control[];\r\n\r\n\t\tconstructor(obj: Section)\r\n\t\t{\r\n\t\t" +
+                    "\tObject.assign<Section, Section>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass CrmAttribute\r\n\t{" +
+                    "\r\n\t\tattributeType: string;\r\n\t\tname: string;\r\n\t\trequiredLevel: string;\r\n\t\tformat:" +
+                    " string;\r\n\t\toptions: Map<number, Map<number, string>>;\r\n\r\n\t\tconstructor(obj: Crm" +
+                    "Attribute)\r\n\t\t{\r\n\t\t\tObject.assign<CrmAttribute, CrmAttribute>(this, obj);\r\n\t\t}\r\n" +
+                    "\t}\r\n\r\n\tabstract class Control implements IHasLabels, ICanVisible\r\n\t{\r\n\t\tname: st" +
+                    "ring;\r\n\t\tlabels: Map<number, string>;\r\n\t\tisVisible: boolean;\r\n\r\n\t\tconstructor(ob" +
+                    "j: Control)\r\n\t\t{\r\n\t\t\tObject.assign<Control, Control>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tcl" +
+                    "ass FieldControl extends Control implements ICanDisabled\r\n\t{\r\n\t\tisDisabled: bool" +
+                    "ean;\r\n\r\n\t\tconstructor(obj: FieldControl)\r\n\t\t{\r\n\t\t\tsuper(obj);\r\n\t\t\tObject.assign<" +
+                    "FieldControl, FieldControl>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass GridControl extends C" +
+                    "ontrol\r\n\t{\r\n\t\tconstructor(obj: GridControl)\r\n\t\t{\r\n\t\t\tsuper(obj);\r\n\t\t\tObject.assi" +
+                    "gn<GridControl, GridControl>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\tclass Context\r\n\t{ \r\n\t\tuser" +
+                    "Id: string;\r\n\t\tusername: string;\r\n\t\tuserFullName: string;\r\n\t\tisGuidedHelpEnabled" +
+                    ": boolean;\r\n\t\tuserLanguageCode: number;\r\n\t\ttimeZoneBias: number;\r\n\t\tuserRoles: s" +
+                    "tring[];\r\n\t\torganisationUrl: string;\r\n\t\tisAutoSaveEnabled: boolean;\r\n\t\torgLangua" +
+                    "geCode: number;\r\n\t\torganisationName: string;\r\n\t\tthemeName: string;\r\n\t\tcrmVersion" +
+                    ": string;\r\n\r\n\t\tconstructor(obj: Context)\r\n\t\t{\r\n\t\t\tObject.assign<Context, Context" +
+                    ">(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\texport class ContextParams\r\n\t{\r\n\t\tclient: Xrm.Client;" +
+                    "\r\n\t\tclientState: Xrm.ClientState;\r\n\t\tuserSettings: UserSettingsMock;\r\n\t}\r\n\r\n\texp" +
+                    "ort class ModelBuilder<TEntity extends CrmEntityModel<TEntity[\"activeForm\"]>>\r\n\t" +
+                    "{\r\n\t\tprivate recordId: string;\r\n\t\tprivate entity: EntityMock;\r\n\t\tprivate context" +
+                    ": ContextMock;\r\n\t\tprivate ui: Ui;\r\n\t\tprivate attributes: Xrm.Attributes.Attribut" +
+                    "e[] = [];\r\n\t\tprivate form: Form;\r\n\r\n\t\tprivate formType: XrmEnum.FormType\r\n\t\tpriv" +
+                    "ate isBuilt: boolean;\r\n\r\n\t\tconstructor(private rawModel: TEntity, recordId: stri" +
+                    "ng = \"00000000-0000-0000-0000-000000000000\")\r\n\t\t{\r\n\t\t\tthis.recordId = recordId;\r" +
+                    "\n\t\t\tthis.form = this.rawModel.forms.find(form => true);\r\n\t\t}\r\n\r\n\t\tselectForm(for" +
+                    "mName: TEntity[\"activeForm\"])\r\n\t\t{\r\n\t\t\tif (this.isBuilt)\r\n\t\t\t{\r\n\t\t\t\tthrow new Er" +
+                    "ror(\"Model already built.\");\r\n\t\t\t}\r\n\r\n\t\t\tthis.form = this.rawModel.forms.find(fo" +
+                    "rm => form.name === formName);\r\n\t\t}\r\n\r\n\t\tbuildContext(parameters?: ContextMock |" +
+                    " ContextParams)\r\n\t\t{\r\n\t\t\tif (this.isBuilt)\r\n\t\t\t{\r\n\t\t\t\tthrow new Error(\"Model alr" +
+                    "eady built.\");\r\n\t\t\t}\r\n\r\n\t\t\tconst rawContext = this.rawModel.context;\r\n\r\n\t\t\tif (p" +
+                    "arameters == null)\r\n\t\t\t{\r\n\t\t\t\tthis.context = new ContextMock(<IContextComponents" +
+                    ">\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tclientContext: new ClientContextMock(\"Web\", \"Online\"),\r\n\t\t\t\t\t\tu" +
+                    "serSettings: new UserSettingsMock(\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tisGuidedHelpEnabled: rawCo" +
+                    "ntext.isGuidedHelpEnabled,\r\n\t\t\t\t\t\t\t\tisHighContrastEnabled: false,\r\n\t\t\t\t\t\t\t\tisRTL" +
+                    ": false,\r\n\t\t\t\t\t\t\t\tuserId: rawContext.userId,\r\n\t\t\t\t\t\t\t\tuserName: rawContext.usern" +
+                    "ame,\r\n\t\t\t\t\t\t\t\tlanguageId: rawContext.userLanguageCode,\r\n\t\t\t\t\t\t\t\tsecurityRoles: r" +
+                    "awContext.userRoles\r\n\t\t\t\t\t\t\t}),\r\n\t\t\t\t\t\tclientUrl: rawContext.organisationUrl,\r\n\t" +
+                    "\t\t\t\t\tcurrentTheme: rawContext.themeName,\r\n\t\t\t\t\t\tisAutoSaveEnabled: rawContext.is" +
+                    "AutoSaveEnabled,\r\n\t\t\t\t\t\torgLcid: rawContext.orgLanguageCode,\r\n\t\t\t\t\t\torgUniqueNam" +
+                    "e: rawContext.organisationName,\r\n\t\t\t\t\t\ttimeZoneOffset: rawContext.timeZoneBias,\r" +
+                    "\n\t\t\t\t\t\tuserId: rawContext.userId,\r\n\t\t\t\t\t\tuserLcid: rawContext.userLanguageCode,\r" +
+                    "\n\t\t\t\t\t\tuserName: rawContext.userFullName,\r\n\t\t\t\t\t\tuserRoles: rawContext.userRoles" +
+                    ",\r\n\t\t\t\t\t\tversion: rawContext.crmVersion\r\n\t\t\t\t\t});\r\n\t\t\t}\r\n\t\t\telse if (parameters " +
+                    "instanceof ContextMock)\r\n\t\t\t{\r\n\t\t\t\tthis.context = parameters;\r\n\t\t\t}\r\n\t\t\telse if " +
+                    "(parameters instanceof ContextParams)\r\n\t\t\t{\r\n\t\t\t\tparameters = <ContextParams>par" +
+                    "ameters;\r\n\r\n\t\t\t\tthis.context = new ContextMock(<IContextComponents>\r\n\t\t\t\t\t{\r\n\t\t\t" +
+                    "\t\t\tclientContext: new ClientContextMock(parameters.client, parameters.clientStat" +
+                    "e),\r\n\t\t\t\t\t\tuserSettings: parameters.userSettings,\r\n\t\t\t\t\t\tclientUrl: rawContext.o" +
+                    "rganisationUrl,\r\n\t\t\t\t\t\tcurrentTheme: rawContext.themeName,\r\n\t\t\t\t\t\tisAutoSaveEnab" +
+                    "led: rawContext.isAutoSaveEnabled,\r\n\t\t\t\t\t\torgLcid: rawContext.orgLanguageCode,\r\n" +
+                    "\t\t\t\t\t\torgUniqueName: rawContext.organisationName,\r\n\t\t\t\t\t\ttimeZoneOffset: rawCont" +
+                    "ext.timeZoneBias,\r\n\t\t\t\t\t\tuserId: parameters.userSettings.userId,\r\n\t\t\t\t\t\tuserLcid" +
+                    ": parameters.userSettings.languageId,\r\n\t\t\t\t\t\tuserName: parameters.userSettings.u" +
+                    "serName,\r\n\t\t\t\t\t\tuserRoles: parameters.userSettings.securityRoles,\r\n\t\t\t\t\t\tversion" +
+                    ": rawContext.crmVersion\r\n\t\t\t\t\t});\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tbuildModel(): void\r\n\t\t{\r\n\t\t\tif" +
+                    " (this.isBuilt)\r\n\t\t\t{\r\n\t\t\t\tthrow new Error(\"Model already built.\");\r\n\t\t\t}\r\n\r\n\t\t\t" +
+                    "this.buildAttributes();\r\n\t\t\tthis.buildEntity();\r\n\t\t\tthis.buildUi();\r\n\r\n\t\t\tif (th" +
+                    "is.context == null)\r\n\t\t\t{\r\n\t\t\t\tthis.buildContext();\r\n\t\t\t}\r\n\r\n\t\t\tXrmMockGenerator" +
+                    ".initialise(<IXrmGeneratorComponents>\r\n\t\t\t\t{\r\n\t\t\t\t\tentity: this.entity,\r\n\t\t\t\t\tui" +
+                    ": this.ui,\r\n\t\t\t\t\tcontext: this.context,\r\n\t\t\t\t\tprocess: null\r\n\t\t\t\t});\r\n\t\t\t\r\n\t\t\tth" +
+                    "is.buildTabs();\r\n\t\t}\r\n\r\n\t\tprivate buildAttributes(): void\r\n\t\t{\r\n\t\t\tfor (const at" +
+                    "tribute of this.rawModel.crmAttributes)\r\n\t\t\t{\r\n\t\t\t\tthis.attributes.push(\r\n\t\t\t\t\tn" +
+                    "ew AttributeMock(<IAttributeComponents<StringControlMock, string>>\r\n\t\t\t\t\t\t{\r\n\t\t\t" +
+                    "\t\t\t\tname: attribute.name,\r\n\t\t\t\t\t\t\trequiredLevel: attribute.requiredLevel\r\n\t\t\t\t\t\t" +
+                    "}));\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tprivate buildEntity(): void\r\n\t\t{\r\n\t\t\tthis.entity = new Enti" +
+                    "tyMock(<IEntityComponents>\r\n\t\t\t\t{\r\n\t\t\t\t\tentityName: `${this.rawModel.entityName}" +
+                    "`,\r\n\t\t\t\t\tid: `{${this.recordId}}`,\r\n\t\t\t\t\tattributes: new ItemCollectionMock<Xrm." +
+                    "Attributes.Attribute>(this.attributes)\r\n\t\t\t\t});\r\n\t\t}\r\n\r\n\t\tprivate buildUi(): voi" +
+                    "d\r\n\t\t{\r\n\t\t\tthis.ui = new UiMock(<IUiComponents>\r\n\t\t\t\t{\r\n\t\t\t\t\tformSelector: new F" +
+                    "ormSelectorMock(new ItemCollectionMock<FormItemMock>(\r\n\t\t\t\t\t\tthis.rawModel.forms" +
+                    ".map(form =>\r\n\t\t\t\t\t\t\tnew FormItemMock(\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tcurrentItem: form.id" +
+                    " === this.form.id,\r\n\t\t\t\t\t\t\t\t\tformType: this.formType,\r\n\t\t\t\t\t\t\t\t\tid: form.id,\r\n\t\t" +
+                    "\t\t\t\t\t\t\tlabel: form.name,\r\n\t\t\t\t\t\t\t\t}))))\r\n\t\t\t\t});\r\n\t\t}\r\n\r\n\t\tprivate buildTabs(): " +
+                    "void\r\n\t\t{\r\n\t\t\tfor (const tab of this.form.tabs) \r\n\t\t\t{\r\n\t\t\t\tXrmMockGenerator.Tab" +
+                    ".createTab(tab.id, tab.labels[this.context.userLcid], tab.isVisible, \"collapsed\"" +
+                    ", null,\r\n\t\t\t\t\tnew ItemCollectionMock<Xrm.Controls.Section>(this.buildSections(ta" +
+                    "b)));\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tprivate buildSections(tab: Tab): Xrm.Controls.Section[]\r\n\t" +
+                    "\t{\r\n\t\t\tconst sections: Xrm.Controls.Section[] = [];\r\n\r\n\t\t\tfor (const section of " +
+                    "tab.sections)\r\n\t\t\t{\r\n\t\t\t\tsections.push(\r\n\t\t\t\t\tXrmMockGenerator.Section.createSec" +
+                    "tion(section.id, section.labels[this.context.userLcid], section.isVisible, null," +
+                    "\r\n\t\t\t\t\t\tnew ItemCollectionMock<Xrm.Controls.Control>(this.buildControls(section)" +
+                    ")));\r\n\t\t\t}\r\n\r\n\t\t\treturn sections;\r\n\t\t}\r\n\r\n\t\tprivate buildControls(section: Secti" +
+                    "on): Xrm.Controls.Control[]\r\n\t\t{\r\n\t\t\tconst controls: Xrm.Controls.Control[] = []" +
+                    ";\r\n\r\n\t\t\tfor (const control of section.controls)\r\n\t\t\t{\r\n\t\t\t\tconst controlParams: " +
+                    "any = { name: control.name, label: control.labels[this.context.userLcid], visibl" +
+                    "e: control.isVisible };\r\n\t\t\t\tlet controlMock: ControlMock;\r\n\r\n\t\t\t\tif (control in" +
+                    "stanceof GridControl)\r\n\t\t\t\t{\r\n\t\t\t\t\tcontrolParams.entityName = this.entity;\r\n\t\t\t\t" +
+                    "\tcontrolMock = XrmMockGenerator.Control.createGrid(controlParams);\r\n\t\t\t\t}\r\n\t\t\t\te" +
+                    "lse if (control instanceof FieldControl)\r\n\t\t\t\t{\r\n\t\t\t\t\tconst attribute = this.att" +
+                    "ributes.find(attribute => attribute.getName() === control.name);\r\n\r\n            " +
+                    "        const missingAttributeMessage = `WARNING: Skipped adding control \'${cont" +
+                    "rol.name}\' due to missing attribute.`;\r\n\r\n                    if (!attribute)\r\n " +
+                    "                   {\r\n                        console.log(missingAttributeMessag" +
+                    "e);\r\n                        continue;\r\n                    }\r\n\r\n\t\t\t\t\tcontrolPar" +
+                    "ams.attribute = attribute;\r\n\r\n\t\t\t\t\tconst fieldcontrol = <FieldControl>control;\r\n" +
+                    "\t\t\t\t\tcontrolParams.disabled = fieldcontrol.isDisabled\r\n\r\n\t\t\t\t\tconst rawAttribute" +
+                    " = this.rawModel.crmAttributes.find(attribute => attribute.name === control.name" +
+                    ");\r\n\r\n                    if (!rawAttribute)\r\n                    {\r\n           " +
+                    "             console.log(missingAttributeMessage);\r\n                        cont" +
+                    "inue;\r\n                    }\r\n\r\n\t\t\t\t\tconst attributeType = rawAttribute.attribut" +
+                    "eType;\r\n\r\n\t\t\t\t\tswitch (attributeType)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcase \"optionset\":\r\n\t\t\t\t\t\t\tc" +
+                    "onst optionsMock: OptionSetValueMock[] = []\r\n\t\t\t\t\t\t\trawAttribute.options.forEach" +
+                    "((value, key) => { optionsMock.push(new OptionSetValueMock(value[this.context.us" +
+                    "erLcid], key)) });\r\n\t\t\t\t\t\t\tcontrolParams.options = optionsMock;\r\n               " +
+                    "             controlMock = XrmMockGenerator.Control.createOptionSet(controlParam" +
+                    "s);\r\n                            break;\r\n\t\t\t\t\t\tcase \"datetime\":\r\n\t\t\t\t\t\t\tcontrolP" +
+                    "arams.showTime = attribute.getFormat() === \"datetime\";\r\n                        " +
+                    "    controlMock = XrmMockGenerator.Control.createDate(controlParams);\r\n         " +
+                    "                   break;\r\n\t\t\t\t\t\tcase \"integer\":\r\n\t\t\t\t\t\tcase \"double\":\r\n\t\t\t\t\t\tca" +
+                    "se \"decimal\":\r\n\t\t\t\t\t\tcase \"money\":\r\n                            controlMock = Xr" +
+                    "mMockGenerator.Control.createNumber(controlParams);\r\n                           " +
+                    " break;\r\n\t\t\t\t\t\tcase \"lookup\":\r\n                            controlMock = XrmMock" +
+                    "Generator.Control.createLookup(controlParams);\r\n                            brea" +
+                    "k;\r\n\t\t\t\t\t\tcase \"string\":\r\n\t\t\t\t\t\tcase \"memo\":\r\n                            contro" +
+                    "lMock = XrmMockGenerator.Control.createString(controlParams);\r\n                 " +
+                    "           break;\r\n\t\t\t\t\t\tcase \"boolean\":\r\n\t\t\t\t\t\tdefault:\r\n                      " +
+                    "      console.log(`WARNING: Adding control \'${control.name}\' as String control d" +
+                    "ue to unsupported \'${attributeType}\' type.`);\r\n                            contr" +
+                    "olMock = XrmMockGenerator.Control.createString(controlParams);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\r" +
+                    "\n\t\t\t\tcontrols.push(controlMock);\r\n\t\t\t}\r\n\r\n\t\t\treturn controls;\r\n\t\t}\r\n\t}\r\n\t");
             
-            #line 386 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 409 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  
 		foreach (var model in models)
 		{
@@ -176,98 +188,98 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write(" \r\n\ttype ");
             
-            #line 390 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 413 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write("_Forms =\r\n\t\t");
             
-            #line 391 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 414 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  foreach (var form in model.Forms) { 
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 391 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 414 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(form.Name)));
             
             #line default
             #line hidden
             this.Write("\" |  ");
             
-            #line 391 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 414 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("null;\r\n\r\n\texport class ");
             
-            #line 393 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 416 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write(" extends CrmEntityModel<");
             
-            #line 393 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 416 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write("_Forms>\r\n\t{\r\n\t\tentityName = \"");
             
-            #line 395 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 418 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write("\";\r\n\t\tcontext = new Context(<Context>\r\n\t\t\t{\r\n\t\t\t\tuserId: \"");
             
-            #line 398 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 421 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.UserId.ToString())));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\tusername: ");
             
-            #line 399 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 422 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(model.Context.Username))));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tuserFullName: ");
             
-            #line 400 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 423 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(model.Context.UserFullName))));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tisGuidedHelpEnabled: ");
             
-            #line 401 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 424 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.IsGuidedHelpEnabled.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tuserLanguageCode: ");
             
-            #line 402 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 425 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.UserLanguageCode.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\ttimeZoneBias: ");
             
-            #line 403 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 426 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.TimeZoneBias.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tuserRoles:\r\n\t\t\t\t\t[\r\n\t\t\t");
             
-            #line 406 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 429 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				foreach (var role in model.Context.UserRoles)
 				{
@@ -277,14 +289,14 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\"");
             
-            #line 409 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 432 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(role.ToString())));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t");
             
-            #line 410 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 433 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				}
 			
@@ -293,49 +305,49 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t],\r\n\t\t\t\torganisationUrl: \"");
             
-            #line 413 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 436 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.OrganisationUrl)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\tisAutoSaveEnabled: ");
             
-            #line 414 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 437 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.IsAutoSaveEnabled.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\torgLanguageCode: ");
             
-            #line 415 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 438 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.OrgLanguageCode.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\torganisationName: \"");
             
-            #line 416 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 439 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.OrganisationName)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\tthemeName: ");
             
-            #line 417 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 440 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(model.Context.ThemeName))));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tcrmVersion: \"");
             
-            #line 418 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 441 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.CrmVersion)));
             
             #line default
             #line hidden
             this.Write("\"\r\n\t\t\t});\r\n\t\tcrmAttributes =\r\n\t\t\t[\r\n\t\t\t");
             
-            #line 422 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 445 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				foreach (var attribute in model.CrmAttributes)
 				{
@@ -345,35 +357,35 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\tnew CrmAttribute(<CrmAttribute>\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tattributeType: \"");
             
-            #line 427 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 450 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.AttributeType)));
             
             #line default
             #line hidden
             this.Write("\", name: \"");
             
-            #line 427 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 450 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.Name)));
             
             #line default
             #line hidden
             this.Write("\", requiredLevel: \"");
             
-            #line 427 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 450 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.RequiredLevel, "none")));
             
             #line default
             #line hidden
             this.Write("\", format: \"");
             
-            #line 427 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 450 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.Format)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\t\t\toptions: new Map(\r\n\t\t\t\t\t\t\t[\r\n\t\t\t\t");
             
-            #line 430 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 453 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					if (attribute.Options != null) {
 					foreach (var option in attribute.Options)
@@ -384,14 +396,14 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t[");
             
-            #line 434 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 457 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(option.Key.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\tnew Map(\r\n\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t");
             
-            #line 437 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 460 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						foreach (var label in option.Value)
 						{
@@ -401,21 +413,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t[");
             
-            #line 440 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 463 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(label.Key.ToString())));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 440 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 463 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("]\r\n\t\t\t\t\t");
             
-            #line 441 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 464 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						}
 					
@@ -424,7 +436,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t])\r\n\t\t\t\t\t\t\t\t],\r\n\t\t\t\t");
             
-            #line 445 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 468 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					}
 					}
@@ -434,7 +446,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t])\r\n\t\t\t\t\t}),\r\n\t\t\t");
             
-            #line 450 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 473 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				}
 			
@@ -443,7 +455,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("];\r\n\t\tforms =\r\n\t\t\t[\r\n\t\t\t");
             
-            #line 455 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 478 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				foreach (var form in model.Forms)
 				{
@@ -453,21 +465,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\tnew Form(<Form>\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tid: \"");
             
-            #line 460 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 483 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(form.Id)));
             
             #line default
             #line hidden
             this.Write("\", name: \"");
             
-            #line 460 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 483 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(form.Name)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\t\t\ttabs:\r\n\t\t\t\t\t\t\t[\r\n\t\t\t\t");
             
-            #line 463 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 486 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					foreach (var tab in form.Tabs)
 					{
@@ -477,21 +489,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\tnew Tab(<Tab>\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tid: \"");
             
-            #line 468 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 491 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(tab.Id)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 468 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 491 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(tab.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t");
             
-            #line 471 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 494 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						foreach (var label in tab.Labels)
 						{
@@ -501,21 +513,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t\t[");
             
-            #line 474 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 497 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 474 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 497 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t");
             
-            #line 475 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 498 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						}
 					
@@ -524,7 +536,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t]),\r\n\t\t\t\t\t\t\t\t\t\tsections:\r\n\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t");
             
-            #line 480 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 503 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 							foreach (var section in tab.Sections)
 							{
@@ -534,21 +546,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\tnew Section(<Section>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tid: \"");
             
-            #line 485 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 508 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(section.Id)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 485 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 508 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(section.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t");
             
-            #line 488 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 511 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 								foreach (var label in section.Labels)
 								{
@@ -558,21 +570,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t\t[");
             
-            #line 491 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 514 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 491 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 514 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t\t\t");
             
-            #line 492 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 515 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 								}
 							
@@ -581,7 +593,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t]),\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcontrols:\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t\t");
             
-            #line 497 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 520 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									foreach (var control in section.Controls.OfType<FieldControl>())
 									{
@@ -592,28 +604,28 @@ namespace Yagasoft.XrmMockGenerator
             this.Write("\t\t\t\t\t\t\t\tnew FieldControl(<FieldControl>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tna" +
                     "me: \"");
             
-            #line 502 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 525 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.Name)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 502 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 525 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(", isDisabled: ");
             
-            #line 502 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 525 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.IsDisabled.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 505 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 528 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										foreach (var label in control.Labels)
 										{
@@ -623,21 +635,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t\t\t\t[");
             
-            #line 508 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 531 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 508 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 531 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t])\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 510 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 533 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										}
 									
@@ -646,7 +658,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t\t\t\t\t");
             
-            #line 513 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 536 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									}
 								
@@ -654,7 +666,7 @@ namespace Yagasoft.XrmMockGenerator
             #line default
             #line hidden
             
-            #line 515 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 538 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									foreach (var control in section.Controls.OfType<GridControl>())
 									{
@@ -665,21 +677,21 @@ namespace Yagasoft.XrmMockGenerator
             this.Write("\t\t\t\t\t\t\t\tnew GridControl(<GridControl>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tname" +
                     ": \"");
             
-            #line 520 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 543 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.Name)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 520 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 543 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 523 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 546 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										foreach (var label in control.Labels)
 										{
@@ -689,21 +701,21 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t\t\t\t[");
             
-            #line 526 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 549 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 526 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 549 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t])\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 528 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 551 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										}
 									
@@ -712,25 +724,25 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t\t\t\t\t");
             
-            #line 531 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 554 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									}
 								
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t\t\t]\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t})\r\n\t\t\t\t\t\t\t\t\t\t\t]\r\n\t\t\t\t\t\t");
+            this.Write("\t\t\t\t\t\t\t]\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t\t\t");
             
-            #line 536 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 558 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 							}
 						
             
             #line default
             #line hidden
-            this.Write("\t\t\t}),\r\n\t\t\t\t");
+            this.Write("\t\t\t\t\t]\r\n\t\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t");
             
-            #line 539 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 562 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					}
 				
@@ -739,7 +751,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("\t\t\t]\r\n\t\t\t\t\t}),\r\n\t\t\t");
             
-            #line 543 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 566 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				}
 			
@@ -748,7 +760,7 @@ namespace Yagasoft.XrmMockGenerator
             #line hidden
             this.Write("];\r\n\t}\r\n");
             
-            #line 547 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 570 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 		}
 
@@ -759,7 +771,7 @@ namespace Yagasoft.XrmMockGenerator
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 550 "D:\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+        #line 573 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
     // Credit :http://stackoverflow.com/questions/323640/can-i-convert-a-c-sharp-string-value-to-an-escaped-string-literal
     private static string ToLiteral(string input)
