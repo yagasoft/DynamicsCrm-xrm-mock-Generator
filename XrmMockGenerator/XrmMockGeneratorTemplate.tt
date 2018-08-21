@@ -8,10 +8,7 @@
 <#@ import namespace="System.IO"#>
 <#@ import namespace="Yagasoft.XrmMockGenerator.Model"#>
 <#@ import namespace="Yagasoft.XrmMockGenerator.Model.Control"#>
-import { AttributeMock, IAttributeComponents, StringControlMock, IEntityComponents, EntityMock, ItemCollectionMock, IUiComponents, UiMock, FormSelectorMock, FormItemMock, IStringControlComponents, ClientContextMock, ContextMock, EventContextMock, UserSettingsMock, IGridControlComponents, StepMock, ProcessMock, StageMock, ProcessManagerMock, IContextComponents, ControlMock, OptionSetValueMock } from "../../src/xrm-mock";
-import { IXrmGeneratorComponents, XrmMockGenerator } from "../../src/xrm-mock-generator";
-import FormContext from "../../src/xrm-mock-generator/formcontext";
-import Ui from "../../src/xrm-mock-generator/ui";
+import { UserSettingsMock, EntityMock, ContextMock, IContextComponents, ClientContextMock, IXrmGeneratorComponents, AttributeMock, IAttributeComponents, XrmMockGenerator, StringControlMock, IEntityComponents, ItemCollectionMock, UiMock, FormSelectorMock, FormItemMock, ControlMock, OptionSetValueMock, IUiComponents } from "xrm-mock";
 const sinon = require('sinon');
 
 /**
@@ -151,7 +148,7 @@ export namespace XrmModel
 		private recordId: string;
 		private entity: EntityMock;
 		private context: ContextMock;
-		private ui: Ui;
+		private ui: UiMock;
 		private attributes: Xrm.Attributes.Attribute[] = [];
 		private form: Form;
 
@@ -189,6 +186,7 @@ export namespace XrmModel
 					{
 						clientContext: new ClientContextMock("Web", "Online"),
 						userSettings: new UserSettingsMock(
+							<UserSettingsMock>
 							{
 								isGuidedHelpEnabled: rawContext.isGuidedHelpEnabled,
 								isHighContrastEnabled: false,
