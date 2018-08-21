@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator](https://badges.gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator.svg)](https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Version: 1.1.3.3
+### Version: 1.1.4.2
 ---
 
 An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
@@ -31,6 +31,8 @@ A detailed guide will be released soon.
 		
 ## Changes
 
+#### _v1.1.4.2 (2018-08-21)_
++ Fixed: labels not properly set
 #### _v1.1.3.3 (2018-08-21)_
 + Fixed: imports
 + Fixed: constructor parameter type
