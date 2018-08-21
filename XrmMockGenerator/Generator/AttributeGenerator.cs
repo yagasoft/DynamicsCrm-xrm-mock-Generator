@@ -78,7 +78,39 @@ namespace Yagasoft.XrmMockGenerator.Generator
 								: (a is IntegerAttributeMetadata aI) ? aI.Format.ToString() : null,
 						Options = (a as EnumAttributeMetadata)?.OptionSet?.Options
 							.ToDictionary(e => e.Value ?? 0,
-								e => e.Label?.LocalizedLabels?.ToDictionary(l => l.LanguageCode, l => l.Label))
+								e => e.Label?.LocalizedLabels?.ToDictionary(l => l.LanguageCode, l => l.Label)),
+						InitialValue = (a as EnumAttributeMetadata)?.DefaultFormValue,
+						DefaultBoolValue = (a as BooleanAttributeMetadata)?.DefaultValue,
+						Min = (a is DecimalAttributeMetadata anD)
+							? anD.MinValue
+							: (a is IntegerAttributeMetadata anI)
+								? anI.MinValue
+								: (a is BigIntAttributeMetadata anB)
+									? anB.MinValue
+									: (a is DoubleAttributeMetadata andD)
+										? (decimal?)andD.MinValue
+										: (a is MoneyAttributeMetadata anM)
+											? (decimal?)anM.MinValue
+											: null,
+						Max = (a is DecimalAttributeMetadata anD2)
+							? anD2.MaxValue
+							: (a is IntegerAttributeMetadata anI2)
+								? anI2.MaxValue
+								: (a is BigIntAttributeMetadata anB2)
+									? anB2.MaxValue
+									: (a is DoubleAttributeMetadata andD2)
+										? (decimal?)andD2.MaxValue
+										: (a is MoneyAttributeMetadata anM2)
+											? (decimal?)anM2.MaxValue
+											: null,
+						Precision = (a is DecimalAttributeMetadata anD3)
+							? anD3.Precision
+							: (a is DoubleAttributeMetadata andD3)
+								? andD3.Precision
+								: (a is MoneyAttributeMetadata anM3)
+									? anM3.Precision
+									: null,
+						MaxLength = (a as StringAttributeMetadata)?.MaxLength
 					});
 
 			return mappedAttributes;
