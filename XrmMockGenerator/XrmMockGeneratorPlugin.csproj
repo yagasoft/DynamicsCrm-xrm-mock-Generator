@@ -196,7 +196,7 @@
   move /Y Yagasoft.XrmMockGenerator.pdb "$(SolutionDir)XrmToolBox\Plugins"
 )
 IF "$(ConfigurationName)" == "Release" (
-  $(SolutionDir)lib/nuget.exe pack $(ProjectPath) -Prop Configuration=Release
+  $(SolutionDir)lib/nuget.exe pack $(ProjectDir)\XrmMockGeneratorPlugin.nuspec
   copy /Y "$(TargetDir)*.nupkg" "C:\Nuget.Local\"
 )</PostBuildEvent>
   </PropertyGroup>
