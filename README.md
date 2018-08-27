@@ -2,10 +2,28 @@
 
 [![Join the chat at https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator](https://badges.gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator.svg)](https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Version: 1.1.5.4
+### Version: 1.2.1.6
 ---
 
 An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
+
+## Prerequisites
+The following packages must be installed before using the generated model.
+
++ `@types/jquery`
++ `@types/jsdom`
++ `@types/sinon`
++ `@types/xrm`
++ `jquery`
++ `jsdom`
++ `node-dcrm-service`
++ `sinon`
++ `xrm-mock`
+
+For convenience, run the following command:
+```bash
+npm i -D @types/jquery @types/jsdom @types/sinon @types/xrm jquery jsdom node-dcrm-service sinon xrm-mock
+```
 
 ## Usage
 
@@ -15,13 +33,22 @@ An XrmToolBox plugin that can be used to generate the XRM form model for xrm-moc
 + Generate model
 + Build the model before testing
 
-```ts
+```typescript
 const builder = new XrmModel.ModelBuilder(new XrmModel.account());
 builder.selectForm("Account");
 builder.buildModel();
 ```
 
-A detailed guide will be released soon.
+## Enable online communication
+The model generated supports forwarding HTTP requests from `Xrm.WebApi` and jQuery to CRM. Otherwise, the function must be stubbed manually, or an error will be produced.
+
+```typescript
+const config = {<...>}
+builder.enableOnlineWebApi(config)
+   .then(() => Contact_OnLoad());
+```
+
+Configuration details can be found at [DynamicsCrm-NodeCrmService](https://www.npmjs.com/package/node-dcrm-service).
 
 ## Credit
 
@@ -31,6 +58,9 @@ A detailed guide will be released soon.
 		
 ## Changes
 
+#### _v1.2.1.6 (2018-08-27)_
++ Added: online communication option
++ Added: option to specify org URL for use with `getClientUrl`
 #### _v1.1.5.4 (2018-08-22)_
 + Added: min, max, and precision of numbers
 + Added: max length of strings
