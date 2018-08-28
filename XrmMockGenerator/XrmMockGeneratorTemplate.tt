@@ -8,7 +8,7 @@
 <#@ import namespace="System.IO"#>
 <#@ import namespace="Yagasoft.XrmMockGenerator.Model"#>
 <#@ import namespace="Yagasoft.XrmMockGenerator.Model.Control"#>
-import { UserSettingsMock, EntityMock, ContextMock, IContextComponents, ClientContextMock, IXrmGeneratorComponents, XrmMockGenerator, IEntityComponents, ItemCollectionMock, UiMock, FormSelectorMock, FormItemMock, ControlMock, OptionSetValueMock, IUiComponents, IOptionSetAttributeComponents, OptionSetAttributeMock, IDateAttributeComponents, INumberAttributeComponents, NumberAttributeMock, ILookupAttributeComponents, LookupAttributeMock, StringAttributeMock, IStringAttributeComponents, DateAttributeMock } from "xrm-mock";
+import { UserSettingsMock, EntityMock, ContextMock, IContextComponents, ClientContextMock, IXrmGeneratorComponents, XrmMockGenerator, IEntityComponents, ItemCollectionMock, UiMock, FormSelectorMock, FormItemMock, ControlMock, OptionSetValueMock, IUiComponents, IOptionSetAttributeComponents, OptionSetAttributeMock, IDateAttributeComponents, INumberAttributeComponents, NumberAttributeMock, ILookupAttributeComponents, LookupAttributeMock, StringAttributeMock, IStringAttributeComponents, DateAttributeMock, IBooleanAttributeComponents, BooleanAttributeMock } from "xrm-mock";
 import { CrmService, CrmConnectionConfig } from "node-dcrm-service";
 import * as sinon from "sinon";
 
@@ -345,6 +345,10 @@ export namespace XrmModel
 						attributeMock = new StringAttributeMock(stringParams);
 						break;
 					case "boolean":
+						const booleanParams = <IBooleanAttributeComponents>params;
+						booleanParams.initialValue = attribute.defaultBoolValue;
+						attributeMock = new BooleanAttributeMock(booleanParams);
+						break;
 					default:
 						console.log(`WARNING: Adding attribute '${attribute.name}' as String attribute due to unsupported '${attributeType}' type.`);
 						const defaultParams = <IStringAttributeComponents>params;
@@ -471,6 +475,8 @@ export namespace XrmModel
 							controlMock = XrmMockGenerator.Control.createString(controlParams);
 							break;
 						case "boolean":
+							controlMock = XrmMockGenerator.Control.createBoolean(controlParams);
+							break;
 						default:
 							console.log(`WARNING: Adding control '${control.name}' as String control due to unsupported '${attributeType}' type.`);
 							controlMock = XrmMockGenerator.Control.createString(controlParams);

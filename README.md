@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator](https://badges.gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator.svg)](https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Version: 1.2.1.6
+### Version: 1.2.2.3
 ---
 
 An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
@@ -58,6 +58,9 @@ Configuration details can be found at [DynamicsCrm-NodeCrmService](https://www.n
 		
 ## Changes
 
+#### _v1.2.2.3 (2018-08-28)_
++ Added: boolean control support
++ Changed: plugin colours
 #### _v1.2.1.6 (2018-08-27)_
 + Added: online communication option
 + Added: option to specify org URL for use with `getClientUrl`
