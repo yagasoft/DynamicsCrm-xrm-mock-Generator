@@ -1,5 +1,6 @@
 ﻿#region Imports
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk;
@@ -21,26 +22,26 @@ namespace Yagasoft.XrmMockGenerator.Helpers
 		public static IEnumerable<UserViewModel> RetrieveUsers(IOrganizationService service)
 		{
 			return
-				from user in new XrmServiceContext(service).UserSet
+				from user in new XrmServiceContext(service).CreateQuery(User.EntityLogicalName)
 				select
 					new User
 					{
-						UserId = user.UserId,
-						FullName = user.FullName
+						UserId = user.GetAttributeValue<Guid?>(User.Fields.UserId),
+						FullName = user.GetAttributeValue<string>(User.Fields.FullName)
 					}.ConvertTo<UserViewModel>();
 		}
 
 		public static IEnumerable<SystemFormViewModel> RetrieveForms(IOrganizationService service)
 		{
 			return
-				from form in new XrmServiceContext(service).SystemFormSet
-				where form.FormType == SystemForm.FormTypeEnum.Main
+				from form in new XrmServiceContext(service).CreateQuery(SystemForm.EntityLogicalName)
+				where form.GetAttributeValue<int>(SystemForm.Fields.FormType) == (int) SystemForm.FormTypeEnum.Main
 				select
 					new SystemForm
 					{
-						FormIdId = form.FormIdId,
-						Name = form.Name,
-						ObjectTypeCode = form.ObjectTypeCode
+						FormIdId = form.GetAttributeValue<Guid?>(SystemForm.Fields.FormIdId),
+						Name = form.GetAttributeValue<string>(SystemForm.Fields.Name),
+						ObjectTypeCode = form.GetAttributeValue<string>(SystemForm.Fields.ObjectTypeCode)
 					}.ConvertTo<SystemFormViewModel>();
 		}
 

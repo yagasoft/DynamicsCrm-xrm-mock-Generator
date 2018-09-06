@@ -40,8 +40,6 @@ using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 
-<# if (Context.FileName == "CrmSchema") { #>[assembly: ProxyTypesAssemblyAttribute()]<#}#>
-
 namespace <#= Context.Namespace #><# if (Context.FileName != "CrmSchema") { #>.<#= Context.FileName #><#}#>
 
 {

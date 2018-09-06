@@ -16,7 +16,6 @@ using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 
-[assembly: ProxyTypesAssemblyAttribute()]
 namespace Yagasoft.XrmMockGenerator
 {
 	#region XrmServiceContext
@@ -10350,6 +10349,3686 @@ namespace Yagasoft.XrmMockGenerator
 		#region Metadata
 
 
+		#region Enums
+
+		public static class Enums
+		{
+			/// <summary>
+			/// Gets the label corresponding to the option-set's value using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="constant">The value from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns></returns>
+			public static string GetLabel(string logicalName, int constant, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetLabel(logicalName, constant, typeof(Enums), languageCode);
+			}
+			/// <summary>
+			/// Gets the value corresponding to the option-set's label using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="label">The label from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns>The value corresponding to the label</returns>
+			public static int GetValue(string logicalName, string label, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetValue(logicalName, label, typeof(Enums), languageCode);
+			}
+
+			#region Logical names
+
+			public static class Names
+			{
+				public const string AllowAddressBookSynchronization = "allowaddressbooksyncs";
+				public const string AllowAutomaticResponseCreation = "allowautoresponsecreation";
+				public const string AllowAutomaticUnsubscribe = "allowautounsubscribe";
+				public const string AllowAutomaticUnsubscribeAcknowledgement = "allowautounsubscribeacknowledgement";
+				public const string AllowOutlookClientMessageBarAdvertisement = "allowclientmessagebarad";
+				public const string AllowEntityLevelAuditing = "allowentityonlyaudit";
+				public const string AllowMarketingEmailExecution = "allowmarketingemailexecution";
+				public const string AllowOfflineScheduledSynchronization = "allowofflinescheduledsyncs";
+				public const string AllowScheduledSynchronization = "allowoutlookscheduledsyncs";
+				public const string AllowUnresolvedAddressEmailSend = "allowunresolvedpartiesonemailsend";
+				public const string AllowUserFormModePreference = "allowuserformmodepreference";
+				public const string Allowtheshowingtabletapplicationnotificationbarsinabrowser = "allowusersseeappdownloadmessage";
+				public const string AllowExporttoExcel = "allowwebexcelexport";
+				public const string EnableAppDesignerExperienceforthisOrganization = "appdesignerexperienceenabled";
+				public const string AutoApplyDefaultEntitlementonCaseCreate = "autoapplydefaultoncasecreate";
+				public const string AutoApplyDefaultEntitlementonCaseUpdate = "autoapplydefaultoncaseupdate";
+				public const string IsAutoapplySLAAfterManuallyOverriding = "autoapplysla";
+				public const string CascadeStatusUpdate = "cascadestatusupdate";
+				public const string EnableCortanaProactiveExperienceFlowprocessesforthisOrganization = "cortanaproactiveexperienceenabled";
+				public const string EnableActiveInitialProductState = "createproductswithoutparentinactivestate";
+				public const string DisplayCurrenciesUsing = "currencydisplayoption";
+				public const string CurrencyFormatCode = "currencyformatcode";
+				public const string DateFormatCode = "dateformatcode";
+				public const string DefaultRecurrenceEndRangeType = "defaultrecurrenceendrangetype";
+				public const string IsSocialCaredisabled = "disablesocialcare";
+				public const string Discountcalculationmethod = "discountcalculationmethod";
+				public const string DisplayNavigationTour = "displaynavigationtour";
+				public const string EmailConnectionChannel = "emailconnectionchannel";
+				public const string UseEmailCorrelation = "emailcorrelationenabled";
+				public const string EnableIntegrationwithBingMaps = "enablebingmapsintegration";
+				public const string EnableLearningPathAuthoring = "enablelpauthoring";
+				public const string EnableIntegrationwithMicrosoftFlow = "enablemicrosoftflowintegration";
+				public const string EnablePricingOnCreate = "enablepricingoncreate";
+				public const string EnableSmartMatching = "enablesmartmatching";
+				public const string Organizationsettingtoenforcereadonlyplugins = "enforcereadonlyplugins";
+				public const string FormatforFiscalPeriod = "fiscalperiodformatperiod";
+				public const string IsFiscalSettingsUpdated = "fiscalsettingsupdated";
+				public const string PrefixforFiscalYear = "fiscalyearformatprefix";
+				public const string SuffixforFiscalYear = "fiscalyearformatsuffix";
+				public const string FiscalYearFormatYear = "fiscalyearformatyear";
+				public const string FullNameDisplayOrder = "fullnameconventioncode";
+				public const string GenerateAlertsForErrors = "generatealertsforerrors";
+				public const string GenerateAlertsForInformation = "generatealertsforinformation";
+				public const string GenerateAlertsForWarnings = "generatealertsforwarnings";
+				public const string IsGetStartedPaneContentEnabled = "getstartedpanecontentenabled";
+				public const string IsAppendUrlParametersenabled = "globalappendurlparametersenabled";
+				public const string IsCustomizableGlobalHelpenabled = "globalhelpurlenabled";
+				public const string GrantAccessToNetworkService = "grantaccesstonetworkservice";
+				public const string IgnoreInternalEmail = "ignoreinternalemail";
+				public const string EnableActionCardforthisOrganization = "isactioncardenabled";
+				public const string EnableRelationshipAnalyticsforthisOrganization = "isactivityanalysisenabled";
+				public const string IsApplicationModeEnabled = "isappmode";
+				public const string IsAttachmentSyncEnabled = "isappointmentattachmentsyncenabled";
+				public const string IsAssignedTasksSyncEnabled = "isassignedtaskssyncenabled";
+				public const string IsAuditingEnabled = "isauditenabled";
+				public const string EnableAutoCaptureforthisOrganization = "isautodatacaptureenabled";
+				public const string AutoSaveEnabled = "isautosaveenabled";
+				public const string IsConflictDetectionforMobileClientenabled = "isconflictdetectionenabledformobileclient";
+				public const string IsMailingAddressSyncEnabled = "iscontactmailingaddresssyncenabled";
+				public const string Enableordisablecountrycodeselection = "isdefaultcountrycodecheckenabled";
+				public const string IsDelegationAccessEnabled = "isdelegateaccessenabled";
+				public const string EnableActionHubforthisOrganization = "isdelveactionhubintegrationenabled";
+				public const string IsOrganizationDisabled = "isdisabled";
+				public const string IsDuplicateDetectionEnabled = "isduplicatedetectionenabled";
+				public const string IsDuplicateDetectionEnabledForImport = "isduplicatedetectionenabledforimport";
+				public const string IsDuplicateDetectionEnabledForOfflineSynchronization = "isduplicatedetectionenabledforofflinesync";
+				public const string IsDuplicateDetectionEnabledforOnlineCreateUpdate = "isduplicatedetectionenabledforonlinecreateupdate";
+				public const string Allowtrackingrecipientactivityonsentemails = "isemailmonitoringallowed";
+				public const string IsEmailServerProfileContentFilteringEnabled = "isemailserverprofilecontentfilteringenabled";
+				public const string optionsetvaluesforisenabledforallroles = "isenabledforallroles";
+				public const string Enableexternalsearchdatasyncing = "isexternalsearchindexenabled";
+				public const string IsFiscalPeriodMonthly = "isfiscalperiodmonthbased";
+				public const string Automaticallycreatefolders = "isfolderautocreatedonsp";
+				public const string IsFolderBasedTrackingEnabled = "isfolderbasedtrackingenabled";
+				public const string EnableFulltextsearchforQuickFind = "isfulltextsearchenabled";
+				public const string EnableHierarchicalSecurityModel = "ishierarchicalsecuritymodelenabled";
+				public const string IsMailboxForcedUnlockingEnabled = "ismailboxforcedunlockingenabled";
+				public const string IsMailboxKeepAliveEnabled = "ismailboxinactivebackoffenabled";
+				public const string IsMobileClientOnDemandSyncenabled = "ismobileclientondemandsyncenabled";
+				public const string EnableMobileOfflineforthisOrganization = "ismobileofflineenabled";
+				public const string EnableOfficeGraphforthisOrganization = "isofficegraphenabled";
+				public const string EnableOneDriveforthisOrganization = "isonedriveenabled";
+				public const string PresenceEnabled = "ispresenceenabled";
+				public const string EnablePreviewActionCardfeatureforthisOrganization = "ispreviewenabledforactioncard";
+				public const string EnableAutoCaptureforthisOrganizationatPreviewSettings = "ispreviewforautocaptureenabled";
+				public const string AllowsPreviewForEmailMonitoring = "ispreviewforemailmonitoringallowed";
+				public const string EnableRelationshipInsightsforthisOrganization = "isrelationshipinsightsenabled";
+				public const string Resourcebookingsynchronizationenabled = "isresourcebookingexchangesyncenabled";
+				public const string IsSalesOrderIntegrationEnabled = "issopintegrationenabled";
+				public const string IsUserAccessAuditingEnabled = "isuseraccessauditenabled";
+				public const string ISVIntegrationMode = "isvintegrationcode";
+				public const string NegativeFormat = "negativeformatcode";
+				public const string NotifyMailboxOwnerOfEmailServerLevelAlerts = "notifymailboxownerofemailserverlevelalerts";
+				public const string EnableOfficeAppsAutoDeploymentforthisOrganization = "officeappsautodeploymentenabled";
+				public const string EnableOOBPricecalculation = "oobpricecalculationenabled";
+				public const string EnableOrgInsightsforthisOrganization = "orginsightsenabled";
+				public const string PluginTraceLogSetting = "plugintracelogsetting";
+				public const string EnablePowerBIfeatureforthisOrganization = "powerbifeatureenabled";
+				public const string EnableProductRecommendationsforthisOrganization = "productrecommendationsenabled";
+				public const string QuickFindRecordLimitEnabled = "quickfindrecordlimitenabled";
+				public const string RenderSecureFrameForEmail = "rendersecureiframeforemail";
+				public const string ReportScriptErrors = "reportscripterrors";
+				public const string IsApprovalForQueueEmailRequired = "requireapprovalforqueueemail";
+				public const string IsApprovalForUserEmailRequired = "requireapprovalforuseremail";
+				public const string RestrictStatusUpdate = "restrictstatusupdate";
+				public const string ChooseSharePointDeploymentType = "sharepointdeploymenttype";
+				public const string ShareToPreviousOwnerOnAssign = "sharetopreviousowneronassign";
+				public const string ShowKBArticledeprecationmessagetouser = "showkbarticledeprecationnotification";
+				public const string ShowWeekNumber = "showweeknumber";
+				public const string SocialInsightsEnabled = "socialinsightsenabled";
+				public const string SocialInsightsTermsofUse = "socialinsightstermsaccepted";
+				public const string IsSQMEnabled = "sqmenabled";
+				public const string IsSLAsuppressed = "suppresssla";
+				public const string EnableTaskFlowprocessesforthisOrganization = "taskbasedflowenabled";
+				public const string EnableTextAnalyticsforthisOrganization = "textanalyticsenabled";
+				public const string TimeFormatCode = "timeformatcode";
+				public const string SetToccbccfieldsasunresolvedifmultiplematchesarefound = "unresolveemailaddressifmultiplematch";
+				public const string UseInbuiltRuleForDefaultPricelistSelection = "useinbuiltrulefordefaultpricelistselection";
+				public const string LegacyFormRendering = "uselegacyrendering";
+				public const string Usepositionhierarchy = "usepositionhierarchy";
+				public const string UseReadOptimizedForm = "usereadform";
+				public const string UserSkypeProtocol = "useskypeprotocol";
+				public const string WeekStartDayCode = "weekstartdaycode";
+				public const string YammerOAuthAccessTokenExpired = "yammeroauthaccesstokenexpired";
+				public const string InternalUseOnly = "yammerpostmethod";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class AllowAddressBookSynchronization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowAddressBookSynchronization), label, languageCode);
+					}
+				}
+
+				public static class AllowAutomaticResponseCreation 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowAutomaticResponseCreation), label, languageCode);
+					}
+				}
+
+				public static class AllowAutomaticUnsubscribe 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowAutomaticUnsubscribe), label, languageCode);
+					}
+				}
+
+				public static class AllowAutomaticUnsubscribeAcknowledgement 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowAutomaticUnsubscribeAcknowledgement), label, languageCode);
+					}
+				}
+
+				public static class AllowOutlookClientMessageBarAdvertisement 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowOutlookClientMessageBarAdvertisement), label, languageCode);
+					}
+				}
+
+				public static class AllowEntityLevelAuditing 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowEntityLevelAuditing), label, languageCode);
+					}
+				}
+
+				public static class AllowMarketingEmailExecution 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowMarketingEmailExecution), label, languageCode);
+					}
+				}
+
+				public static class AllowOfflineScheduledSynchronization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowOfflineScheduledSynchronization), label, languageCode);
+					}
+				}
+
+				public static class AllowScheduledSynchronization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowScheduledSynchronization), label, languageCode);
+					}
+				}
+
+				public static class AllowUnresolvedAddressEmailSend 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowUnresolvedAddressEmailSend), label, languageCode);
+					}
+				}
+
+				public static class AllowUserFormModePreference 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowUserFormModePreference), label, languageCode);
+					}
+				}
+
+				public static class Allowtheshowingtabletapplicationnotificationbarsinabrowser 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Allowtheshowingtabletapplicationnotificationbarsinabrowser), label, languageCode);
+					}
+				}
+
+				public static class AllowExporttoExcel 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowExporttoExcel), label, languageCode);
+					}
+				}
+
+				public static class EnableAppDesignerExperienceforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableAppDesignerExperienceforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class AutoApplyDefaultEntitlementonCaseCreate 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AutoApplyDefaultEntitlementonCaseCreate), label, languageCode);
+					}
+				}
+
+				public static class AutoApplyDefaultEntitlementonCaseUpdate 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AutoApplyDefaultEntitlementonCaseUpdate), label, languageCode);
+					}
+				}
+
+				public static class IsAutoapplySLAAfterManuallyOverriding 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsAutoapplySLAAfterManuallyOverriding), label, languageCode);
+					}
+				}
+
+				public static class CascadeStatusUpdate 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(CascadeStatusUpdate), label, languageCode);
+					}
+				}
+
+				public static class EnableCortanaProactiveExperienceFlowprocessesforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableCortanaProactiveExperienceFlowprocessesforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableActiveInitialProductState 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableActiveInitialProductState), label, languageCode);
+					}
+				}
+
+				public static class DisplayCurrenciesUsing 
+				{
+					public const string Currencysymbol_1033 = "Currency symbol";
+					public const string Currencycode_1033 = "Currency code";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DisplayCurrenciesUsing), label, languageCode);
+					}
+				}
+
+				public static class CurrencyFormatCode 
+				{
+					public const string _123_1033 = "$123";
+					public const string _123_2_1033 = "123$";
+					public const string _123_3_1033 = "$ 123";
+					public const string _123_4_1033 = "123 $";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(CurrencyFormatCode), label, languageCode);
+					}
+				}
+
+				public static class DateFormatCode 
+				{
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DateFormatCode), label, languageCode);
+					}
+				}
+
+				public static class DefaultRecurrenceEndRangeType 
+				{
+					public const string NoEndDate_1033 = "No End Date";
+					public const string NumberofOccurrences_1033 = "Number of Occurrences";
+					public const string EndByDate_1033 = "End By Date";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DefaultRecurrenceEndRangeType), label, languageCode);
+					}
+				}
+
+				public static class IsSocialCaredisabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsSocialCaredisabled), label, languageCode);
+					}
+				}
+
+				public static class Discountcalculationmethod 
+				{
+					public const string Lineitem_1033 = "Line item";
+					public const string Perunit_1033 = "Per unit";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Discountcalculationmethod), label, languageCode);
+					}
+				}
+
+				public static class DisplayNavigationTour 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DisplayNavigationTour), label, languageCode);
+					}
+				}
+
+				public static class EmailConnectionChannel 
+				{
+					public const string ServerSideSynchronization_1033 = "Server-Side Synchronization";
+					public const string MicrosoftDynamics365EmailRouter_1033 = "Microsoft Dynamics 365 Email Router";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EmailConnectionChannel), label, languageCode);
+					}
+				}
+
+				public static class UseEmailCorrelation 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseEmailCorrelation), label, languageCode);
+					}
+				}
+
+				public static class EnableIntegrationwithBingMaps 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableIntegrationwithBingMaps), label, languageCode);
+					}
+				}
+
+				public static class EnableLearningPathAuthoring 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableLearningPathAuthoring), label, languageCode);
+					}
+				}
+
+				public static class EnableIntegrationwithMicrosoftFlow 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableIntegrationwithMicrosoftFlow), label, languageCode);
+					}
+				}
+
+				public static class EnablePricingOnCreate 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnablePricingOnCreate), label, languageCode);
+					}
+				}
+
+				public static class EnableSmartMatching 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableSmartMatching), label, languageCode);
+					}
+				}
+
+				public static class Organizationsettingtoenforcereadonlyplugins 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Organizationsettingtoenforcereadonlyplugins), label, languageCode);
+					}
+				}
+
+				public static class FormatforFiscalPeriod 
+				{
+					public const string Quarter0_1033 = "Quarter {0}";
+					public const string Q0_1033 = "Q{0}";
+					public const string P0_1033 = "P{0}";
+					public const string Month0_1033 = "Month {0}";
+					public const string M0_1033 = "M{0}";
+					public const string Semester0_1033 = "Semester {0}";
+					public const string MonthName_1033 = "Month Name";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(FormatforFiscalPeriod), label, languageCode);
+					}
+				}
+
+				public static class IsFiscalSettingsUpdated 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsFiscalSettingsUpdated), label, languageCode);
+					}
+				}
+
+				public static class PrefixforFiscalYear 
+				{
+					public const string FY_1033 = "FY";
+					public const string Empty_1033 = "";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(PrefixforFiscalYear), label, languageCode);
+					}
+				}
+
+				public static class SuffixforFiscalYear 
+				{
+					public const string FY_1033 = "FY";
+					public const string FiscalYear_1033 = " Fiscal Year";
+					public const string Empty_1033 = "";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(SuffixforFiscalYear), label, languageCode);
+					}
+				}
+
+				public static class FiscalYearFormatYear 
+				{
+					public const string YYYY_1033 = "YYYY";
+					public const string YY_1033 = "YY";
+					public const string GGYY_1033 = "GGYY";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(FiscalYearFormatYear), label, languageCode);
+					}
+				}
+
+				public static class FullNameDisplayOrder 
+				{
+					public const string LastNameFirstName_1033 = "Last Name, First Name";
+					public const string FirstName_1033 = "First Name";
+					public const string LastNameFirstNameMiddleInitial_1033 = "Last Name, First Name, Middle Initial";
+					public const string FirstNameMiddleInitialLastName_1033 = "First Name, Middle Initial, Last Name";
+					public const string LastNameFirstNameMiddleName_1033 = "Last Name, First Name, Middle Name";
+					public const string FirstNameMiddleNameLastName_1033 = "First Name, Middle Name, Last Name";
+					public const string LastNamespaceFirstName_1033 = "Last Name, space, First Name";
+					public const string LastNamenospaceFirstName_1033 = "Last Name, no space, First Name";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(FullNameDisplayOrder), label, languageCode);
+					}
+				}
+
+				public static class GenerateAlertsForErrors 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(GenerateAlertsForErrors), label, languageCode);
+					}
+				}
+
+				public static class GenerateAlertsForInformation 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(GenerateAlertsForInformation), label, languageCode);
+					}
+				}
+
+				public static class GenerateAlertsForWarnings 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(GenerateAlertsForWarnings), label, languageCode);
+					}
+				}
+
+				public static class IsGetStartedPaneContentEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsGetStartedPaneContentEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsAppendUrlParametersenabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsAppendUrlParametersenabled), label, languageCode);
+					}
+				}
+
+				public static class IsCustomizableGlobalHelpenabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsCustomizableGlobalHelpenabled), label, languageCode);
+					}
+				}
+
+				public static class GrantAccessToNetworkService 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(GrantAccessToNetworkService), label, languageCode);
+					}
+				}
+
+				public static class IgnoreInternalEmail 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IgnoreInternalEmail), label, languageCode);
+					}
+				}
+
+				public static class EnableActionCardforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableActionCardforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableRelationshipAnalyticsforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableRelationshipAnalyticsforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class IsApplicationModeEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsApplicationModeEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsAttachmentSyncEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsAttachmentSyncEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsAssignedTasksSyncEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsAssignedTasksSyncEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsAuditingEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsAuditingEnabled), label, languageCode);
+					}
+				}
+
+				public static class EnableAutoCaptureforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableAutoCaptureforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class AutoSaveEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AutoSaveEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsConflictDetectionforMobileClientenabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsConflictDetectionforMobileClientenabled), label, languageCode);
+					}
+				}
+
+				public static class IsMailingAddressSyncEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsMailingAddressSyncEnabled), label, languageCode);
+					}
+				}
+
+				public static class Enableordisablecountrycodeselection 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Enableordisablecountrycodeselection), label, languageCode);
+					}
+				}
+
+				public static class IsDelegationAccessEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsDelegationAccessEnabled), label, languageCode);
+					}
+				}
+
+				public static class EnableActionHubforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableActionHubforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class IsOrganizationDisabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsOrganizationDisabled), label, languageCode);
+					}
+				}
+
+				public static class IsDuplicateDetectionEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsDuplicateDetectionEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsDuplicateDetectionEnabledForImport 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsDuplicateDetectionEnabledForImport), label, languageCode);
+					}
+				}
+
+				public static class IsDuplicateDetectionEnabledForOfflineSynchronization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsDuplicateDetectionEnabledForOfflineSynchronization), label, languageCode);
+					}
+				}
+
+				public static class IsDuplicateDetectionEnabledforOnlineCreateUpdate 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsDuplicateDetectionEnabledforOnlineCreateUpdate), label, languageCode);
+					}
+				}
+
+				public static class Allowtrackingrecipientactivityonsentemails 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Allowtrackingrecipientactivityonsentemails), label, languageCode);
+					}
+				}
+
+				public static class IsEmailServerProfileContentFilteringEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsEmailServerProfileContentFilteringEnabled), label, languageCode);
+					}
+				}
+
+				public static class optionsetvaluesforisenabledforallroles 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(optionsetvaluesforisenabledforallroles), label, languageCode);
+					}
+				}
+
+				public static class Enableexternalsearchdatasyncing 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Enableexternalsearchdatasyncing), label, languageCode);
+					}
+				}
+
+				public static class IsFiscalPeriodMonthly 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsFiscalPeriodMonthly), label, languageCode);
+					}
+				}
+
+				public static class Automaticallycreatefolders 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Automaticallycreatefolders), label, languageCode);
+					}
+				}
+
+				public static class IsFolderBasedTrackingEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsFolderBasedTrackingEnabled), label, languageCode);
+					}
+				}
+
+				public static class EnableFulltextsearchforQuickFind 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableFulltextsearchforQuickFind), label, languageCode);
+					}
+				}
+
+				public static class EnableHierarchicalSecurityModel 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableHierarchicalSecurityModel), label, languageCode);
+					}
+				}
+
+				public static class IsMailboxForcedUnlockingEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsMailboxForcedUnlockingEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsMailboxKeepAliveEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsMailboxKeepAliveEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsMobileClientOnDemandSyncenabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsMobileClientOnDemandSyncenabled), label, languageCode);
+					}
+				}
+
+				public static class EnableMobileOfflineforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableMobileOfflineforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableOfficeGraphforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableOfficeGraphforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableOneDriveforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableOneDriveforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class PresenceEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(PresenceEnabled), label, languageCode);
+					}
+				}
+
+				public static class EnablePreviewActionCardfeatureforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnablePreviewActionCardfeatureforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableAutoCaptureforthisOrganizationatPreviewSettings 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableAutoCaptureforthisOrganizationatPreviewSettings), label, languageCode);
+					}
+				}
+
+				public static class AllowsPreviewForEmailMonitoring 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowsPreviewForEmailMonitoring), label, languageCode);
+					}
+				}
+
+				public static class EnableRelationshipInsightsforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableRelationshipInsightsforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class Resourcebookingsynchronizationenabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Resourcebookingsynchronizationenabled), label, languageCode);
+					}
+				}
+
+				public static class IsSalesOrderIntegrationEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsSalesOrderIntegrationEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsUserAccessAuditingEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsUserAccessAuditingEnabled), label, languageCode);
+					}
+				}
+
+				public static class ISVIntegrationMode 
+				{
+					public const string None_1033 = "None";
+					public const string Web_1033 = "Web";
+					public const string OutlookWorkstationClient_1033 = "Outlook Workstation Client";
+					public const string WebOutlookWorkstationClient_1033 = "Web; Outlook Workstation Client";
+					public const string OutlookLaptopClient_1033 = "Outlook Laptop Client";
+					public const string WebOutlookLaptopClient_1033 = "Web; Outlook Laptop Client";
+					public const string Outlook_1033 = "Outlook";
+					public const string All_1033 = "All";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ISVIntegrationMode), label, languageCode);
+					}
+				}
+
+				public static class NegativeFormat 
+				{
+					public const string Brackets_1033 = "Brackets";
+					public const string Dash_1033 = "Dash";
+					public const string DashplusSpace_1033 = "Dash plus Space";
+					public const string TrailingDash_1033 = "Trailing Dash";
+					public const string SpaceplusTrailingDash_1033 = "Space plus Trailing Dash";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(NegativeFormat), label, languageCode);
+					}
+				}
+
+				public static class NotifyMailboxOwnerOfEmailServerLevelAlerts 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(NotifyMailboxOwnerOfEmailServerLevelAlerts), label, languageCode);
+					}
+				}
+
+				public static class EnableOfficeAppsAutoDeploymentforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableOfficeAppsAutoDeploymentforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableOOBPricecalculation 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableOOBPricecalculation), label, languageCode);
+					}
+				}
+
+				public static class EnableOrgInsightsforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableOrgInsightsforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class PluginTraceLogSetting 
+				{
+					public const string Off_1033 = "Off";
+					public const string Exception_1033 = "Exception";
+					public const string All_1033 = "All";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(PluginTraceLogSetting), label, languageCode);
+					}
+				}
+
+				public static class EnablePowerBIfeatureforthisOrganization 
+				{
+					public const string Enable_1033 = "Enable";
+					public const string Disable_1033 = "Disable";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnablePowerBIfeatureforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableProductRecommendationsforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableProductRecommendationsforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class QuickFindRecordLimitEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(QuickFindRecordLimitEnabled), label, languageCode);
+					}
+				}
+
+				public static class RenderSecureFrameForEmail 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(RenderSecureFrameForEmail), label, languageCode);
+					}
+				}
+
+				public static class ReportScriptErrors 
+				{
+					public const string NopreferenceforsendinganerrorreporttoMicrosoftaboutMicrosoftDynamics365_1033 = "No preference for sending an error report to Microsoft about Microsoft Dynamics 3" +
+    "65";
+					public const string AskmeforpermissiontosendanerrorreporttoMicrosoft_1033 = "Ask me for permission to send an error report to Microsoft";
+					public const string AutomaticallysendanerrorreporttoMicrosoftwithoutaskingmeforpermission_1033 = "Automatically send an error report to Microsoft without asking me for permission";
+					public const string NeversendanerrorreporttoMicrosoftaboutMicrosoftDynamics365_1033 = "Never send an error report to Microsoft about Microsoft Dynamics 365";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ReportScriptErrors), label, languageCode);
+					}
+				}
+
+				public static class IsApprovalForQueueEmailRequired 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsApprovalForQueueEmailRequired), label, languageCode);
+					}
+				}
+
+				public static class IsApprovalForUserEmailRequired 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsApprovalForUserEmailRequired), label, languageCode);
+					}
+				}
+
+				public static class RestrictStatusUpdate 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(RestrictStatusUpdate), label, languageCode);
+					}
+				}
+
+				public static class ChooseSharePointDeploymentType 
+				{
+					public const string Online_1033 = "Online";
+					public const string OnPremises_1033 = "On-Premises";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ChooseSharePointDeploymentType), label, languageCode);
+					}
+				}
+
+				public static class ShareToPreviousOwnerOnAssign 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ShareToPreviousOwnerOnAssign), label, languageCode);
+					}
+				}
+
+				public static class ShowKBArticledeprecationmessagetouser 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ShowKBArticledeprecationmessagetouser), label, languageCode);
+					}
+				}
+
+				public static class ShowWeekNumber 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ShowWeekNumber), label, languageCode);
+					}
+				}
+
+				public static class SocialInsightsEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(SocialInsightsEnabled), label, languageCode);
+					}
+				}
+
+				public static class SocialInsightsTermsofUse 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(SocialInsightsTermsofUse), label, languageCode);
+					}
+				}
+
+				public static class IsSQMEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsSQMEnabled), label, languageCode);
+					}
+				}
+
+				public static class IsSLAsuppressed 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsSLAsuppressed), label, languageCode);
+					}
+				}
+
+				public static class EnableTaskFlowprocessesforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableTaskFlowprocessesforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class EnableTextAnalyticsforthisOrganization 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableTextAnalyticsforthisOrganization), label, languageCode);
+					}
+				}
+
+				public static class TimeFormatCode 
+				{
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(TimeFormatCode), label, languageCode);
+					}
+				}
+
+				public static class SetToccbccfieldsasunresolvedifmultiplematchesarefound 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(SetToccbccfieldsasunresolvedifmultiplematchesarefound), label, languageCode);
+					}
+				}
+
+				public static class UseInbuiltRuleForDefaultPricelistSelection 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseInbuiltRuleForDefaultPricelistSelection), label, languageCode);
+					}
+				}
+
+				public static class LegacyFormRendering 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(LegacyFormRendering), label, languageCode);
+					}
+				}
+
+				public static class Usepositionhierarchy 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Usepositionhierarchy), label, languageCode);
+					}
+				}
+
+				public static class UseReadOptimizedForm 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseReadOptimizedForm), label, languageCode);
+					}
+				}
+
+				public static class UserSkypeProtocol 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UserSkypeProtocol), label, languageCode);
+					}
+				}
+
+				public static class WeekStartDayCode 
+				{
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(WeekStartDayCode), label, languageCode);
+					}
+				}
+
+				public static class YammerOAuthAccessTokenExpired 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(YammerOAuthAccessTokenExpired), label, languageCode);
+					}
+				}
+
+				public static class InternalUseOnly 
+				{
+					public const string Public_1033 = "Public";
+					public const string Private_1033 = "Private";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(InternalUseOnly), label, languageCode);
+					}
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Fields
+
+		public static class Fields
+		{
+			#region Logical names
+
+			public const string ACITenantURL = "aciwebendpointurl";
+			public const string AcknowledgementTemplate = "acknowledgementtemplateid";
+			public const string AllowAddressBookSynchronization = "allowaddressbooksyncs";
+			public const string AllowAutomaticResponseCreation = "allowautoresponsecreation";
+			public const string AllowAutomaticUnsubscribe = "allowautounsubscribe";
+			public const string AllowAutomaticUnsubscribeAcknowledgement = "allowautounsubscribeacknowledgement";
+			public const string AllowOutlookClientMessageBarAdvertisement = "allowclientmessagebarad";
+			public const string AllowEntityLevelAuditing = "allowentityonlyaudit";
+			public const string AllowMarketingEmailExecution = "allowmarketingemailexecution";
+			public const string AllowOfflineScheduledSynchronization = "allowofflinescheduledsyncs";
+			public const string AllowScheduledSynchronization = "allowoutlookscheduledsyncs";
+			public const string AllowUnresolvedAddressEmailSend = "allowunresolvedpartiesonemailsend";
+			public const string AllowUserFormModePreference = "allowuserformmodepreference";
+			public const string Allowtheshowingtabletapplicationnotificationbarsinabrowser = "allowusersseeappdownloadmessage";
+			public const string AllowExporttoExcel = "allowwebexcelexport";
+			public const string AMDesignator = "amdesignator";
+			public const string EnableAppDesignerExperienceforthisOrganization = "appdesignerexperienceenabled";
+			public const string AutoApplyDefaultEntitlementonCaseCreate = "autoapplydefaultoncasecreate";
+			public const string AutoApplyDefaultEntitlementonCaseUpdate = "autoapplydefaultoncaseupdate";
+			public const string IsAutoapplySLAAfterManuallyOverriding = "autoapplysla";
+			public const string Forinternaluseonly_AzureSchedulerJobCollectionName = "azureschedulerjobcollectionname";
+			public const string Currency = "basecurrencyid";
+			public const string BaseCurrencyPrecision = "basecurrencyprecision";
+			public const string BaseCurrencySymbol = "basecurrencysymbol";
+			public const string BingMapsAPIKey = "bingmapsapikey";
+			public const string BlockAttachments = "blockedattachments";
+			public const string BulkOperationPrefix = "bulkoperationprefix";
+			public const string BusinessClosureCalendar = "businessclosurecalendarid";
+			public const string CalendarType = "calendartype";
+			public const string CampaignPrefix = "campaignprefix";
+			public const string CascadeStatusUpdate = "cascadestatusupdate";
+			public const string CasePrefix = "caseprefix";
+			public const string CategoryPrefix = "categoryprefix";
+			public const string ContractPrefix = "contractprefix";
+			public const string EnableCortanaProactiveExperienceFlowprocessesforthisOrganization = "cortanaproactiveexperienceenabled";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedByDelegate = "createdonbehalfby";
+			public const string EnableActiveInitialProductState = "createproductswithoutparentinactivestate";
+			public const string CurrencyDecimalPrecision = "currencydecimalprecision";
+			public const string DisplayCurrenciesUsing = "currencydisplayoption";
+			public const string CurrencyFormatCode = "currencyformatcode";
+			public const string CurrencySymbol = "currencysymbol";
+			public const string CurrentBulkOperationNumber = "currentbulkoperationnumber";
+			public const string CurrentCampaignNumber = "currentcampaignnumber";
+			public const string CurrentCaseNumber = "currentcasenumber";
+			public const string CurrentCategoryNumber = "currentcategorynumber";
+			public const string CurrentContractNumber = "currentcontractnumber";
+			public const string CurrentImportSequenceNumber = "currentimportsequencenumber";
+			public const string CurrentInvoiceNumber = "currentinvoicenumber";
+			public const string CurrentKnowledgeArticleNumber = "currentkanumber";
+			public const string CurrentArticleNumber = "currentkbnumber";
+			public const string CurrentOrderNumber = "currentordernumber";
+			public const string CurrentParsedTableNumber = "currentparsedtablenumber";
+			public const string CurrentQuoteNumber = "currentquotenumber";
+			public const string DateFormatCode = "dateformatcode";
+			public const string DateFormatString = "dateformatstring";
+			public const string DateSeparator = "dateseparator";
+			public const string MaxvalueofDayssincerecordlastmodified = "dayssincerecordlastmodifiedmaxvalue";
+			public const string DecimalSymbol = "decimalsymbol";
+			public const string DefaultCountryCode = "defaultcountrycode";
+			public const string Nameofthedefaultapp = "defaultcrmcustomname";
+			public const string EmailServerProfile = "defaultemailserverprofileid";
+			public const string DefaultEmailSettings = "defaultemailsettings";
+			public const string DefaultMobileOfflineProfile = "defaultmobileofflineprofileid";
+			public const string DefaultRecurrenceEndRangeType = "defaultrecurrenceendrangetype";
+			public const string DefaultThemeData = "defaultthemedata";
+			public const string DelegatedAdmin = "delegatedadminuserid";
+			public const string DisabledReason = "disabledreason";
+			public const string IsSocialCaredisabled = "disablesocialcare";
+			public const string Discountcalculationmethod = "discountcalculationmethod";
+			public const string DisplayNavigationTour = "displaynavigationtour";
+			public const string EmailConnectionChannel = "emailconnectionchannel";
+			public const string UseEmailCorrelation = "emailcorrelationenabled";
+			public const string EmailSendPollingFrequency = "emailsendpollingperiod";
+			public const string EnableIntegrationwithBingMaps = "enablebingmapsintegration";
+			public const string EnableLearningPathAuthoring = "enablelpauthoring";
+			public const string EnableIntegrationwithMicrosoftFlow = "enablemicrosoftflowintegration";
+			public const string EnablePricingOnCreate = "enablepricingoncreate";
+			public const string EnableSmartMatching = "enablesmartmatching";
+			public const string Organizationsettingtoenforcereadonlyplugins = "enforcereadonlyplugins";
+			public const string EntityImageId = "entityimageid";
+			public const string DaystoExpireChangeTrackingDeletedRecords = "expirechangetrackingindays";
+			public const string DaystoExpireSubscriptions = "expiresubscriptionsindays";
+			public const string ExternalBaseURL = "externalbaseurl";
+			public const string ExternalPartyEnabledEntitiescorrelationKeys = "externalpartycorrelationkeys";
+			public const string ExternalPartyEnabledEntitiesSettingsForinternaluseonly = "externalpartyentitysettings";
+			public const string FeatureSet = "featureset";
+			public const string FiscalCalendarStart = "fiscalcalendarstart";
+			public const string FiscalPeriodFormat = "fiscalperiodformat";
+			public const string FormatforFiscalPeriod = "fiscalperiodformatperiod";
+			public const string FiscalPeriodType = "fiscalperiodtype";
+			public const string IsFiscalSettingsUpdated = "fiscalsettingsupdated";
+			public const string FiscalYearDisplay = "fiscalyeardisplaycode";
+			public const string FiscalYearFormat = "fiscalyearformat";
+			public const string PrefixforFiscalYear = "fiscalyearformatprefix";
+			public const string SuffixforFiscalYear = "fiscalyearformatsuffix";
+			public const string FiscalYearFormatYear = "fiscalyearformatyear";
+			public const string FiscalYearPeriodConnector = "fiscalyearperiodconnect";
+			public const string FullNameDisplayOrder = "fullnameconventioncode";
+			public const string FutureExpansionWindow = "futureexpansionwindow";
+			public const string GenerateAlertsForErrors = "generatealertsforerrors";
+			public const string GenerateAlertsForInformation = "generatealertsforinformation";
+			public const string GenerateAlertsForWarnings = "generatealertsforwarnings";
+			public const string IsGetStartedPaneContentEnabled = "getstartedpanecontentenabled";
+			public const string IsAppendUrlParametersenabled = "globalappendurlparametersenabled";
+			public const string GlobalHelpURL = "globalhelpurl";
+			public const string IsCustomizableGlobalHelpenabled = "globalhelpurlenabled";
+			public const string RollupExpirationTimeforGoal = "goalrollupexpirytime";
+			public const string AutomaticRollupFrequencyforGoal = "goalrollupfrequency";
+			public const string GrantAccessToNetworkService = "grantaccesstonetworkservice";
+			public const string HashDeltaSubjectCount = "hashdeltasubjectcount";
+			public const string HashFilterKeywords = "hashfilterkeywords";
+			public const string HashMaxCount = "hashmaxcount";
+			public const string HashMinAddressCount = "hashminaddresscount";
+			public const string HighcontrastThemeData = "highcontrastthemedata";
+			public const string IgnoreInternalEmail = "ignoreinternalemail";
+			public const string ExchangeEmailRetrievalBatchSize = "incomingemailexchangeemailretrievalbatchsize";
+			public const string InitialVersion = "initialversion";
+			public const string IntegrationUser = "integrationuserid";
+			public const string InvoicePrefix = "invoiceprefix";
+			public const string EnableActionCardforthisOrganization = "isactioncardenabled";
+			public const string EnableRelationshipAnalyticsforthisOrganization = "isactivityanalysisenabled";
+			public const string IsApplicationModeEnabled = "isappmode";
+			public const string IsAttachmentSyncEnabled = "isappointmentattachmentsyncenabled";
+			public const string IsAssignedTasksSyncEnabled = "isassignedtaskssyncenabled";
+			public const string IsAuditingEnabled = "isauditenabled";
+			public const string EnableAutoCaptureforthisOrganization = "isautodatacaptureenabled";
+			public const string AutoSaveEnabled = "isautosaveenabled";
+			public const string IsConflictDetectionforMobileClientenabled = "isconflictdetectionenabledformobileclient";
+			public const string IsMailingAddressSyncEnabled = "iscontactmailingaddresssyncenabled";
+			public const string Enableordisablecountrycodeselection = "isdefaultcountrycodecheckenabled";
+			public const string IsDelegationAccessEnabled = "isdelegateaccessenabled";
+			public const string EnableActionHubforthisOrganization = "isdelveactionhubintegrationenabled";
+			public const string IsOrganizationDisabled = "isdisabled";
+			public const string IsDuplicateDetectionEnabled = "isduplicatedetectionenabled";
+			public const string IsDuplicateDetectionEnabledForImport = "isduplicatedetectionenabledforimport";
+			public const string IsDuplicateDetectionEnabledForOfflineSynchronization = "isduplicatedetectionenabledforofflinesync";
+			public const string IsDuplicateDetectionEnabledforOnlineCreateUpdate = "isduplicatedetectionenabledforonlinecreateupdate";
+			public const string Allowtrackingrecipientactivityonsentemails = "isemailmonitoringallowed";
+			public const string IsEmailServerProfileContentFilteringEnabled = "isemailserverprofilecontentfilteringenabled";
+			public const string optionsetvaluesforisenabledforallroles = "isenabledforallroles";
+			public const string Enableexternalsearchdatasyncing = "isexternalsearchindexenabled";
+			public const string IsFiscalPeriodMonthly = "isfiscalperiodmonthbased";
+			public const string Automaticallycreatefolders = "isfolderautocreatedonsp";
+			public const string IsFolderBasedTrackingEnabled = "isfolderbasedtrackingenabled";
+			public const string EnableFulltextsearchforQuickFind = "isfulltextsearchenabled";
+			public const string EnableHierarchicalSecurityModel = "ishierarchicalsecuritymodelenabled";
+			public const string IsMailboxForcedUnlockingEnabled = "ismailboxforcedunlockingenabled";
+			public const string IsMailboxKeepAliveEnabled = "ismailboxinactivebackoffenabled";
+			public const string IsMobileClientOnDemandSyncenabled = "ismobileclientondemandsyncenabled";
+			public const string EnableMobileOfflineforthisOrganization = "ismobileofflineenabled";
+			public const string EnableOfficeGraphforthisOrganization = "isofficegraphenabled";
+			public const string EnableOneDriveforthisOrganization = "isonedriveenabled";
+			public const string PresenceEnabled = "ispresenceenabled";
+			public const string EnablePreviewActionCardfeatureforthisOrganization = "ispreviewenabledforactioncard";
+			public const string EnableAutoCaptureforthisOrganizationatPreviewSettings = "ispreviewforautocaptureenabled";
+			public const string AllowsPreviewForEmailMonitoring = "ispreviewforemailmonitoringallowed";
+			public const string EnableRelationshipInsightsforthisOrganization = "isrelationshipinsightsenabled";
+			public const string Resourcebookingsynchronizationenabled = "isresourcebookingexchangesyncenabled";
+			public const string IsSalesOrderIntegrationEnabled = "issopintegrationenabled";
+			public const string IsUserAccessAuditingEnabled = "isuseraccessauditenabled";
+			public const string ISVIntegrationMode = "isvintegrationcode";
+			public const string KnowledgeArticlePrefix = "kaprefix";
+			public const string ArticlePrefix = "kbprefix";
+			public const string KnowledgeManagementSettings = "kmsettings";
+			public const string Language = "languagecode";
+			public const string Locale = "localeid";
+			public const string LongDateFormat = "longdateformatcode";
+			public const string LowerThresholdForMailboxIntermittentIssue = "mailboxintermittentissueminrange";
+			public const string LowerThresholdForMailboxPermanentIssue = "mailboxpermanentissueminrange";
+			public const string MaxAppointmentDuration = "maxappointmentdurationdays";
+			public const string Maximumnumberofconditionsallowedformobileofflinefilters = "maxconditionsformobileofflinefilters";
+			public const string Maximumdepthforhierarchysecuritypropagation = "maxdepthforhierarchicalsecuritymodel";
+			public const string MaxFolderBasedTrackingMappings = "maxfolderbasedtrackingmappings";
+			public const string Maximumactivebusinessprocessflowsperentity = "maximumactivebusinessprocessflowsallowedperentity";
+			public const string ProductPropertiesItemLimit = "maximumdynamicpropertiesallowed";
+			public const string MaximumnumberofactiveSLAallowedperentityinonline = "maximumentitieswithactivesla";
+			public const string MaximumnumberofactiveSLAKPIallowedperentityinonline = "maximumslakpiperentitywithactivesla";
+			public const string MaxTrackingNumber = "maximumtrackingnumber";
+			public const string BundleItemLimit = "maxproductsinbundle";
+			public const string MaxRecordsForExcelExport = "maxrecordsforexporttoexcel";
+			public const string MaxRecordsFilterSelection = "maxrecordsforlookupfilters";
+			public const string MaxsupportedIEversion = "maxsupportedinternetexplorerversion";
+			public const string MaxUploadFileSize = "maxuploadfilesize";
+			public const string MaxNoOfMailboxesToEnableForVerboseLogging = "maxverboseloggingmailbox";
+			public const string Maximumnumberofsynccyclesforwhichverboseloggingwillbeenabledbydefault = "maxverboseloggingsynccycles";
+			public const string MinAddressSynchronizationFrequency = "minaddressbooksyncinterval";
+			public const string MinOfflineSynchronizationFrequency = "minofflinesyncinterval";
+			public const string MinSynchronizationFrequency = "minoutlooksyncinterval";
+			public const string Minimumnumberofuserlicenserequiredformobileofflineservicebyproductionprevieworganization = "mobileofflineminlicenseprod";
+			public const string Minimumnumberofuserlicenserequiredformobileofflineservicebytrialorganization = "mobileofflineminlicensetrial";
+			public const string Syncintervalformobileoffline = "mobileofflinesyncinterval";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedByDelegate = "modifiedonbehalfby";
+			public const string OrganizationName = "name";
+			public const string NegativeCurrencyFormat = "negativecurrencyformatcode";
+			public const string NegativeFormat = "negativeformatcode";
+			public const string NextTrackingNumber = "nexttrackingnumber";
+			public const string NotifyMailboxOwnerOfEmailServerLevelAlerts = "notifymailboxownerofemailserverlevelalerts";
+			public const string NumberFormat = "numberformat";
+			public const string NumberGroupingFormat = "numbergroupformat";
+			public const string NumberSeparator = "numberseparator";
+			public const string EnableOfficeAppsAutoDeploymentforthisOrganization = "officeappsautodeploymentenabled";
+			public const string TheurltoopentheDelve = "officegraphdelveurl";
+			public const string EnableOOBPricecalculation = "oobpricecalculationenabled";
+			public const string OrderPrefix = "orderprefix";
+			public const string OrganizationId = "organizationid";
+			public const string OrganizationDatabaseOrganizationSettings = "orgdborgsettings";
+			public const string EnableOrgInsightsforthisOrganization = "orginsightsenabled";
+			public const string ParsedTableColumnPrefix = "parsedtablecolumnprefix";
+			public const string ParsedTablePrefix = "parsedtableprefix";
+			public const string PastExpansionWindow = "pastexpansionwindow";
+			public const string Picture = "picture";
+			public const string PinpointLanguageCode = "pinpointlanguagecode";
+			public const string PluginTraceLogSetting = "plugintracelogsetting";
+			public const string PMDesignator = "pmdesignator";
+			public const string Forinternaluseonly_PostMessageWhitelistDomains = "postmessagewhitelistdomains";
+			public const string EnablePowerBIfeatureforthisOrganization = "powerbifeatureenabled";
+			public const string PricingDecimalPrecision = "pricingdecimalprecision";
+			public const string PrivacyStatementURL = "privacystatementurl";
+			public const string PrivilegeUserGroup = "privilegeusergroupid";
+			public const string PrivilegeReportingGroup = "privreportinggroupid";
+			public const string PrivilegeReportingGroupName = "privreportinggroupname";
+			public const string EnableProductRecommendationsforthisOrganization = "productrecommendationsenabled";
+			public const string QuickFindRecordLimitEnabled = "quickfindrecordlimitenabled";
+			public const string QuotePrefix = "quoteprefix";
+			public const string RecurrenceDefaultNumberofOccurrences = "recurrencedefaultnumberofoccurrences";
+			public const string RecurrenceExpansionJobBatchInterval = "recurrenceexpansionjobbatchinterval";
+			public const string RecurrenceExpansionOnDemandJobBatchSize = "recurrenceexpansionjobbatchsize";
+			public const string RecurrenceExpansionSynchronizationCreateMaximum = "recurrenceexpansionsynchcreatemax";
+			public const string ReferenceSiteMapXML = "referencesitemapxml";
+			public const string RenderSecureFrameForEmail = "rendersecureiframeforemail";
+			public const string ReportingGroup = "reportinggroupid";
+			public const string ReportingGroupName = "reportinggroupname";
+			public const string ReportScriptErrors = "reportscripterrors";
+			public const string IsApprovalForQueueEmailRequired = "requireapprovalforqueueemail";
+			public const string IsApprovalForUserEmailRequired = "requireapprovalforuseremail";
+			public const string RestrictStatusUpdate = "restrictstatusupdate";
+			public const string ErrorstatusofRelationshipInsightsprovisioning = "rierrorstatus";
+			public const string SampleDataImport = "sampledataimportid";
+			public const string CustomizationNamePrefix = "schemanameprefix";
+			public const string ChooseSharePointDeploymentType = "sharepointdeploymenttype";
+			public const string ShareToPreviousOwnerOnAssign = "sharetopreviousowneronassign";
+			public const string ShowKBArticledeprecationmessagetouser = "showkbarticledeprecationnotification";
+			public const string ShowWeekNumber = "showweeknumber";
+			public const string CRMForOutlookDownloadURL = "signupoutlookdownloadfwlink";
+			public const string SiteMapXML = "sitemapxml";
+			public const string SLApausestates = "slapausestates";
+			public const string SocialInsightsEnabled = "socialinsightsenabled";
+			public const string SocialInsightsinstanceidentifier = "socialinsightsinstance";
+			public const string SocialInsightsTermsofUse = "socialinsightstermsaccepted";
+			public const string Sort = "sortid";
+			public const string SQLAccessGroup = "sqlaccessgroupid";
+			public const string SQLAccessGroupName = "sqlaccessgroupname";
+			public const string IsSQMEnabled = "sqmenabled";
+			public const string SupportUser = "supportuserid";
+			public const string IsSLAsuppressed = "suppresssla";
+			public const string SystemUser = "systemuserid";
+			public const string AutoTagMaxCycles = "tagmaxaggressivecycles";
+			public const string AutoTagInterval = "tagpollingperiod";
+			public const string EnableTaskFlowprocessesforthisOrganization = "taskbasedflowenabled";
+			public const string EnableTextAnalyticsforthisOrganization = "textanalyticsenabled";
+			public const string TimeFormatCode = "timeformatcode";
+			public const string TimeFormatString = "timeformatstring";
+			public const string TimeSeparator = "timeseparator";
+			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
+			public const string TokenExpirationDuration = "tokenexpiry";
+			public const string TrackingPrefix = "trackingprefix";
+			public const string TrackingTokenBase = "trackingtokenidbase";
+			public const string TrackingTokenDigits = "trackingtokeniddigits";
+			public const string UniqueStringLength = "uniquespecifierlength";
+			public const string SetToccbccfieldsasunresolvedifmultiplematchesarefound = "unresolveemailaddressifmultiplematch";
+			public const string UseInbuiltRuleForDefaultPricelistSelection = "useinbuiltrulefordefaultpricelistselection";
+			public const string LegacyFormRendering = "uselegacyrendering";
+			public const string Usepositionhierarchy = "usepositionhierarchy";
+			public const string UserAuthenticationAuditingInterval = "useraccessauditinginterval";
+			public const string UseReadOptimizedForm = "usereadform";
+			public const string UserGroup = "usergroupid";
+			public const string UserSkypeProtocol = "useskypeprotocol";
+			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
+			public const string V3CalloutHash = "v3calloutconfighash";
+			public const string VersionNumber = "versionnumber";
+			public const string Webresourcehash = "webresourcehash";
+			public const string WeekStartDayCode = "weekstartdaycode";
+			public const string ForInternaluseonly = "widgetproperties";
+			public const string YammerGroupId = "yammergroupid";
+			public const string YammerNetworkPermalink = "yammernetworkpermalink";
+			public const string YammerOAuthAccessTokenExpired = "yammeroauthaccesstokenexpired";
+			public const string InternalUseOnly = "yammerpostmethod";
+			public const string YearStartWeekCode = "yearstartweekcode";
+
+			#endregion
+
+			#region Schema names
+
+			public static class Schema
+			{
+				public const string ACITenantURL = "ACIWebEndpointUrl";
+				public const string AcknowledgementTemplate = "AcknowledgementTemplateId";
+				public const string AllowAddressBookSynchronization = "AllowAddressBookSyncs";
+				public const string AllowAutomaticResponseCreation = "AllowAutoResponseCreation";
+				public const string AllowAutomaticUnsubscribe = "AllowAutoUnsubscribe";
+				public const string AllowAutomaticUnsubscribeAcknowledgement = "AllowAutoUnsubscribeAcknowledgement";
+				public const string AllowOutlookClientMessageBarAdvertisement = "AllowClientMessageBarAd";
+				public const string AllowEntityLevelAuditing = "AllowEntityOnlyAudit";
+				public const string AllowMarketingEmailExecution = "AllowMarketingEmailExecution";
+				public const string AllowOfflineScheduledSynchronization = "AllowOfflineScheduledSyncs";
+				public const string AllowScheduledSynchronization = "AllowOutlookScheduledSyncs";
+				public const string AllowUnresolvedAddressEmailSend = "AllowUnresolvedPartiesOnEmailSend";
+				public const string AllowUserFormModePreference = "AllowUserFormModePreference";
+				public const string Allowtheshowingtabletapplicationnotificationbarsinabrowser = "AllowUsersSeeAppdownloadMessage";
+				public const string AllowExporttoExcel = "AllowWebExcelExport";
+				public const string AMDesignator = "AMDesignator";
+				public const string EnableAppDesignerExperienceforthisOrganization = "AppDesignerExperienceEnabled";
+				public const string AutoApplyDefaultEntitlementonCaseCreate = "AutoApplyDefaultonCaseCreate";
+				public const string AutoApplyDefaultEntitlementonCaseUpdate = "AutoApplyDefaultonCaseUpdate";
+				public const string IsAutoapplySLAAfterManuallyOverriding = "AutoApplySLA";
+				public const string Forinternaluseonly_AzureSchedulerJobCollectionName = "AzureSchedulerJobCollectionName";
+				public const string Currency = "BaseCurrencyId";
+				public const string BaseCurrencyPrecision = "BaseCurrencyPrecision";
+				public const string BaseCurrencySymbol = "BaseCurrencySymbol";
+				public const string BingMapsAPIKey = "BingMapsApiKey";
+				public const string BlockAttachments = "BlockedAttachments";
+				public const string BulkOperationPrefix = "BulkOperationPrefix";
+				public const string BusinessClosureCalendar = "BusinessClosureCalendarId";
+				public const string CalendarType = "CalendarType";
+				public const string CampaignPrefix = "CampaignPrefix";
+				public const string CascadeStatusUpdate = "CascadeStatusUpdate";
+				public const string CasePrefix = "CasePrefix";
+				public const string CategoryPrefix = "CategoryPrefix";
+				public const string ContractPrefix = "ContractPrefix";
+				public const string EnableCortanaProactiveExperienceFlowprocessesforthisOrganization = "CortanaProactiveExperienceEnabled";
+				public const string CreatedBy = "CreatedBy";
+				public const string CreatedOn = "CreatedOn";
+				public const string CreatedByDelegate = "CreatedOnBehalfBy";
+				public const string EnableActiveInitialProductState = "CreateProductsWithoutParentInActiveState";
+				public const string CurrencyDecimalPrecision = "CurrencyDecimalPrecision";
+				public const string DisplayCurrenciesUsing = "CurrencyDisplayOption";
+				public const string CurrencyFormatCode = "CurrencyFormatCode";
+				public const string CurrencySymbol = "CurrencySymbol";
+				public const string CurrentBulkOperationNumber = "CurrentBulkOperationNumber";
+				public const string CurrentCampaignNumber = "CurrentCampaignNumber";
+				public const string CurrentCaseNumber = "CurrentCaseNumber";
+				public const string CurrentCategoryNumber = "CurrentCategoryNumber";
+				public const string CurrentContractNumber = "CurrentContractNumber";
+				public const string CurrentImportSequenceNumber = "CurrentImportSequenceNumber";
+				public const string CurrentInvoiceNumber = "CurrentInvoiceNumber";
+				public const string CurrentKnowledgeArticleNumber = "CurrentKaNumber";
+				public const string CurrentArticleNumber = "CurrentKbNumber";
+				public const string CurrentOrderNumber = "CurrentOrderNumber";
+				public const string CurrentParsedTableNumber = "CurrentParsedTableNumber";
+				public const string CurrentQuoteNumber = "CurrentQuoteNumber";
+				public const string DateFormatCode = "DateFormatCode";
+				public const string DateFormatString = "DateFormatString";
+				public const string DateSeparator = "DateSeparator";
+				public const string MaxvalueofDayssincerecordlastmodified = "DaysSinceRecordLastModifiedMaxValue";
+				public const string DecimalSymbol = "DecimalSymbol";
+				public const string DefaultCountryCode = "DefaultCountryCode";
+				public const string Nameofthedefaultapp = "DefaultCrmCustomName";
+				public const string EmailServerProfile = "DefaultEmailServerProfileId";
+				public const string DefaultEmailSettings = "DefaultEmailSettings";
+				public const string DefaultMobileOfflineProfile = "DefaultMobileOfflineProfileId";
+				public const string DefaultRecurrenceEndRangeType = "DefaultRecurrenceEndRangeType";
+				public const string DefaultThemeData = "DefaultThemeData";
+				public const string DelegatedAdmin = "DelegatedAdminUserId";
+				public const string DisabledReason = "DisabledReason";
+				public const string IsSocialCaredisabled = "DisableSocialCare";
+				public const string Discountcalculationmethod = "DiscountCalculationMethod";
+				public const string DisplayNavigationTour = "DisplayNavigationTour";
+				public const string EmailConnectionChannel = "EmailConnectionChannel";
+				public const string UseEmailCorrelation = "EmailCorrelationEnabled";
+				public const string EmailSendPollingFrequency = "EmailSendPollingPeriod";
+				public const string EnableIntegrationwithBingMaps = "EnableBingMapsIntegration";
+				public const string EnableLearningPathAuthoring = "EnableLPAuthoring";
+				public const string EnableIntegrationwithMicrosoftFlow = "EnableMicrosoftFlowIntegration";
+				public const string EnablePricingOnCreate = "EnablePricingOnCreate";
+				public const string EnableSmartMatching = "EnableSmartMatching";
+				public const string Organizationsettingtoenforcereadonlyplugins = "EnforceReadOnlyPlugins";
+				public const string EntityImageId = "EntityImageId";
+				public const string DaystoExpireChangeTrackingDeletedRecords = "ExpireChangeTrackingInDays";
+				public const string DaystoExpireSubscriptions = "ExpireSubscriptionsInDays";
+				public const string ExternalBaseURL = "ExternalBaseUrl";
+				public const string ExternalPartyEnabledEntitiescorrelationKeys = "ExternalPartyCorrelationKeys";
+				public const string ExternalPartyEnabledEntitiesSettingsForinternaluseonly = "ExternalPartyEntitySettings";
+				public const string FeatureSet = "FeatureSet";
+				public const string FiscalCalendarStart = "FiscalCalendarStart";
+				public const string FiscalPeriodFormat = "FiscalPeriodFormat";
+				public const string FormatforFiscalPeriod = "FiscalPeriodFormatPeriod";
+				public const string FiscalPeriodType = "FiscalPeriodType";
+				public const string IsFiscalSettingsUpdated = "FiscalSettingsUpdated";
+				public const string FiscalYearDisplay = "FiscalYearDisplayCode";
+				public const string FiscalYearFormat = "FiscalYearFormat";
+				public const string PrefixforFiscalYear = "FiscalYearFormatPrefix";
+				public const string SuffixforFiscalYear = "FiscalYearFormatSuffix";
+				public const string FiscalYearFormatYear = "FiscalYearFormatYear";
+				public const string FiscalYearPeriodConnector = "FiscalYearPeriodConnect";
+				public const string FullNameDisplayOrder = "FullNameConventionCode";
+				public const string FutureExpansionWindow = "FutureExpansionWindow";
+				public const string GenerateAlertsForErrors = "GenerateAlertsForErrors";
+				public const string GenerateAlertsForInformation = "GenerateAlertsForInformation";
+				public const string GenerateAlertsForWarnings = "GenerateAlertsForWarnings";
+				public const string IsGetStartedPaneContentEnabled = "GetStartedPaneContentEnabled";
+				public const string IsAppendUrlParametersenabled = "GlobalAppendUrlParametersEnabled";
+				public const string GlobalHelpURL = "GlobalHelpUrl";
+				public const string IsCustomizableGlobalHelpenabled = "GlobalHelpUrlEnabled";
+				public const string RollupExpirationTimeforGoal = "GoalRollupExpiryTime";
+				public const string AutomaticRollupFrequencyforGoal = "GoalRollupFrequency";
+				public const string GrantAccessToNetworkService = "GrantAccessToNetworkService";
+				public const string HashDeltaSubjectCount = "HashDeltaSubjectCount";
+				public const string HashFilterKeywords = "HashFilterKeywords";
+				public const string HashMaxCount = "HashMaxCount";
+				public const string HashMinAddressCount = "HashMinAddressCount";
+				public const string HighcontrastThemeData = "HighContrastThemeData";
+				public const string IgnoreInternalEmail = "IgnoreInternalEmail";
+				public const string ExchangeEmailRetrievalBatchSize = "IncomingEmailExchangeEmailRetrievalBatchSize";
+				public const string InitialVersion = "InitialVersion";
+				public const string IntegrationUser = "IntegrationUserId";
+				public const string InvoicePrefix = "InvoicePrefix";
+				public const string EnableActionCardforthisOrganization = "IsActionCardEnabled";
+				public const string EnableRelationshipAnalyticsforthisOrganization = "IsActivityAnalysisEnabled";
+				public const string IsApplicationModeEnabled = "IsAppMode";
+				public const string IsAttachmentSyncEnabled = "IsAppointmentAttachmentSyncEnabled";
+				public const string IsAssignedTasksSyncEnabled = "IsAssignedTasksSyncEnabled";
+				public const string IsAuditingEnabled = "IsAuditEnabled";
+				public const string EnableAutoCaptureforthisOrganization = "IsAutoDataCaptureEnabled";
+				public const string AutoSaveEnabled = "IsAutoSaveEnabled";
+				public const string IsConflictDetectionforMobileClientenabled = "IsConflictDetectionEnabledForMobileClient";
+				public const string IsMailingAddressSyncEnabled = "IsContactMailingAddressSyncEnabled";
+				public const string Enableordisablecountrycodeselection = "IsDefaultCountryCodeCheckEnabled";
+				public const string IsDelegationAccessEnabled = "IsDelegateAccessEnabled";
+				public const string EnableActionHubforthisOrganization = "IsDelveActionHubIntegrationEnabled";
+				public const string IsOrganizationDisabled = "IsDisabled";
+				public const string IsDuplicateDetectionEnabled = "IsDuplicateDetectionEnabled";
+				public const string IsDuplicateDetectionEnabledForImport = "IsDuplicateDetectionEnabledForImport";
+				public const string IsDuplicateDetectionEnabledForOfflineSynchronization = "IsDuplicateDetectionEnabledForOfflineSync";
+				public const string IsDuplicateDetectionEnabledforOnlineCreateUpdate = "IsDuplicateDetectionEnabledForOnlineCreateUpdate";
+				public const string Allowtrackingrecipientactivityonsentemails = "IsEmailMonitoringAllowed";
+				public const string IsEmailServerProfileContentFilteringEnabled = "IsEmailServerProfileContentFilteringEnabled";
+				public const string optionsetvaluesforisenabledforallroles = "IsEnabledForAllRoles";
+				public const string Enableexternalsearchdatasyncing = "IsExternalSearchIndexEnabled";
+				public const string IsFiscalPeriodMonthly = "IsFiscalPeriodMonthBased";
+				public const string Automaticallycreatefolders = "IsFolderAutoCreatedonSP";
+				public const string IsFolderBasedTrackingEnabled = "IsFolderBasedTrackingEnabled";
+				public const string EnableFulltextsearchforQuickFind = "IsFullTextSearchEnabled";
+				public const string EnableHierarchicalSecurityModel = "IsHierarchicalSecurityModelEnabled";
+				public const string IsMailboxForcedUnlockingEnabled = "IsMailboxForcedUnlockingEnabled";
+				public const string IsMailboxKeepAliveEnabled = "IsMailboxInactiveBackoffEnabled";
+				public const string IsMobileClientOnDemandSyncenabled = "IsMobileClientOnDemandSyncEnabled";
+				public const string EnableMobileOfflineforthisOrganization = "IsMobileOfflineEnabled";
+				public const string EnableOfficeGraphforthisOrganization = "IsOfficeGraphEnabled";
+				public const string EnableOneDriveforthisOrganization = "IsOneDriveEnabled";
+				public const string PresenceEnabled = "IsPresenceEnabled";
+				public const string EnablePreviewActionCardfeatureforthisOrganization = "IsPreviewEnabledForActionCard";
+				public const string EnableAutoCaptureforthisOrganizationatPreviewSettings = "IsPreviewForAutoCaptureEnabled";
+				public const string AllowsPreviewForEmailMonitoring = "IsPreviewForEmailMonitoringAllowed";
+				public const string EnableRelationshipInsightsforthisOrganization = "IsRelationshipInsightsEnabled";
+				public const string Resourcebookingsynchronizationenabled = "IsResourceBookingExchangeSyncEnabled";
+				public const string IsSalesOrderIntegrationEnabled = "IsSOPIntegrationEnabled";
+				public const string IsUserAccessAuditingEnabled = "IsUserAccessAuditEnabled";
+				public const string ISVIntegrationMode = "ISVIntegrationCode";
+				public const string KnowledgeArticlePrefix = "KaPrefix";
+				public const string ArticlePrefix = "KbPrefix";
+				public const string KnowledgeManagementSettings = "KMSettings";
+				public const string Language = "LanguageCode";
+				public const string Locale = "LocaleId";
+				public const string LongDateFormat = "LongDateFormatCode";
+				public const string LowerThresholdForMailboxIntermittentIssue = "MailboxIntermittentIssueMinRange";
+				public const string LowerThresholdForMailboxPermanentIssue = "MailboxPermanentIssueMinRange";
+				public const string MaxAppointmentDuration = "MaxAppointmentDurationDays";
+				public const string Maximumnumberofconditionsallowedformobileofflinefilters = "MaxConditionsForMobileOfflineFilters";
+				public const string Maximumdepthforhierarchysecuritypropagation = "MaxDepthForHierarchicalSecurityModel";
+				public const string MaxFolderBasedTrackingMappings = "MaxFolderBasedTrackingMappings";
+				public const string Maximumactivebusinessprocessflowsperentity = "MaximumActiveBusinessProcessFlowsAllowedPerEntity";
+				public const string ProductPropertiesItemLimit = "MaximumDynamicPropertiesAllowed";
+				public const string MaximumnumberofactiveSLAallowedperentityinonline = "MaximumEntitiesWithActiveSLA";
+				public const string MaximumnumberofactiveSLAKPIallowedperentityinonline = "MaximumSLAKPIPerEntityWithActiveSLA";
+				public const string MaxTrackingNumber = "MaximumTrackingNumber";
+				public const string BundleItemLimit = "MaxProductsInBundle";
+				public const string MaxRecordsForExcelExport = "MaxRecordsForExportToExcel";
+				public const string MaxRecordsFilterSelection = "MaxRecordsForLookupFilters";
+				public const string MaxsupportedIEversion = "MaxSupportedInternetExplorerVersion";
+				public const string MaxUploadFileSize = "MaxUploadFileSize";
+				public const string MaxNoOfMailboxesToEnableForVerboseLogging = "MaxVerboseLoggingMailbox";
+				public const string Maximumnumberofsynccyclesforwhichverboseloggingwillbeenabledbydefault = "MaxVerboseLoggingSyncCycles";
+				public const string MinAddressSynchronizationFrequency = "MinAddressBookSyncInterval";
+				public const string MinOfflineSynchronizationFrequency = "MinOfflineSyncInterval";
+				public const string MinSynchronizationFrequency = "MinOutlookSyncInterval";
+				public const string Minimumnumberofuserlicenserequiredformobileofflineservicebyproductionprevieworganization = "MobileOfflineMinLicenseProd";
+				public const string Minimumnumberofuserlicenserequiredformobileofflineservicebytrialorganization = "MobileOfflineMinLicenseTrial";
+				public const string Syncintervalformobileoffline = "MobileOfflineSyncInterval";
+				public const string ModifiedBy = "ModifiedBy";
+				public const string ModifiedOn = "ModifiedOn";
+				public const string ModifiedByDelegate = "ModifiedOnBehalfBy";
+				public const string OrganizationName = "Name";
+				public const string NegativeCurrencyFormat = "NegativeCurrencyFormatCode";
+				public const string NegativeFormat = "NegativeFormatCode";
+				public const string NextTrackingNumber = "NextTrackingNumber";
+				public const string NotifyMailboxOwnerOfEmailServerLevelAlerts = "NotifyMailboxOwnerOfEmailServerLevelAlerts";
+				public const string NumberFormat = "NumberFormat";
+				public const string NumberGroupingFormat = "NumberGroupFormat";
+				public const string NumberSeparator = "NumberSeparator";
+				public const string EnableOfficeAppsAutoDeploymentforthisOrganization = "OfficeAppsAutoDeploymentEnabled";
+				public const string TheurltoopentheDelve = "OfficeGraphDelveUrl";
+				public const string EnableOOBPricecalculation = "OOBPriceCalculationEnabled";
+				public const string OrderPrefix = "OrderPrefix";
+				public const string OrganizationId = "OrganizationId";
+				public const string OrganizationDatabaseOrganizationSettings = "OrgDbOrgSettings";
+				public const string EnableOrgInsightsforthisOrganization = "OrgInsightsEnabled";
+				public const string ParsedTableColumnPrefix = "ParsedTableColumnPrefix";
+				public const string ParsedTablePrefix = "ParsedTablePrefix";
+				public const string PastExpansionWindow = "PastExpansionWindow";
+				public const string Picture = "Picture";
+				public const string PinpointLanguageCode = "PinpointLanguageCode";
+				public const string PluginTraceLogSetting = "PluginTraceLogSetting";
+				public const string PMDesignator = "PMDesignator";
+				public const string Forinternaluseonly_PostMessageWhitelistDomains = "PostMessageWhitelistDomains";
+				public const string EnablePowerBIfeatureforthisOrganization = "PowerBiFeatureEnabled";
+				public const string PricingDecimalPrecision = "PricingDecimalPrecision";
+				public const string PrivacyStatementURL = "PrivacyStatementUrl";
+				public const string PrivilegeUserGroup = "PrivilegeUserGroupId";
+				public const string PrivilegeReportingGroup = "PrivReportingGroupId";
+				public const string PrivilegeReportingGroupName = "PrivReportingGroupName";
+				public const string EnableProductRecommendationsforthisOrganization = "ProductRecommendationsEnabled";
+				public const string QuickFindRecordLimitEnabled = "QuickFindRecordLimitEnabled";
+				public const string QuotePrefix = "QuotePrefix";
+				public const string RecurrenceDefaultNumberofOccurrences = "RecurrenceDefaultNumberOfOccurrences";
+				public const string RecurrenceExpansionJobBatchInterval = "RecurrenceExpansionJobBatchInterval";
+				public const string RecurrenceExpansionOnDemandJobBatchSize = "RecurrenceExpansionJobBatchSize";
+				public const string RecurrenceExpansionSynchronizationCreateMaximum = "RecurrenceExpansionSynchCreateMax";
+				public const string ReferenceSiteMapXML = "ReferenceSiteMapXml";
+				public const string RenderSecureFrameForEmail = "RenderSecureIFrameForEmail";
+				public const string ReportingGroup = "ReportingGroupId";
+				public const string ReportingGroupName = "ReportingGroupName";
+				public const string ReportScriptErrors = "ReportScriptErrors";
+				public const string IsApprovalForQueueEmailRequired = "RequireApprovalForQueueEmail";
+				public const string IsApprovalForUserEmailRequired = "RequireApprovalForUserEmail";
+				public const string RestrictStatusUpdate = "RestrictStatusUpdate";
+				public const string ErrorstatusofRelationshipInsightsprovisioning = "RiErrorStatus";
+				public const string SampleDataImport = "SampleDataImportId";
+				public const string CustomizationNamePrefix = "SchemaNamePrefix";
+				public const string ChooseSharePointDeploymentType = "SharePointDeploymentType";
+				public const string ShareToPreviousOwnerOnAssign = "ShareToPreviousOwnerOnAssign";
+				public const string ShowKBArticledeprecationmessagetouser = "ShowKBArticleDeprecationNotification";
+				public const string ShowWeekNumber = "ShowWeekNumber";
+				public const string CRMForOutlookDownloadURL = "SignupOutlookDownloadFWLink";
+				public const string SiteMapXML = "SiteMapXml";
+				public const string SLApausestates = "SlaPauseStates";
+				public const string SocialInsightsEnabled = "SocialInsightsEnabled";
+				public const string SocialInsightsinstanceidentifier = "SocialInsightsInstance";
+				public const string SocialInsightsTermsofUse = "SocialInsightsTermsAccepted";
+				public const string Sort = "SortId";
+				public const string SQLAccessGroup = "SqlAccessGroupId";
+				public const string SQLAccessGroupName = "SqlAccessGroupName";
+				public const string IsSQMEnabled = "SQMEnabled";
+				public const string SupportUser = "SupportUserId";
+				public const string IsSLAsuppressed = "SuppressSLA";
+				public const string SystemUser = "SystemUserId";
+				public const string AutoTagMaxCycles = "TagMaxAggressiveCycles";
+				public const string AutoTagInterval = "TagPollingPeriod";
+				public const string EnableTaskFlowprocessesforthisOrganization = "TaskBasedFlowEnabled";
+				public const string EnableTextAnalyticsforthisOrganization = "TextAnalyticsEnabled";
+				public const string TimeFormatCode = "TimeFormatCode";
+				public const string TimeFormatString = "TimeFormatString";
+				public const string TimeSeparator = "TimeSeparator";
+				public const string TimeZoneRuleVersionNumber = "TimeZoneRuleVersionNumber";
+				public const string TokenExpirationDuration = "TokenExpiry";
+				public const string TrackingPrefix = "TrackingPrefix";
+				public const string TrackingTokenBase = "TrackingTokenIdBase";
+				public const string TrackingTokenDigits = "TrackingTokenIdDigits";
+				public const string UniqueStringLength = "UniqueSpecifierLength";
+				public const string SetToccbccfieldsasunresolvedifmultiplematchesarefound = "UnresolveEmailAddressIfMultipleMatch";
+				public const string UseInbuiltRuleForDefaultPricelistSelection = "UseInbuiltRuleForDefaultPricelistSelection";
+				public const string LegacyFormRendering = "UseLegacyRendering";
+				public const string Usepositionhierarchy = "UsePositionHierarchy";
+				public const string UserAuthenticationAuditingInterval = "UserAccessAuditingInterval";
+				public const string UseReadOptimizedForm = "UseReadForm";
+				public const string UserGroup = "UserGroupId";
+				public const string UserSkypeProtocol = "UseSkypeProtocol";
+				public const string UTCConversionTimeZoneCode = "UTCConversionTimeZoneCode";
+				public const string V3CalloutHash = "V3CalloutConfigHash";
+				public const string VersionNumber = "VersionNumber";
+				public const string Webresourcehash = "WebResourceHash";
+				public const string WeekStartDayCode = "WeekStartDayCode";
+				public const string ForInternaluseonly = "WidgetProperties";
+				public const string YammerGroupId = "YammerGroupId";
+				public const string YammerNetworkPermalink = "YammerNetworkPermalink";
+				public const string YammerOAuthAccessTokenExpired = "YammerOAuthAccessTokenExpired";
+				public const string InternalUseOnly = "YammerPostMethod";
+				public const string YearStartWeekCode = "YearStartWeekCode";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class ACITenantURL
+				{
+					public const string _1033 = "ACI Tenant URL.";
+				}
+
+				public static class AcknowledgementTemplate
+				{
+					public const string _1033 = "Acknowledgement Template";
+				}
+
+				public static class AllowAddressBookSynchronization
+				{
+					public const string _1033 = "Allow Address Book Synchronization";
+				}
+
+				public static class AllowAutomaticResponseCreation
+				{
+					public const string _1033 = "Allow Automatic Response Creation";
+				}
+
+				public static class AllowAutomaticUnsubscribe
+				{
+					public const string _1033 = "Allow Automatic Unsubscribe";
+				}
+
+				public static class AllowAutomaticUnsubscribeAcknowledgement
+				{
+					public const string _1033 = "Allow Automatic Unsubscribe Acknowledgement";
+				}
+
+				public static class AllowOutlookClientMessageBarAdvertisement
+				{
+					public const string _1033 = "Allow Outlook Client Message Bar Advertisement";
+				}
+
+				public static class AllowEntityLevelAuditing
+				{
+					public const string _1033 = "Allow Entity Level Auditing";
+				}
+
+				public static class AllowMarketingEmailExecution
+				{
+					public const string _1033 = "Allow Marketing Email Execution";
+				}
+
+				public static class AllowOfflineScheduledSynchronization
+				{
+					public const string _1033 = "Allow Offline Scheduled Synchronization";
+				}
+
+				public static class AllowScheduledSynchronization
+				{
+					public const string _1033 = "Allow Scheduled Synchronization";
+				}
+
+				public static class AllowUnresolvedAddressEmailSend
+				{
+					public const string _1033 = "Allow Unresolved Address Email Send";
+				}
+
+				public static class AllowUserFormModePreference
+				{
+					public const string _1033 = "Allow User Form Mode Preference";
+				}
+
+				public static class Allowtheshowingtabletapplicationnotificationbarsinabrowser
+				{
+					public const string _1033 = "Allow the showing tablet application notification bars in a browser.";
+				}
+
+				public static class AllowExporttoExcel
+				{
+					public const string _1033 = "Allow Export to Excel";
+				}
+
+				public static class AMDesignator
+				{
+					public const string _1033 = "AM Designator";
+				}
+
+				public static class EnableAppDesignerExperienceforthisOrganization
+				{
+					public const string _1033 = "Enable App Designer Experience for this Organization";
+				}
+
+				public static class AutoApplyDefaultEntitlementonCaseCreate
+				{
+					public const string _1033 = "Auto Apply Default Entitlement on Case Create";
+				}
+
+				public static class AutoApplyDefaultEntitlementonCaseUpdate
+				{
+					public const string _1033 = "Auto Apply Default Entitlement on Case Update";
+				}
+
+				public static class IsAutoapplySLAAfterManuallyOverriding
+				{
+					public const string _1033 = "Is Auto-apply SLA After Manually Over-riding";
+				}
+
+				public static class Forinternaluseonly_AzureSchedulerJobCollectionName
+				{
+					public const string _1033 = "For internal use only.";
+				}
+
+				public static class Currency
+				{
+					public const string _1033 = "Currency";
+				}
+
+				public static class BaseCurrencyPrecision
+				{
+					public const string _1033 = "Base Currency Precision";
+				}
+
+				public static class BaseCurrencySymbol
+				{
+					public const string _1033 = "Base Currency Symbol";
+				}
+
+				public static class BingMapsAPIKey
+				{
+					public const string _1033 = "Bing Maps API Key";
+				}
+
+				public static class BlockAttachments
+				{
+					public const string _1033 = "Block Attachments";
+				}
+
+				public static class BulkOperationPrefix
+				{
+					public const string _1033 = "Bulk Operation Prefix";
+				}
+
+				public static class BusinessClosureCalendar
+				{
+					public const string _1033 = "Business Closure Calendar";
+				}
+
+				public static class CalendarType
+				{
+					public const string _1033 = "Calendar Type";
+				}
+
+				public static class CampaignPrefix
+				{
+					public const string _1033 = "Campaign Prefix";
+				}
+
+				public static class CascadeStatusUpdate
+				{
+					public const string _1033 = "Cascade Status Update";
+				}
+
+				public static class CasePrefix
+				{
+					public const string _1033 = "Case Prefix";
+				}
+
+				public static class CategoryPrefix
+				{
+					public const string _1033 = "Category Prefix";
+				}
+
+				public static class ContractPrefix
+				{
+					public const string _1033 = "Contract Prefix";
+				}
+
+				public static class EnableCortanaProactiveExperienceFlowprocessesforthisOrganization
+				{
+					public const string _1033 = "Enable Cortana Proactive Experience Flow processes for this Organization";
+				}
+
+				public static class CreatedBy
+				{
+					public const string _1033 = "Created By";
+				}
+
+				public static class CreatedOn
+				{
+					public const string _1033 = "Created On";
+				}
+
+				public static class CreatedByDelegate
+				{
+					public const string _1033 = "Created By (Delegate)";
+				}
+
+				public static class EnableActiveInitialProductState
+				{
+					public const string _1033 = "Enable Active Initial Product State";
+				}
+
+				public static class CurrencyDecimalPrecision
+				{
+					public const string _1033 = "Currency Decimal Precision";
+				}
+
+				public static class DisplayCurrenciesUsing
+				{
+					public const string _1033 = "Display Currencies Using";
+				}
+
+				public static class CurrencyFormatCode
+				{
+					public const string _1033 = "Currency Format Code";
+				}
+
+				public static class CurrencySymbol
+				{
+					public const string _1033 = "Currency Symbol";
+				}
+
+				public static class CurrentBulkOperationNumber
+				{
+					public const string _1033 = "Current Bulk Operation Number";
+				}
+
+				public static class CurrentCampaignNumber
+				{
+					public const string _1033 = "Current Campaign Number";
+				}
+
+				public static class CurrentCaseNumber
+				{
+					public const string _1033 = "Current Case Number";
+				}
+
+				public static class CurrentCategoryNumber
+				{
+					public const string _1033 = "Current Category Number";
+				}
+
+				public static class CurrentContractNumber
+				{
+					public const string _1033 = "Current Contract Number";
+				}
+
+				public static class CurrentImportSequenceNumber
+				{
+					public const string _1033 = "Current Import Sequence Number";
+				}
+
+				public static class CurrentInvoiceNumber
+				{
+					public const string _1033 = "Current Invoice Number";
+				}
+
+				public static class CurrentKnowledgeArticleNumber
+				{
+					public const string _1033 = "Current Knowledge Article Number";
+				}
+
+				public static class CurrentArticleNumber
+				{
+					public const string _1033 = "Current Article Number";
+				}
+
+				public static class CurrentOrderNumber
+				{
+					public const string _1033 = "Current Order Number";
+				}
+
+				public static class CurrentParsedTableNumber
+				{
+					public const string _1033 = "Current Parsed Table Number";
+				}
+
+				public static class CurrentQuoteNumber
+				{
+					public const string _1033 = "Current Quote Number";
+				}
+
+				public static class DateFormatCode
+				{
+					public const string _1033 = "Date Format Code";
+				}
+
+				public static class DateFormatString
+				{
+					public const string _1033 = "Date Format String";
+				}
+
+				public static class DateSeparator
+				{
+					public const string _1033 = "Date Separator";
+				}
+
+				public static class MaxvalueofDayssincerecordlastmodified
+				{
+					public const string _1033 = "Max value of Days since record last modified";
+				}
+
+				public static class DecimalSymbol
+				{
+					public const string _1033 = "Decimal Symbol";
+				}
+
+				public static class DefaultCountryCode
+				{
+					public const string _1033 = "Default Country Code";
+				}
+
+				public static class Nameofthedefaultapp
+				{
+					public const string _1033 = "Name of the default app";
+				}
+
+				public static class EmailServerProfile
+				{
+					public const string _1033 = "Email Server Profile";
+				}
+
+				public static class DefaultEmailSettings
+				{
+					public const string _1033 = "Default Email Settings";
+				}
+
+				public static class DefaultMobileOfflineProfile
+				{
+					public const string _1033 = "Default Mobile Offline Profile";
+				}
+
+				public static class DefaultRecurrenceEndRangeType
+				{
+					public const string _1033 = "Default Recurrence End Range Type";
+				}
+
+				public static class DefaultThemeData
+				{
+					public const string _1033 = "Default Theme Data";
+				}
+
+				public static class DelegatedAdmin
+				{
+					public const string _1033 = "Delegated Admin";
+				}
+
+				public static class DisabledReason
+				{
+					public const string _1033 = "Disabled Reason";
+				}
+
+				public static class IsSocialCaredisabled
+				{
+					public const string _1033 = "Is Social Care disabled";
+				}
+
+				public static class Discountcalculationmethod
+				{
+					public const string _1033 = "Discount calculation method";
+				}
+
+				public static class DisplayNavigationTour
+				{
+					public const string _1033 = "Display Navigation Tour";
+				}
+
+				public static class EmailConnectionChannel
+				{
+					public const string _1033 = "Email Connection Channel";
+				}
+
+				public static class UseEmailCorrelation
+				{
+					public const string _1033 = "Use Email Correlation";
+				}
+
+				public static class EmailSendPollingFrequency
+				{
+					public const string _1033 = "Email Send Polling Frequency";
+				}
+
+				public static class EnableIntegrationwithBingMaps
+				{
+					public const string _1033 = "Enable Integration with Bing Maps";
+				}
+
+				public static class EnableLearningPathAuthoring
+				{
+					public const string _1033 = "Enable Learning Path Authoring";
+				}
+
+				public static class EnableIntegrationwithMicrosoftFlow
+				{
+					public const string _1033 = "Enable Integration with Microsoft Flow";
+				}
+
+				public static class EnablePricingOnCreate
+				{
+					public const string _1033 = "Enable Pricing On Create";
+				}
+
+				public static class EnableSmartMatching
+				{
+					public const string _1033 = "Enable Smart Matching";
+				}
+
+				public static class Organizationsettingtoenforcereadonlyplugins
+				{
+					public const string _1033 = "Organization setting to enforce read only plugins.";
+				}
+
+				public static class EntityImageId
+				{
+					public const string _1033 = "Entity Image Id";
+				}
+
+				public static class DaystoExpireChangeTrackingDeletedRecords
+				{
+					public const string _1033 = "Days to Expire Change Tracking Deleted Records";
+				}
+
+				public static class DaystoExpireSubscriptions
+				{
+					public const string _1033 = "Days to Expire Subscriptions";
+				}
+
+				public static class ExternalBaseURL
+				{
+					public const string _1033 = "External Base URL";
+				}
+
+				public static class ExternalPartyEnabledEntitiescorrelationKeys
+				{
+					public const string _1033 = "ExternalPartyEnabled Entities correlation Keys";
+				}
+
+				public static class ExternalPartyEnabledEntitiesSettingsForinternaluseonly
+				{
+					public const string _1033 = "ExternalPartyEnabled Entities Settings.For internal use only";
+				}
+
+				public static class FeatureSet
+				{
+					public const string _1033 = "Feature Set";
+				}
+
+				public static class FiscalCalendarStart
+				{
+					public const string _1033 = "Fiscal Calendar Start";
+				}
+
+				public static class FiscalPeriodFormat
+				{
+					public const string _1033 = "Fiscal Period Format";
+				}
+
+				public static class FormatforFiscalPeriod
+				{
+					public const string _1033 = "Format for Fiscal Period";
+				}
+
+				public static class FiscalPeriodType
+				{
+					public const string _1033 = "Fiscal Period Type";
+				}
+
+				public static class IsFiscalSettingsUpdated
+				{
+					public const string _1033 = "Is Fiscal Settings Updated";
+				}
+
+				public static class FiscalYearDisplay
+				{
+					public const string _1033 = "Fiscal Year Display";
+				}
+
+				public static class FiscalYearFormat
+				{
+					public const string _1033 = "Fiscal Year Format";
+				}
+
+				public static class PrefixforFiscalYear
+				{
+					public const string _1033 = "Prefix for Fiscal Year";
+				}
+
+				public static class SuffixforFiscalYear
+				{
+					public const string _1033 = "Suffix for Fiscal Year";
+				}
+
+				public static class FiscalYearFormatYear
+				{
+					public const string _1033 = "Fiscal Year Format Year";
+				}
+
+				public static class FiscalYearPeriodConnector
+				{
+					public const string _1033 = "Fiscal Year Period Connector";
+				}
+
+				public static class FullNameDisplayOrder
+				{
+					public const string _1033 = "Full Name Display Order";
+				}
+
+				public static class FutureExpansionWindow
+				{
+					public const string _1033 = "Future Expansion Window";
+				}
+
+				public static class GenerateAlertsForErrors
+				{
+					public const string _1033 = "Generate Alerts For Errors";
+				}
+
+				public static class GenerateAlertsForInformation
+				{
+					public const string _1033 = "Generate Alerts For Information";
+				}
+
+				public static class GenerateAlertsForWarnings
+				{
+					public const string _1033 = "Generate Alerts For Warnings";
+				}
+
+				public static class IsGetStartedPaneContentEnabled
+				{
+					public const string _1033 = "Is Get Started Pane Content Enabled";
+				}
+
+				public static class IsAppendUrlParametersenabled
+				{
+					public const string _1033 = "Is AppendUrl Parameters enabled";
+				}
+
+				public static class GlobalHelpURL
+				{
+					public const string _1033 = "Global Help URL.";
+				}
+
+				public static class IsCustomizableGlobalHelpenabled
+				{
+					public const string _1033 = "Is Customizable Global Help enabled";
+				}
+
+				public static class RollupExpirationTimeforGoal
+				{
+					public const string _1033 = "Rollup Expiration Time for Goal";
+				}
+
+				public static class AutomaticRollupFrequencyforGoal
+				{
+					public const string _1033 = "Automatic Rollup Frequency for Goal";
+				}
+
+				public static class GrantAccessToNetworkService
+				{
+					public const string _1033 = "Grant Access To Network Service";
+				}
+
+				public static class HashDeltaSubjectCount
+				{
+					public const string _1033 = "Hash Delta Subject Count";
+				}
+
+				public static class HashFilterKeywords
+				{
+					public const string _1033 = "Hash Filter Keywords";
+				}
+
+				public static class HashMaxCount
+				{
+					public const string _1033 = "Hash Max Count";
+				}
+
+				public static class HashMinAddressCount
+				{
+					public const string _1033 = "Hash Min Address Count";
+				}
+
+				public static class HighcontrastThemeData
+				{
+					public const string _1033 = "High contrast Theme Data";
+				}
+
+				public static class IgnoreInternalEmail
+				{
+					public const string _1033 = "Ignore Internal Email";
+				}
+
+				public static class ExchangeEmailRetrievalBatchSize
+				{
+					public const string _1033 = "Exchange Email Retrieval Batch Size";
+				}
+
+				public static class InitialVersion
+				{
+					public const string _1033 = "Initial Version";
+				}
+
+				public static class IntegrationUser
+				{
+					public const string _1033 = "Integration User";
+				}
+
+				public static class InvoicePrefix
+				{
+					public const string _1033 = "Invoice Prefix";
+				}
+
+				public static class EnableActionCardforthisOrganization
+				{
+					public const string _1033 = "Enable Action Card for this Organization";
+				}
+
+				public static class EnableRelationshipAnalyticsforthisOrganization
+				{
+					public const string _1033 = "Enable Relationship Analytics for this Organization";
+				}
+
+				public static class IsApplicationModeEnabled
+				{
+					public const string _1033 = "Is Application Mode Enabled";
+				}
+
+				public static class IsAttachmentSyncEnabled
+				{
+					public const string _1033 = "Is Attachment Sync Enabled";
+				}
+
+				public static class IsAssignedTasksSyncEnabled
+				{
+					public const string _1033 = "Is Assigned Tasks Sync Enabled";
+				}
+
+				public static class IsAuditingEnabled
+				{
+					public const string _1033 = "Is Auditing Enabled";
+				}
+
+				public static class EnableAutoCaptureforthisOrganization
+				{
+					public const string _1033 = "Enable Auto Capture for this Organization";
+				}
+
+				public static class AutoSaveEnabled
+				{
+					public const string _1033 = "Auto Save Enabled";
+				}
+
+				public static class IsConflictDetectionforMobileClientenabled
+				{
+					public const string _1033 = "Is Conflict Detection for Mobile Client enabled";
+				}
+
+				public static class IsMailingAddressSyncEnabled
+				{
+					public const string _1033 = "Is Mailing Address Sync Enabled";
+				}
+
+				public static class Enableordisablecountrycodeselection
+				{
+					public const string _1033 = "Enable or disable country code selection";
+				}
+
+				public static class IsDelegationAccessEnabled
+				{
+					public const string _1033 = "Is Delegation Access Enabled";
+				}
+
+				public static class EnableActionHubforthisOrganization
+				{
+					public const string _1033 = "Enable Action Hub for this Organization";
+				}
+
+				public static class IsOrganizationDisabled
+				{
+					public const string _1033 = "Is Organization Disabled";
+				}
+
+				public static class IsDuplicateDetectionEnabled
+				{
+					public const string _1033 = "Is Duplicate Detection Enabled";
+				}
+
+				public static class IsDuplicateDetectionEnabledForImport
+				{
+					public const string _1033 = "Is Duplicate Detection Enabled For Import";
+				}
+
+				public static class IsDuplicateDetectionEnabledForOfflineSynchronization
+				{
+					public const string _1033 = "Is Duplicate Detection Enabled For Offline Synchronization";
+				}
+
+				public static class IsDuplicateDetectionEnabledforOnlineCreateUpdate
+				{
+					public const string _1033 = "Is Duplicate Detection Enabled for Online Create/Update";
+				}
+
+				public static class Allowtrackingrecipientactivityonsentemails
+				{
+					public const string _1033 = "Allow tracking recipient activity on sent emails";
+				}
+
+				public static class IsEmailServerProfileContentFilteringEnabled
+				{
+					public const string _1033 = "Is Email Server Profile Content Filtering Enabled";
+				}
+
+				public static class optionsetvaluesforisenabledforallroles
+				{
+					public const string _1033 = "option set values for isenabledforallroles";
+				}
+
+				public static class Enableexternalsearchdatasyncing
+				{
+					public const string _1033 = "Enable external search data syncing";
+				}
+
+				public static class IsFiscalPeriodMonthly
+				{
+					public const string _1033 = "Is Fiscal Period Monthly";
+				}
+
+				public static class Automaticallycreatefolders
+				{
+					public const string _1033 = "Automatically create folders";
+				}
+
+				public static class IsFolderBasedTrackingEnabled
+				{
+					public const string _1033 = "Is Folder Based Tracking Enabled";
+				}
+
+				public static class EnableFulltextsearchforQuickFind
+				{
+					public const string _1033 = "Enable Full-text search for Quick Find";
+				}
+
+				public static class EnableHierarchicalSecurityModel
+				{
+					public const string _1033 = "Enable Hierarchical Security Model";
+				}
+
+				public static class IsMailboxForcedUnlockingEnabled
+				{
+					public const string _1033 = "Is Mailbox Forced Unlocking Enabled";
+				}
+
+				public static class IsMailboxKeepAliveEnabled
+				{
+					public const string _1033 = "Is Mailbox Keep Alive Enabled";
+				}
+
+				public static class IsMobileClientOnDemandSyncenabled
+				{
+					public const string _1033 = "Is Mobile Client On Demand Sync enabled";
+				}
+
+				public static class EnableMobileOfflineforthisOrganization
+				{
+					public const string _1033 = "Enable MobileOffline for this Organization";
+				}
+
+				public static class EnableOfficeGraphforthisOrganization
+				{
+					public const string _1033 = "Enable OfficeGraph for this Organization";
+				}
+
+				public static class EnableOneDriveforthisOrganization
+				{
+					public const string _1033 = "Enable One Drive for this Organization";
+				}
+
+				public static class PresenceEnabled
+				{
+					public const string _1033 = "Presence Enabled";
+				}
+
+				public static class EnablePreviewActionCardfeatureforthisOrganization
+				{
+					public const string _1033 = "Enable Preview Action Card feature for this Organization";
+				}
+
+				public static class EnableAutoCaptureforthisOrganizationatPreviewSettings
+				{
+					public const string _1033 = "Enable Auto Capture for this Organization at Preview Settings";
+				}
+
+				public static class AllowsPreviewForEmailMonitoring
+				{
+					public const string _1033 = "Allows Preview For Email Monitoring";
+				}
+
+				public static class EnableRelationshipInsightsforthisOrganization
+				{
+					public const string _1033 = "Enable Relationship Insights for this Organization";
+				}
+
+				public static class Resourcebookingsynchronizationenabled
+				{
+					public const string _1033 = "Resource booking synchronization enabled";
+				}
+
+				public static class IsSalesOrderIntegrationEnabled
+				{
+					public const string _1033 = "Is Sales Order Integration Enabled";
+				}
+
+				public static class IsUserAccessAuditingEnabled
+				{
+					public const string _1033 = "Is User Access Auditing Enabled";
+				}
+
+				public static class ISVIntegrationMode
+				{
+					public const string _1033 = "ISV Integration Mode";
+				}
+
+				public static class KnowledgeArticlePrefix
+				{
+					public const string _1033 = "Knowledge Article Prefix";
+				}
+
+				public static class ArticlePrefix
+				{
+					public const string _1033 = "Article Prefix";
+				}
+
+				public static class KnowledgeManagementSettings
+				{
+					public const string _1033 = "Knowledge Management Settings";
+				}
+
+				public static class Language
+				{
+					public const string _1033 = "Language";
+				}
+
+				public static class Locale
+				{
+					public const string _1033 = "Locale";
+				}
+
+				public static class LongDateFormat
+				{
+					public const string _1033 = "Long Date Format";
+				}
+
+				public static class LowerThresholdForMailboxIntermittentIssue
+				{
+					public const string _1033 = "Lower Threshold For Mailbox Intermittent Issue";
+				}
+
+				public static class LowerThresholdForMailboxPermanentIssue
+				{
+					public const string _1033 = "Lower Threshold For Mailbox Permanent Issue.";
+				}
+
+				public static class MaxAppointmentDuration
+				{
+					public const string _1033 = "Max Appointment Duration";
+				}
+
+				public static class Maximumnumberofconditionsallowedformobileofflinefilters
+				{
+					public const string _1033 = "Maximum number of conditions allowed for mobile offline filters";
+				}
+
+				public static class Maximumdepthforhierarchysecuritypropagation
+				{
+					public const string _1033 = "Maximum depth for hierarchy security propagation.";
+				}
+
+				public static class MaxFolderBasedTrackingMappings
+				{
+					public const string _1033 = "Max Folder Based Tracking Mappings";
+				}
+
+				public static class Maximumactivebusinessprocessflowsperentity
+				{
+					public const string _1033 = "Maximum active business process flows per entity";
+				}
+
+				public static class ProductPropertiesItemLimit
+				{
+					public const string _1033 = "Product Properties Item Limit";
+				}
+
+				public static class MaximumnumberofactiveSLAallowedperentityinonline
+				{
+					public const string _1033 = "Maximum number of active SLA allowed per entity in online";
+				}
+
+				public static class MaximumnumberofactiveSLAKPIallowedperentityinonline
+				{
+					public const string _1033 = "Maximum number of active SLA KPI allowed per entity in online";
+				}
+
+				public static class MaxTrackingNumber
+				{
+					public const string _1033 = "Max Tracking Number";
+				}
+
+				public static class BundleItemLimit
+				{
+					public const string _1033 = "Bundle Item Limit";
+				}
+
+				public static class MaxRecordsForExcelExport
+				{
+					public const string _1033 = "Max Records For Excel Export";
+				}
+
+				public static class MaxRecordsFilterSelection
+				{
+					public const string _1033 = "Max Records Filter Selection";
+				}
+
+				public static class MaxsupportedIEversion
+				{
+					public const string _1033 = "Max supported IE version";
+				}
+
+				public static class MaxUploadFileSize
+				{
+					public const string _1033 = "Max Upload File Size";
+				}
+
+				public static class MaxNoOfMailboxesToEnableForVerboseLogging
+				{
+					public const string _1033 = "Max No Of Mailboxes To Enable For Verbose Logging";
+				}
+
+				public static class Maximumnumberofsynccyclesforwhichverboseloggingwillbeenabledbydefault
+				{
+					public const string _1033 = "Maximum number of sync cycles for which verbose logging will be enabled by defaul" +
+    "t";
+				}
+
+				public static class MinAddressSynchronizationFrequency
+				{
+					public const string _1033 = "Min Address Synchronization Frequency";
+				}
+
+				public static class MinOfflineSynchronizationFrequency
+				{
+					public const string _1033 = "Min Offline Synchronization Frequency";
+				}
+
+				public static class MinSynchronizationFrequency
+				{
+					public const string _1033 = "Min Synchronization Frequency";
+				}
+
+				public static class Minimumnumberofuserlicenserequiredformobileofflineservicebyproductionprevieworganization
+				{
+					public const string _1033 = "Minimum number of user license required for mobile offline service by production/" +
+    "preview organization";
+				}
+
+				public static class Minimumnumberofuserlicenserequiredformobileofflineservicebytrialorganization
+				{
+					public const string _1033 = "Minimum number of user license required for mobile offline service by trial organ" +
+    "ization";
+				}
+
+				public static class Syncintervalformobileoffline
+				{
+					public const string _1033 = "Sync interval for mobile offline.";
+				}
+
+				public static class ModifiedBy
+				{
+					public const string _1033 = "Modified By";
+				}
+
+				public static class ModifiedOn
+				{
+					public const string _1033 = "Modified On";
+				}
+
+				public static class ModifiedByDelegate
+				{
+					public const string _1033 = "Modified By (Delegate)";
+				}
+
+				public static class OrganizationName
+				{
+					public const string _1033 = "Organization Name";
+				}
+
+				public static class NegativeCurrencyFormat
+				{
+					public const string _1033 = "Negative Currency Format";
+				}
+
+				public static class NegativeFormat
+				{
+					public const string _1033 = "Negative Format";
+				}
+
+				public static class NextTrackingNumber
+				{
+					public const string _1033 = "Next Tracking Number";
+				}
+
+				public static class NotifyMailboxOwnerOfEmailServerLevelAlerts
+				{
+					public const string _1033 = "Notify Mailbox Owner Of Email Server Level Alerts";
+				}
+
+				public static class NumberFormat
+				{
+					public const string _1033 = "Number Format";
+				}
+
+				public static class NumberGroupingFormat
+				{
+					public const string _1033 = "Number Grouping Format";
+				}
+
+				public static class NumberSeparator
+				{
+					public const string _1033 = "Number Separator";
+				}
+
+				public static class EnableOfficeAppsAutoDeploymentforthisOrganization
+				{
+					public const string _1033 = "Enable Office Apps Auto Deployment for this Organization";
+				}
+
+				public static class TheurltoopentheDelve
+				{
+					public const string _1033 = "The url to open the Delve";
+				}
+
+				public static class EnableOOBPricecalculation
+				{
+					public const string _1033 = "Enable OOB Price calculation";
+				}
+
+				public static class OrderPrefix
+				{
+					public const string _1033 = "Order Prefix";
+				}
+
+				public static class OrganizationId
+				{
+					public const string _1033 = "Organization";
+				}
+
+				public static class OrganizationDatabaseOrganizationSettings
+				{
+					public const string _1033 = "Organization Database Organization Settings";
+				}
+
+				public static class EnableOrgInsightsforthisOrganization
+				{
+					public const string _1033 = "Enable OrgInsights for this Organization";
+				}
+
+				public static class ParsedTableColumnPrefix
+				{
+					public const string _1033 = "Parsed Table Column Prefix";
+				}
+
+				public static class ParsedTablePrefix
+				{
+					public const string _1033 = "Parsed Table Prefix";
+				}
+
+				public static class PastExpansionWindow
+				{
+					public const string _1033 = "Past Expansion Window";
+				}
+
+				public static class Picture
+				{
+					public const string _1033 = "Picture";
+				}
+
+				public static class PinpointLanguageCode
+				{
+				}
+
+				public static class PluginTraceLogSetting
+				{
+					public const string _1033 = "Plug-in Trace Log Setting";
+				}
+
+				public static class PMDesignator
+				{
+					public const string _1033 = "PM Designator";
+				}
+
+				public static class Forinternaluseonly_PostMessageWhitelistDomains
+				{
+					public const string _1033 = "For internal use only.";
+				}
+
+				public static class EnablePowerBIfeatureforthisOrganization
+				{
+					public const string _1033 = "Enable Power BI feature for this Organization";
+				}
+
+				public static class PricingDecimalPrecision
+				{
+					public const string _1033 = "Pricing Decimal Precision";
+				}
+
+				public static class PrivacyStatementURL
+				{
+					public const string _1033 = "Privacy Statement URL";
+				}
+
+				public static class PrivilegeUserGroup
+				{
+					public const string _1033 = "Privilege User Group";
+				}
+
+				public static class PrivilegeReportingGroup
+				{
+					public const string _1033 = "Privilege Reporting Group";
+				}
+
+				public static class PrivilegeReportingGroupName
+				{
+					public const string _1033 = "Privilege Reporting Group Name";
+				}
+
+				public static class EnableProductRecommendationsforthisOrganization
+				{
+					public const string _1033 = "Enable Product Recommendations for this Organization";
+				}
+
+				public static class QuickFindRecordLimitEnabled
+				{
+					public const string _1033 = "Quick Find Record Limit Enabled";
+				}
+
+				public static class QuotePrefix
+				{
+					public const string _1033 = "Quote Prefix";
+				}
+
+				public static class RecurrenceDefaultNumberofOccurrences
+				{
+					public const string _1033 = "Recurrence Default Number of Occurrences";
+				}
+
+				public static class RecurrenceExpansionJobBatchInterval
+				{
+					public const string _1033 = "Recurrence Expansion Job Batch Interval";
+				}
+
+				public static class RecurrenceExpansionOnDemandJobBatchSize
+				{
+					public const string _1033 = "Recurrence Expansion On Demand Job Batch Size";
+				}
+
+				public static class RecurrenceExpansionSynchronizationCreateMaximum
+				{
+					public const string _1033 = "Recurrence Expansion Synchronization Create Maximum";
+				}
+
+				public static class ReferenceSiteMapXML
+				{
+					public const string _1033 = "Reference SiteMap XML";
+				}
+
+				public static class RenderSecureFrameForEmail
+				{
+					public const string _1033 = "Render Secure Frame For Email";
+				}
+
+				public static class ReportingGroup
+				{
+					public const string _1033 = "Reporting Group";
+				}
+
+				public static class ReportingGroupName
+				{
+					public const string _1033 = "Reporting Group Name";
+				}
+
+				public static class ReportScriptErrors
+				{
+					public const string _1033 = "Report Script Errors";
+				}
+
+				public static class IsApprovalForQueueEmailRequired
+				{
+					public const string _1033 = "Is Approval For Queue Email Required";
+				}
+
+				public static class IsApprovalForUserEmailRequired
+				{
+					public const string _1033 = "Is Approval For User Email Required";
+				}
+
+				public static class RestrictStatusUpdate
+				{
+					public const string _1033 = "Restrict Status Update";
+				}
+
+				public static class ErrorstatusofRelationshipInsightsprovisioning
+				{
+					public const string _1033 = "Error status of Relationship Insights provisioning.";
+				}
+
+				public static class SampleDataImport
+				{
+					public const string _1033 = "Sample Data Import";
+				}
+
+				public static class CustomizationNamePrefix
+				{
+					public const string _1033 = "Customization Name Prefix";
+				}
+
+				public static class ChooseSharePointDeploymentType
+				{
+					public const string _1033 = "Choose SharePoint Deployment Type";
+				}
+
+				public static class ShareToPreviousOwnerOnAssign
+				{
+					public const string _1033 = "Share To Previous Owner On Assign";
+				}
+
+				public static class ShowKBArticledeprecationmessagetouser
+				{
+					public const string _1033 = "Show KBArticle deprecation message to user";
+				}
+
+				public static class ShowWeekNumber
+				{
+					public const string _1033 = "Show Week Number";
+				}
+
+				public static class CRMForOutlookDownloadURL
+				{
+					public const string _1033 = "CRMForOutlookDownloadURL";
+				}
+
+				public static class SiteMapXML
+				{
+					public const string _1033 = "SiteMap XML";
+				}
+
+				public static class SLApausestates
+				{
+					public const string _1033 = "SLA pause states";
+				}
+
+				public static class SocialInsightsEnabled
+				{
+					public const string _1033 = "Social Insights Enabled";
+				}
+
+				public static class SocialInsightsinstanceidentifier
+				{
+					public const string _1033 = "Social Insights instance identifier";
+				}
+
+				public static class SocialInsightsTermsofUse
+				{
+					public const string _1033 = "Social Insights Terms of Use";
+				}
+
+				public static class Sort
+				{
+					public const string _1033 = "Sort";
+				}
+
+				public static class SQLAccessGroup
+				{
+					public const string _1033 = "SQL Access Group";
+				}
+
+				public static class SQLAccessGroupName
+				{
+					public const string _1033 = "SQL Access Group Name";
+				}
+
+				public static class IsSQMEnabled
+				{
+					public const string _1033 = "Is SQM Enabled";
+				}
+
+				public static class SupportUser
+				{
+					public const string _1033 = "Support User";
+				}
+
+				public static class IsSLAsuppressed
+				{
+					public const string _1033 = "Is SLA suppressed";
+				}
+
+				public static class SystemUser
+				{
+					public const string _1033 = "System User";
+				}
+
+				public static class AutoTagMaxCycles
+				{
+					public const string _1033 = "Auto-Tag Max Cycles";
+				}
+
+				public static class AutoTagInterval
+				{
+					public const string _1033 = "Auto-Tag Interval";
+				}
+
+				public static class EnableTaskFlowprocessesforthisOrganization
+				{
+					public const string _1033 = "Enable Task Flow processes for this Organization";
+				}
+
+				public static class EnableTextAnalyticsforthisOrganization
+				{
+					public const string _1033 = "Enable Text Analytics for this Organization";
+				}
+
+				public static class TimeFormatCode
+				{
+					public const string _1033 = "Time Format Code";
+				}
+
+				public static class TimeFormatString
+				{
+					public const string _1033 = "Time Format String";
+				}
+
+				public static class TimeSeparator
+				{
+					public const string _1033 = "Time Separator";
+				}
+
+				public static class TimeZoneRuleVersionNumber
+				{
+					public const string _1033 = "Time Zone Rule Version Number";
+				}
+
+				public static class TokenExpirationDuration
+				{
+					public const string _1033 = "Token Expiration Duration";
+				}
+
+				public static class TrackingPrefix
+				{
+					public const string _1033 = "Tracking Prefix";
+				}
+
+				public static class TrackingTokenBase
+				{
+					public const string _1033 = "Tracking Token Base";
+				}
+
+				public static class TrackingTokenDigits
+				{
+					public const string _1033 = "Tracking Token Digits";
+				}
+
+				public static class UniqueStringLength
+				{
+					public const string _1033 = "Unique String Length";
+				}
+
+				public static class SetToccbccfieldsasunresolvedifmultiplematchesarefound
+				{
+					public const string _1033 = "Set To,cc,bcc fields as unresolved if multiple matches are found";
+				}
+
+				public static class UseInbuiltRuleForDefaultPricelistSelection
+				{
+					public const string _1033 = "Use Inbuilt Rule For Default Pricelist Selection";
+				}
+
+				public static class LegacyFormRendering
+				{
+					public const string _1033 = "Legacy Form Rendering";
+				}
+
+				public static class Usepositionhierarchy
+				{
+					public const string _1033 = "Use position hierarchy";
+				}
+
+				public static class UserAuthenticationAuditingInterval
+				{
+					public const string _1033 = "User Authentication Auditing Interval";
+				}
+
+				public static class UseReadOptimizedForm
+				{
+					public const string _1033 = "Use Read-Optimized Form";
+				}
+
+				public static class UserGroup
+				{
+					public const string _1033 = "User Group";
+				}
+
+				public static class UserSkypeProtocol
+				{
+					public const string _1033 = "User Skype Protocol";
+				}
+
+				public static class UTCConversionTimeZoneCode
+				{
+					public const string _1033 = "UTC Conversion Time Zone Code";
+				}
+
+				public static class V3CalloutHash
+				{
+					public const string _1033 = "V3 Callout Hash";
+				}
+
+				public static class VersionNumber
+				{
+					public const string _1033 = "Version Number";
+				}
+
+				public static class Webresourcehash
+				{
+					public const string _1033 = "Web resource hash";
+				}
+
+				public static class WeekStartDayCode
+				{
+					public const string _1033 = "Week Start Day Code";
+				}
+
+				public static class ForInternaluseonly
+				{
+					public const string _1033 = "For Internal use only.";
+				}
+
+				public static class YammerGroupId
+				{
+					public const string _1033 = "Yammer Group Id";
+				}
+
+				public static class YammerNetworkPermalink
+				{
+					public const string _1033 = "Yammer Network Permalink";
+				}
+
+				public static class YammerOAuthAccessTokenExpired
+				{
+					public const string _1033 = "Yammer OAuth Access Token Expired";
+				}
+
+				public static class InternalUseOnly
+				{
+					public const string _1033 = "Internal Use Only";
+				}
+
+				public static class YearStartWeekCode
+				{
+					public const string _1033 = "Year Start Week Code";
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Relations
+
+		public static class Relations
+		{
+			public static class OneToN
+			{
+				public const string UsersOfOrganization = "organization_system_users";
+				public const string SystemFormsOfOrganizationId = "organization_systemforms";
+				public const string ThemesOfOrganizationId = "organization_theme";
+			}
+			
+			public static class NToOne
+			{
+				public const string UserAsCreatedByDelegate = "lk_organization_createdonbehalfby";
+				public const string UserAsModifiedByDelegate = "lk_organization_modifiedonbehalfby";
+				public const string UserAsCreatedBy = "lk_organizationbase_createdby";
+				public const string UserAsModifiedBy = "lk_organizationbase_modifiedby";
+
+				public static class Lookups
+				{
+					public const string UserAsCreatedByDelegate = "createdonbehalfby";
+					public const string UserAsModifiedByDelegate = "modifiedonbehalfby";
+					public const string UserAsCreatedBy = "createdby";
+					public const string UserAsModifiedBy = "modifiedby";
+				}
+			}
+
+			public static class NToN
+			{
+
+			}
+		}
+
+		#endregion
+
 		#endregion
 	}
 
@@ -15788,6 +19467,1291 @@ namespace Yagasoft.XrmMockGenerator
 		#region Metadata
 
 
+		#region Enums
+
+		public static class Enums
+		{
+			/// <summary>
+			/// Gets the label corresponding to the option-set's value using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="constant">The value from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns></returns>
+			public static string GetLabel(string logicalName, int constant, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetLabel(logicalName, constant, typeof(Enums), languageCode);
+			}
+			/// <summary>
+			/// Gets the value corresponding to the option-set's label using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="label">The label from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns>The value corresponding to the label</returns>
+			public static int GetValue(string logicalName, string label, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetValue(logicalName, label, typeof(Enums), languageCode);
+			}
+
+			#region Logical names
+
+			public static class Names
+			{
+				public const string AccessMode = "accessmode";
+				public const string Address1AddressType = "address1_addresstypecode";
+				public const string Address1ShippingMethod = "address1_shippingmethodcode";
+				public const string Address2AddressType = "address2_addresstypecode";
+				public const string Address2ShippingMethod = "address2_shippingmethodcode";
+				public const string LicenseType = "caltype";
+				public const string DefaultFiltersPopulated = "defaultfilterspopulated";
+				public const string DisplayinServiceViews = "displayinserviceviews";
+				public const string PrimaryEmailStatus = "emailrouteraccessapproval";
+				public const string IncomingEmailDeliveryMethod = "incomingemaildeliverymethod";
+				public const string InvitationStatus = "invitestatuscode";
+				public const string IsActiveDirectoryUser = "isactivedirectoryuser";
+				public const string Status = "isdisabled";
+				public const string EmailAddressO365AdminApprovalStatus = "isemailaddressapprovedbyo365admin";
+				public const string Integrationusermode = "isintegrationuser";
+				public const string UserLicensed = "islicensed";
+				public const string UserSynced = "issyncwithdirectory";
+				public const string OutgoingEmailDeliveryMethod = "outgoingemaildeliverymethod";
+				public const string PreferredAddress = "preferredaddresscode";
+				public const string PreferredEmail = "preferredemailcode";
+				public const string PreferredPhone = "preferredphonecode";
+				public const string RestrictedAccessMode = "setupuser";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class AccessMode 
+				{
+					public const string ReadWrite_1033 = "Read-Write";
+					public const string Administrative_1033 = "Administrative";
+					public const string Read_1033 = "Read";
+					public const string SupportUser_1033 = "Support User";
+					public const string Noninteractive_1033 = "Non-interactive";
+					public const string DelegatedAdmin_1033 = "Delegated Admin";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AccessMode), label, languageCode);
+					}
+				}
+
+				public static class Address1AddressType 
+				{
+					public const string DefaultValue_1033 = "Default Value";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Address1AddressType), label, languageCode);
+					}
+				}
+
+				public static class Address1ShippingMethod 
+				{
+					public const string DefaultValue_1033 = "Default Value";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Address1ShippingMethod), label, languageCode);
+					}
+				}
+
+				public static class Address2AddressType 
+				{
+					public const string DefaultValue_1033 = "Default Value";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Address2AddressType), label, languageCode);
+					}
+				}
+
+				public static class Address2ShippingMethod 
+				{
+					public const string DefaultValue_1033 = "Default Value";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Address2ShippingMethod), label, languageCode);
+					}
+				}
+
+				public static class LicenseType 
+				{
+					public const string Professional_1033 = "Professional";
+					public const string Administrative_1033 = "Administrative";
+					public const string Basic_1033 = "Basic";
+					public const string DeviceProfessional_1033 = "Device Professional";
+					public const string DeviceBasic_1033 = "Device Basic";
+					public const string Essential_1033 = "Essential";
+					public const string DeviceEssential_1033 = "Device Essential";
+					public const string Enterprise_1033 = "Enterprise";
+					public const string DeviceEnterprise_1033 = "Device Enterprise";
+					public const string Sales_1033 = "Sales";
+					public const string Service_1033 = "Service";
+					public const string FieldService_1033 = "Field Service";
+					public const string ProjectService_1033 = "Project Service";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(LicenseType), label, languageCode);
+					}
+				}
+
+				public static class DefaultFiltersPopulated 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DefaultFiltersPopulated), label, languageCode);
+					}
+				}
+
+				public static class DisplayinServiceViews 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DisplayinServiceViews), label, languageCode);
+					}
+				}
+
+				public static class PrimaryEmailStatus 
+				{
+					public const string Empty_1033 = "Empty";
+					public const string Approved_1033 = "Approved";
+					public const string PendingApproval_1033 = "Pending Approval";
+					public const string Rejected_1033 = "Rejected";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(PrimaryEmailStatus), label, languageCode);
+					}
+				}
+
+				public static class IncomingEmailDeliveryMethod 
+				{
+					public const string None_1033 = "None";
+					public const string MicrosoftDynamics365forOutlook_1033 = "Microsoft Dynamics 365 for Outlook";
+					public const string ServerSideSynchronizationorEmailRouter_1033 = "Server-Side Synchronization or Email Router";
+					public const string ForwardMailbox_1033 = "Forward Mailbox";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IncomingEmailDeliveryMethod), label, languageCode);
+					}
+				}
+
+				public static class InvitationStatus 
+				{
+					public const string InvitationNotSent_1033 = "Invitation Not Sent";
+					public const string Invited_1033 = "Invited";
+					public const string InvitationNearExpired_1033 = "Invitation Near Expired";
+					public const string InvitationExpired_1033 = "Invitation Expired";
+					public const string InvitationAccepted_1033 = "Invitation Accepted";
+					public const string InvitationRejected_1033 = "Invitation Rejected";
+					public const string InvitationRevoked_1033 = "Invitation Revoked";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(InvitationStatus), label, languageCode);
+					}
+				}
+
+				public static class IsActiveDirectoryUser 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsActiveDirectoryUser), label, languageCode);
+					}
+				}
+
+				public static class Status 
+				{
+					public const string Disabled_1033 = "Disabled";
+					public const string Enabled_1033 = "Enabled";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Status), label, languageCode);
+					}
+				}
+
+				public static class EmailAddressO365AdminApprovalStatus 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EmailAddressO365AdminApprovalStatus), label, languageCode);
+					}
+				}
+
+				public static class Integrationusermode 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Integrationusermode), label, languageCode);
+					}
+				}
+
+				public static class UserLicensed 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UserLicensed), label, languageCode);
+					}
+				}
+
+				public static class UserSynced 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UserSynced), label, languageCode);
+					}
+				}
+
+				public static class OutgoingEmailDeliveryMethod 
+				{
+					public const string None_1033 = "None";
+					public const string MicrosoftDynamics365forOutlook_1033 = "Microsoft Dynamics 365 for Outlook";
+					public const string ServerSideSynchronizationorEmailRouter_1033 = "Server-Side Synchronization or Email Router";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(OutgoingEmailDeliveryMethod), label, languageCode);
+					}
+				}
+
+				public static class PreferredAddress 
+				{
+					public const string MailingAddress_1033 = "Mailing Address";
+					public const string OtherAddress_1033 = "Other Address";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(PreferredAddress), label, languageCode);
+					}
+				}
+
+				public static class PreferredEmail 
+				{
+					public const string DefaultValue_1033 = "Default Value";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(PreferredEmail), label, languageCode);
+					}
+				}
+
+				public static class PreferredPhone 
+				{
+					public const string MainPhone_1033 = "Main Phone";
+					public const string OtherPhone_1033 = "Other Phone";
+					public const string HomePhone_1033 = "Home Phone";
+					public const string MobilePhone_1033 = "Mobile Phone";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(PreferredPhone), label, languageCode);
+					}
+				}
+
+				public static class RestrictedAccessMode 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(RestrictedAccessMode), label, languageCode);
+					}
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Fields
+
+		public static class Fields
+		{
+			#region Logical names
+
+			public const string AccessMode = "accessmode";
+			public const string Address1ID = "address1_addressid";
+			public const string Address1AddressType = "address1_addresstypecode";
+			public const string City = "address1_city";
+			public const string Address = "address1_composite";
+			public const string CountryRegion = "address1_country";
+			public const string Address1County = "address1_county";
+			public const string Address1Fax = "address1_fax";
+			public const string Address1Latitude = "address1_latitude";
+			public const string Street1 = "address1_line1";
+			public const string Street2 = "address1_line2";
+			public const string Street3 = "address1_line3";
+			public const string Address1Longitude = "address1_longitude";
+			public const string Address1Name = "address1_name";
+			public const string ZIPPostalCode = "address1_postalcode";
+			public const string Address1PostOfficeBox = "address1_postofficebox";
+			public const string Address1ShippingMethod = "address1_shippingmethodcode";
+			public const string StateProvince = "address1_stateorprovince";
+			public const string MainPhone = "address1_telephone1";
+			public const string OtherPhone = "address1_telephone2";
+			public const string Pager = "address1_telephone3";
+			public const string Address1UPSZone = "address1_upszone";
+			public const string Address1UTCOffset = "address1_utcoffset";
+			public const string Address2ID = "address2_addressid";
+			public const string Address2AddressType = "address2_addresstypecode";
+			public const string OtherCity = "address2_city";
+			public const string OtherAddress = "address2_composite";
+			public const string OtherCountryRegion = "address2_country";
+			public const string Address2County = "address2_county";
+			public const string Address2Fax = "address2_fax";
+			public const string Address2Latitude = "address2_latitude";
+			public const string OtherStreet1 = "address2_line1";
+			public const string OtherStreet2 = "address2_line2";
+			public const string OtherStreet3 = "address2_line3";
+			public const string Address2Longitude = "address2_longitude";
+			public const string Address2Name = "address2_name";
+			public const string OtherZIPPostalCode = "address2_postalcode";
+			public const string Address2PostOfficeBox = "address2_postofficebox";
+			public const string Address2ShippingMethod = "address2_shippingmethodcode";
+			public const string OtherStateProvince = "address2_stateorprovince";
+			public const string Address2Telephone1 = "address2_telephone1";
+			public const string Address2Telephone2 = "address2_telephone2";
+			public const string Address2Telephone3 = "address2_telephone3";
+			public const string Address2UPSZone = "address2_upszone";
+			public const string Address2UTCOffset = "address2_utcoffset";
+			public const string ApplicationID = "applicationid";
+			public const string ApplicationIDURI = "applicationiduri";
+			public const string AzureADObjectID = "azureactivedirectoryobjectid";
+			public const string BusinessUnit = "businessunitid";
+			public const string Calendar = "calendarid";
+			public const string LicenseType = "caltype";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedByDelegate = "createdonbehalfby";
+			public const string DefaultFiltersPopulated = "defaultfilterspopulated";
+			public const string Mailbox = "defaultmailbox";
+			public const string DefaultOneDriveforBusinessFolderName = "defaultodbfoldername";
+			public const string DisabledReason = "disabledreason";
+			public const string DisplayinServiceViews = "displayinserviceviews";
+			public const string UserName = "domainname";
+			public const string PrimaryEmailStatus = "emailrouteraccessapproval";
+			public const string Employee = "employeeid";
+			public const string EntityImageId = "entityimageid";
+			public const string ExchangeRate = "exchangerate";
+			public const string FirstName = "firstname";
+			public const string FullName = "fullname";
+			public const string Government = "governmentid";
+			public const string HomePhone = "homephone";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string IncomingEmailDeliveryMethod = "incomingemaildeliverymethod";
+			public const string PrimaryEmail = "internalemailaddress";
+			public const string InvitationStatus = "invitestatuscode";
+			public const string Status = "isdisabled";
+			public const string EmailAddressO365AdminApprovalStatus = "isemailaddressapprovedbyo365admin";
+			public const string Integrationusermode = "isintegrationuser";
+			public const string UserLicensed = "islicensed";
+			public const string UserSynced = "issyncwithdirectory";
+			public const string JobTitle = "jobtitle";
+			public const string LastName = "lastname";
+			public const string MiddleName = "middlename";
+			public const string MobileAlertEmail = "mobilealertemail";
+			public const string MobileOfflineProfile = "mobileofflineprofileid";
+			public const string MobilePhone = "mobilephone";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedByDelegate = "modifiedonbehalfby";
+			public const string Team = "new_team";
+			public const string Nickname = "nickname";
+			public const string Organization = "organizationid";
+			public const string OutgoingEmailDeliveryMethod = "outgoingemaildeliverymethod";
+			public const string RecordCreatedOn = "overriddencreatedon";
+			public const string Manager = "parentsystemuserid";
+			public const string PassportHi = "passporthi";
+			public const string PassportLo = "passportlo";
+			public const string Email2 = "personalemailaddress";
+			public const string PhotoURL = "photourl";
+			public const string Position = "positionid";
+			public const string PreferredAddress = "preferredaddresscode";
+			public const string PreferredEmail = "preferredemailcode";
+			public const string PreferredPhone = "preferredphonecode";
+			public const string Process = "processid";
+			public const string DefaultQueue = "queueid";
+			public const string Salutation = "salutation";
+			public const string RestrictedAccessMode = "setupuser";
+			public const string SharePointEmailAddress = "sharepointemailaddress";
+			public const string Site = "siteid";
+			public const string Skills = "skills";
+			public const string ProcessStage = "stageid";
+			public const string UserId = "systemuserid";
+			public const string Territory = "territoryid";
+			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
+			public const string Title = "title";
+			public const string Currency = "transactioncurrencyid";
+			public const string TraversedPath = "traversedpath";
+			public const string UserLicenseType = "userlicensetype";
+			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
+			public const string Versionnumber = "versionnumber";
+			public const string WindowsLiveID = "windowsliveid";
+			public const string YammerEmail = "yammeremailaddress";
+			public const string YammerUserID = "yammeruserid";
+			public const string YomiFirstName = "yomifirstname";
+			public const string YomiFullName = "yomifullname";
+			public const string YomiLastName = "yomilastname";
+			public const string YomiMiddleName = "yomimiddlename";
+
+			#endregion
+
+			#region Schema names
+
+			public static class Schema
+			{
+				public const string AccessMode = "AccessMode";
+				public const string Address1ID = "Address1_AddressId";
+				public const string Address1AddressType = "Address1_AddressTypeCode";
+				public const string City = "Address1_City";
+				public const string Address = "Address1_Composite";
+				public const string CountryRegion = "Address1_Country";
+				public const string Address1County = "Address1_County";
+				public const string Address1Fax = "Address1_Fax";
+				public const string Address1Latitude = "Address1_Latitude";
+				public const string Street1 = "Address1_Line1";
+				public const string Street2 = "Address1_Line2";
+				public const string Street3 = "Address1_Line3";
+				public const string Address1Longitude = "Address1_Longitude";
+				public const string Address1Name = "Address1_Name";
+				public const string ZIPPostalCode = "Address1_PostalCode";
+				public const string Address1PostOfficeBox = "Address1_PostOfficeBox";
+				public const string Address1ShippingMethod = "Address1_ShippingMethodCode";
+				public const string StateProvince = "Address1_StateOrProvince";
+				public const string MainPhone = "Address1_Telephone1";
+				public const string OtherPhone = "Address1_Telephone2";
+				public const string Pager = "Address1_Telephone3";
+				public const string Address1UPSZone = "Address1_UPSZone";
+				public const string Address1UTCOffset = "Address1_UTCOffset";
+				public const string Address2ID = "Address2_AddressId";
+				public const string Address2AddressType = "Address2_AddressTypeCode";
+				public const string OtherCity = "Address2_City";
+				public const string OtherAddress = "Address2_Composite";
+				public const string OtherCountryRegion = "Address2_Country";
+				public const string Address2County = "Address2_County";
+				public const string Address2Fax = "Address2_Fax";
+				public const string Address2Latitude = "Address2_Latitude";
+				public const string OtherStreet1 = "Address2_Line1";
+				public const string OtherStreet2 = "Address2_Line2";
+				public const string OtherStreet3 = "Address2_Line3";
+				public const string Address2Longitude = "Address2_Longitude";
+				public const string Address2Name = "Address2_Name";
+				public const string OtherZIPPostalCode = "Address2_PostalCode";
+				public const string Address2PostOfficeBox = "Address2_PostOfficeBox";
+				public const string Address2ShippingMethod = "Address2_ShippingMethodCode";
+				public const string OtherStateProvince = "Address2_StateOrProvince";
+				public const string Address2Telephone1 = "Address2_Telephone1";
+				public const string Address2Telephone2 = "Address2_Telephone2";
+				public const string Address2Telephone3 = "Address2_Telephone3";
+				public const string Address2UPSZone = "Address2_UPSZone";
+				public const string Address2UTCOffset = "Address2_UTCOffset";
+				public const string ApplicationID = "ApplicationId";
+				public const string ApplicationIDURI = "ApplicationIdUri";
+				public const string AzureADObjectID = "AzureActiveDirectoryObjectId";
+				public const string BusinessUnit = "BusinessUnitId";
+				public const string Calendar = "CalendarId";
+				public const string LicenseType = "CALType";
+				public const string CreatedBy = "CreatedBy";
+				public const string CreatedOn = "CreatedOn";
+				public const string CreatedByDelegate = "CreatedOnBehalfBy";
+				public const string DefaultFiltersPopulated = "DefaultFiltersPopulated";
+				public const string Mailbox = "DefaultMailbox";
+				public const string DefaultOneDriveforBusinessFolderName = "DefaultOdbFolderName";
+				public const string DisabledReason = "DisabledReason";
+				public const string DisplayinServiceViews = "DisplayInServiceViews";
+				public const string UserName = "DomainName";
+				public const string PrimaryEmailStatus = "EmailRouterAccessApproval";
+				public const string Employee = "EmployeeId";
+				public const string EntityImageId = "EntityImageId";
+				public const string ExchangeRate = "ExchangeRate";
+				public const string FirstName = "FirstName";
+				public const string FullName = "FullName";
+				public const string Government = "GovernmentId";
+				public const string HomePhone = "HomePhone";
+				public const string ImportSequenceNumber = "ImportSequenceNumber";
+				public const string IncomingEmailDeliveryMethod = "IncomingEmailDeliveryMethod";
+				public const string PrimaryEmail = "InternalEMailAddress";
+				public const string InvitationStatus = "InviteStatusCode";
+				public const string Status = "IsDisabled";
+				public const string EmailAddressO365AdminApprovalStatus = "IsEmailAddressApprovedByO365Admin";
+				public const string Integrationusermode = "IsIntegrationUser";
+				public const string UserLicensed = "IsLicensed";
+				public const string UserSynced = "IsSyncWithDirectory";
+				public const string JobTitle = "JobTitle";
+				public const string LastName = "LastName";
+				public const string MiddleName = "MiddleName";
+				public const string MobileAlertEmail = "MobileAlertEMail";
+				public const string MobileOfflineProfile = "MobileOfflineProfileId";
+				public const string MobilePhone = "MobilePhone";
+				public const string ModifiedBy = "ModifiedBy";
+				public const string ModifiedOn = "ModifiedOn";
+				public const string ModifiedByDelegate = "ModifiedOnBehalfBy";
+				public const string Team = "new_Team";
+				public const string Nickname = "NickName";
+				public const string Organization = "OrganizationId";
+				public const string OutgoingEmailDeliveryMethod = "OutgoingEmailDeliveryMethod";
+				public const string RecordCreatedOn = "OverriddenCreatedOn";
+				public const string Manager = "ParentSystemUserId";
+				public const string PassportHi = "PassportHi";
+				public const string PassportLo = "PassportLo";
+				public const string Email2 = "PersonalEMailAddress";
+				public const string PhotoURL = "PhotoUrl";
+				public const string Position = "PositionId";
+				public const string PreferredAddress = "PreferredAddressCode";
+				public const string PreferredEmail = "PreferredEmailCode";
+				public const string PreferredPhone = "PreferredPhoneCode";
+				public const string Process = "ProcessId";
+				public const string DefaultQueue = "QueueId";
+				public const string Salutation = "Salutation";
+				public const string RestrictedAccessMode = "SetupUser";
+				public const string SharePointEmailAddress = "SharePointEmailAddress";
+				public const string Site = "SiteId";
+				public const string Skills = "Skills";
+				public const string ProcessStage = "StageId";
+				public const string UserId = "SystemUserId";
+				public const string Territory = "TerritoryId";
+				public const string TimeZoneRuleVersionNumber = "TimeZoneRuleVersionNumber";
+				public const string Title = "Title";
+				public const string Currency = "TransactionCurrencyId";
+				public const string TraversedPath = "TraversedPath";
+				public const string UserLicenseType = "UserLicenseType";
+				public const string UTCConversionTimeZoneCode = "UTCConversionTimeZoneCode";
+				public const string Versionnumber = "VersionNumber";
+				public const string WindowsLiveID = "WindowsLiveID";
+				public const string YammerEmail = "YammerEmailAddress";
+				public const string YammerUserID = "YammerUserId";
+				public const string YomiFirstName = "YomiFirstName";
+				public const string YomiFullName = "YomiFullName";
+				public const string YomiLastName = "YomiLastName";
+				public const string YomiMiddleName = "YomiMiddleName";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class AccessMode
+				{
+					public const string _1033 = "Access Mode";
+				}
+
+				public static class Address1ID
+				{
+					public const string _1033 = "Address 1: ID";
+				}
+
+				public static class Address1AddressType
+				{
+					public const string _1033 = "Address 1: Address Type";
+				}
+
+				public static class City
+				{
+					public const string _1033 = "City";
+				}
+
+				public static class Address
+				{
+					public const string _1033 = "Address";
+				}
+
+				public static class CountryRegion
+				{
+					public const string _1033 = "Country/Region";
+				}
+
+				public static class Address1County
+				{
+					public const string _1033 = "Address 1: County";
+				}
+
+				public static class Address1Fax
+				{
+					public const string _1033 = "Address 1: Fax";
+				}
+
+				public static class Address1Latitude
+				{
+					public const string _1033 = "Address 1: Latitude";
+				}
+
+				public static class Street1
+				{
+					public const string _1033 = "Street 1";
+				}
+
+				public static class Street2
+				{
+					public const string _1033 = "Street 2";
+				}
+
+				public static class Street3
+				{
+					public const string _1033 = "Street 3";
+				}
+
+				public static class Address1Longitude
+				{
+					public const string _1033 = "Address 1: Longitude";
+				}
+
+				public static class Address1Name
+				{
+					public const string _1033 = "Address 1: Name";
+				}
+
+				public static class ZIPPostalCode
+				{
+					public const string _1033 = "ZIP/Postal Code";
+				}
+
+				public static class Address1PostOfficeBox
+				{
+					public const string _1033 = "Address 1: Post Office Box";
+				}
+
+				public static class Address1ShippingMethod
+				{
+					public const string _1033 = "Address 1: Shipping Method";
+				}
+
+				public static class StateProvince
+				{
+					public const string _1033 = "State/Province";
+				}
+
+				public static class MainPhone
+				{
+					public const string _1033 = "Main Phone";
+				}
+
+				public static class OtherPhone
+				{
+					public const string _1033 = "Other Phone";
+				}
+
+				public static class Pager
+				{
+					public const string _1033 = "Pager";
+				}
+
+				public static class Address1UPSZone
+				{
+					public const string _1033 = "Address 1: UPS Zone";
+				}
+
+				public static class Address1UTCOffset
+				{
+					public const string _1033 = "Address 1: UTC Offset";
+				}
+
+				public static class Address2ID
+				{
+					public const string _1033 = "Address 2: ID";
+				}
+
+				public static class Address2AddressType
+				{
+					public const string _1033 = "Address 2: Address Type";
+				}
+
+				public static class OtherCity
+				{
+					public const string _1033 = "Other City";
+				}
+
+				public static class OtherAddress
+				{
+					public const string _1033 = "Other Address";
+				}
+
+				public static class OtherCountryRegion
+				{
+					public const string _1033 = "Other Country/Region";
+				}
+
+				public static class Address2County
+				{
+					public const string _1033 = "Address 2: County";
+				}
+
+				public static class Address2Fax
+				{
+					public const string _1033 = "Address 2: Fax";
+				}
+
+				public static class Address2Latitude
+				{
+					public const string _1033 = "Address 2: Latitude";
+				}
+
+				public static class OtherStreet1
+				{
+					public const string _1033 = "Other Street 1";
+				}
+
+				public static class OtherStreet2
+				{
+					public const string _1033 = "Other Street 2";
+				}
+
+				public static class OtherStreet3
+				{
+					public const string _1033 = "Other Street 3";
+				}
+
+				public static class Address2Longitude
+				{
+					public const string _1033 = "Address 2: Longitude";
+				}
+
+				public static class Address2Name
+				{
+					public const string _1033 = "Address 2: Name";
+				}
+
+				public static class OtherZIPPostalCode
+				{
+					public const string _1033 = "Other ZIP/Postal Code";
+				}
+
+				public static class Address2PostOfficeBox
+				{
+					public const string _1033 = "Address 2: Post Office Box";
+				}
+
+				public static class Address2ShippingMethod
+				{
+					public const string _1033 = "Address 2: Shipping Method";
+				}
+
+				public static class OtherStateProvince
+				{
+					public const string _1033 = "Other State/Province";
+				}
+
+				public static class Address2Telephone1
+				{
+					public const string _1033 = "Address 2: Telephone 1";
+				}
+
+				public static class Address2Telephone2
+				{
+					public const string _1033 = "Address 2: Telephone 2";
+				}
+
+				public static class Address2Telephone3
+				{
+					public const string _1033 = "Address 2: Telephone 3";
+				}
+
+				public static class Address2UPSZone
+				{
+					public const string _1033 = "Address 2: UPS Zone";
+				}
+
+				public static class Address2UTCOffset
+				{
+					public const string _1033 = "Address 2: UTC Offset";
+				}
+
+				public static class ApplicationID
+				{
+					public const string _1033 = "Application ID";
+				}
+
+				public static class ApplicationIDURI
+				{
+					public const string _1033 = "Application ID URI";
+				}
+
+				public static class AzureADObjectID
+				{
+					public const string _1033 = "Azure AD Object ID";
+				}
+
+				public static class BusinessUnit
+				{
+					public const string _1033 = "Business Unit";
+				}
+
+				public static class Calendar
+				{
+					public const string _1033 = "Calendar";
+				}
+
+				public static class LicenseType
+				{
+					public const string _1033 = "License Type";
+				}
+
+				public static class CreatedBy
+				{
+					public const string _1033 = "Created By";
+				}
+
+				public static class CreatedOn
+				{
+					public const string _1033 = "Created On";
+				}
+
+				public static class CreatedByDelegate
+				{
+					public const string _1033 = "Created By (Delegate)";
+				}
+
+				public static class DefaultFiltersPopulated
+				{
+					public const string _1033 = "Default Filters Populated";
+				}
+
+				public static class Mailbox
+				{
+					public const string _1033 = "Mailbox";
+				}
+
+				public static class DefaultOneDriveforBusinessFolderName
+				{
+					public const string _1033 = "Default OneDrive for Business Folder Name";
+				}
+
+				public static class DisabledReason
+				{
+					public const string _1033 = "Disabled Reason";
+				}
+
+				public static class DisplayinServiceViews
+				{
+					public const string _1033 = "Display in Service Views";
+				}
+
+				public static class UserName
+				{
+					public const string _1033 = "User Name";
+				}
+
+				public static class PrimaryEmailStatus
+				{
+					public const string _1033 = "Primary Email Status";
+				}
+
+				public static class Employee
+				{
+					public const string _1033 = "Employee";
+				}
+
+				public static class EntityImageId
+				{
+					public const string _1033 = "Entity Image Id";
+				}
+
+				public static class ExchangeRate
+				{
+					public const string _1033 = "Exchange Rate";
+				}
+
+				public static class FirstName
+				{
+					public const string _1033 = "First Name";
+				}
+
+				public static class FullName
+				{
+					public const string _1033 = "Full Name";
+				}
+
+				public static class Government
+				{
+					public const string _1033 = "Government";
+				}
+
+				public static class HomePhone
+				{
+					public const string _1033 = "Home Phone";
+				}
+
+				public static class ImportSequenceNumber
+				{
+					public const string _1033 = "Import Sequence Number";
+				}
+
+				public static class IncomingEmailDeliveryMethod
+				{
+					public const string _1033 = "Incoming Email Delivery Method";
+				}
+
+				public static class PrimaryEmail
+				{
+					public const string _1033 = "Primary Email";
+				}
+
+				public static class InvitationStatus
+				{
+					public const string _1033 = "Invitation Status";
+				}
+
+				public static class Status
+				{
+					public const string _1033 = "Status";
+				}
+
+				public static class EmailAddressO365AdminApprovalStatus
+				{
+					public const string _1033 = "Email Address O365 Admin Approval Status";
+				}
+
+				public static class Integrationusermode
+				{
+					public const string _1033 = "Integration user mode";
+				}
+
+				public static class UserLicensed
+				{
+					public const string _1033 = "User Licensed";
+				}
+
+				public static class UserSynced
+				{
+					public const string _1033 = "User Synced";
+				}
+
+				public static class JobTitle
+				{
+					public const string _1033 = "Job Title";
+				}
+
+				public static class LastName
+				{
+					public const string _1033 = "Last Name";
+				}
+
+				public static class MiddleName
+				{
+					public const string _1033 = "Middle Name";
+				}
+
+				public static class MobileAlertEmail
+				{
+					public const string _1033 = "Mobile Alert Email";
+				}
+
+				public static class MobileOfflineProfile
+				{
+					public const string _1033 = "Mobile Offline Profile";
+				}
+
+				public static class MobilePhone
+				{
+					public const string _1033 = "Mobile Phone";
+				}
+
+				public static class ModifiedBy
+				{
+					public const string _1033 = "Modified By";
+				}
+
+				public static class ModifiedOn
+				{
+					public const string _1033 = "Modified On";
+				}
+
+				public static class ModifiedByDelegate
+				{
+					public const string _1033 = "Modified By (Delegate)";
+				}
+
+				public static class Team
+				{
+					public const string _1033 = "Team";
+				}
+
+				public static class Nickname
+				{
+					public const string _1033 = "Nickname";
+				}
+
+				public static class Organization
+				{
+					public const string _1033 = "Organization ";
+				}
+
+				public static class OutgoingEmailDeliveryMethod
+				{
+					public const string _1033 = "Outgoing Email Delivery Method";
+				}
+
+				public static class RecordCreatedOn
+				{
+					public const string _1033 = "Record Created On";
+				}
+
+				public static class Manager
+				{
+					public const string _1033 = "Manager";
+				}
+
+				public static class PassportHi
+				{
+					public const string _1033 = "Passport Hi";
+				}
+
+				public static class PassportLo
+				{
+					public const string _1033 = "Passport Lo";
+				}
+
+				public static class Email2
+				{
+					public const string _1033 = "Email 2";
+				}
+
+				public static class PhotoURL
+				{
+					public const string _1033 = "Photo URL";
+				}
+
+				public static class Position
+				{
+					public const string _1033 = "Position";
+				}
+
+				public static class PreferredAddress
+				{
+					public const string _1033 = "Preferred Address";
+				}
+
+				public static class PreferredEmail
+				{
+					public const string _1033 = "Preferred Email";
+				}
+
+				public static class PreferredPhone
+				{
+					public const string _1033 = "Preferred Phone";
+				}
+
+				public static class Process
+				{
+					public const string _1033 = "Process";
+				}
+
+				public static class DefaultQueue
+				{
+					public const string _1033 = "Default Queue";
+				}
+
+				public static class Salutation
+				{
+					public const string _1033 = "Salutation";
+				}
+
+				public static class RestrictedAccessMode
+				{
+					public const string _1033 = "Restricted Access Mode";
+				}
+
+				public static class SharePointEmailAddress
+				{
+					public const string _1033 = "SharePoint Email Address";
+				}
+
+				public static class Site
+				{
+					public const string _1033 = "Site";
+				}
+
+				public static class Skills
+				{
+					public const string _1033 = "Skills";
+				}
+
+				public static class ProcessStage
+				{
+					public const string _1033 = "Process Stage";
+				}
+
+				public static class UserId
+				{
+					public const string _1033 = "User";
+				}
+
+				public static class Territory
+				{
+					public const string _1033 = "Territory";
+				}
+
+				public static class TimeZoneRuleVersionNumber
+				{
+					public const string _1033 = "Time Zone Rule Version Number";
+				}
+
+				public static class Title
+				{
+					public const string _1033 = "Title";
+				}
+
+				public static class Currency
+				{
+					public const string _1033 = "Currency";
+				}
+
+				public static class TraversedPath
+				{
+					public const string _1033 = "Traversed Path";
+				}
+
+				public static class UserLicenseType
+				{
+					public const string _1033 = "User License Type";
+				}
+
+				public static class UTCConversionTimeZoneCode
+				{
+					public const string _1033 = "UTC Conversion Time Zone Code";
+				}
+
+				public static class Versionnumber
+				{
+					public const string _1033 = "Version number";
+				}
+
+				public static class WindowsLiveID
+				{
+					public const string _1033 = "Windows Live ID";
+				}
+
+				public static class YammerEmail
+				{
+					public const string _1033 = "Yammer Email";
+				}
+
+				public static class YammerUserID
+				{
+					public const string _1033 = "Yammer User ID";
+				}
+
+				public static class YomiFirstName
+				{
+					public const string _1033 = "Yomi First Name";
+				}
+
+				public static class YomiFullName
+				{
+					public const string _1033 = "Yomi Full Name";
+				}
+
+				public static class YomiLastName
+				{
+					public const string _1033 = "Yomi Last Name";
+				}
+
+				public static class YomiMiddleName
+				{
+					public const string _1033 = "Yomi Middle Name";
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Relations
+
+		public static class Relations
+		{
+			public static class OneToN
+			{
+				public const string OrganizationsOfCreatedByDelegate = "lk_organization_createdonbehalfby";
+				public const string OrganizationsOfModifiedByDelegate = "lk_organization_modifiedonbehalfby";
+				public const string OrganizationsOfCreatedBy = "lk_organizationbase_createdby";
+				public const string OrganizationsOfModifiedBy = "lk_organizationbase_modifiedby";
+				public const string UsersOfCreatedByDelegate = "lk_systemuser_createdonbehalfby";
+				public const string UsersOfModifiedByDelegate = "lk_systemuser_modifiedonbehalfby";
+				public const string UsersOfCreatedBy = "lk_systemuserbase_createdby";
+				public const string UsersOfModifiedBy = "lk_systemuserbase_modifiedby";
+				public const string ThemesOfCreatedBy = "lk_theme_createdby";
+				public const string ThemesOfCreatedByDelegate = "lk_theme_createdonbehalfby";
+				public const string ThemesOfModifiedBy = "lk_theme_modifiedby";
+				public const string ThemesOfModifiedByDelegate = "lk_theme_modifiedonbehalfby";
+				public const string UserSettingssOfCreatedByDelegate = "lk_usersettings_createdonbehalfby";
+				public const string UserSettingssOfModifiedByDelegate = "lk_usersettings_modifiedonbehalfby";
+				public const string UserSettingssOfCreatedBy = "lk_usersettingsbase_createdby";
+				public const string UserSettingssOfModifiedBy = "lk_usersettingsbase_modifiedby";
+				public const string ActivityPartysOfParty = "system_user_activity_parties";
+				public const string UsersOfManager = "user_parent_user";
+				public const string UserSettingssOfSystemUserId = "user_settings";
+			}
+			
+			public static class NToOne
+			{
+				public const string UserAsCreatedByDelegate = "lk_systemuser_createdonbehalfby";
+				public const string UserAsModifiedByDelegate = "lk_systemuser_modifiedonbehalfby";
+				public const string UserAsCreatedBy = "lk_systemuserbase_createdby";
+				public const string UserAsModifiedBy = "lk_systemuserbase_modifiedby";
+				public const string OrganizationAsOrganization = "organization_system_users";
+				public const string UserAsManager = "user_parent_user";
+
+				public static class Lookups
+				{
+					public const string UserAsCreatedByDelegate = "createdonbehalfby";
+					public const string UserAsModifiedByDelegate = "modifiedonbehalfby";
+					public const string UserAsCreatedBy = "createdby";
+					public const string UserAsModifiedBy = "modifiedby";
+					public const string OrganizationAsOrganization = "organizationid";
+					public const string UserAsManager = "parentsystemuserid";
+				}
+			}
+
+			public static class NToN
+			{
+
+			}
+		}
+
+		#endregion
+
 		#endregion
 	}
 
@@ -16019,6 +20983,131 @@ namespace Yagasoft.XrmMockGenerator
 
 		#region Metadata
 
+
+		#region Enums
+
+		public static class Enums
+		{
+			/// <summary>
+			/// Gets the label corresponding to the option-set's value using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="constant">The value from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns></returns>
+			public static string GetLabel(string logicalName, int constant, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetLabel(logicalName, constant, typeof(Enums), languageCode);
+			}
+			/// <summary>
+			/// Gets the value corresponding to the option-set's label using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="label">The label from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns>The value corresponding to the label</returns>
+			public static int GetValue(string logicalName, string label, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetValue(logicalName, label, typeof(Enums), languageCode);
+			}
+
+			#region Logical names
+
+			public static class Names
+			{
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Fields
+
+		public static class Fields
+		{
+			#region Logical names
+
+			public const string RoleId = "roleid";
+			public const string SystemUserId = "systemuserid";
+			public const string SystemUserRoleIdId = "systemuserroleid";
+			public const string VersionNumber = "versionnumber";
+
+			#endregion
+
+			#region Schema names
+
+			public static class Schema
+			{
+				public const string RoleId = "RoleId";
+				public const string SystemUserId = "SystemUserId";
+				public const string SystemUserRoleIdId = "SystemUserRoleId";
+				public const string VersionNumber = "VersionNumber";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class RoleId
+				{
+				}
+
+				public static class SystemUserId
+				{
+				}
+
+				public static class SystemUserRoleIdId
+				{
+				}
+
+				public static class VersionNumber
+				{
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Relations
+
+		public static class Relations
+		{
+			public static class OneToN
+			{
+			}
+			
+			public static class NToOne
+			{
+
+				public static class Lookups
+				{
+				}
+			}
+
+			public static class NToN
+			{
+
+				public const string UsersOfsystemuserroles_association = "systemuserroles_association";
+			}
+		}
+
+		#endregion
 
 		#endregion
 	}
@@ -17183,6 +22272,401 @@ namespace Yagasoft.XrmMockGenerator
 
 		#region Metadata
 
+
+		#region Enums
+
+		public static class Enums
+		{
+			/// <summary>
+			/// Gets the label corresponding to the option-set's value using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="constant">The value from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns></returns>
+			public static string GetLabel(string logicalName, int constant, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetLabel(logicalName, constant, typeof(Enums), languageCode);
+			}
+			/// <summary>
+			/// Gets the value corresponding to the option-set's label using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="label">The label from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns>The value corresponding to the label</returns>
+			public static int GetValue(string logicalName, string label, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetValue(logicalName, label, typeof(Enums), languageCode);
+			}
+
+			#region Logical names
+
+			public static class Names
+			{
+				public const string DefaultTheme = "isdefaulttheme";
+				public const string Status = "statecode";
+				public const string StatusReason = "statuscode";
+				public const string Type = "type";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class DefaultTheme 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DefaultTheme), label, languageCode);
+					}
+				}
+
+				public static class Status 
+				{
+					public const string Custom_1033 = "Custom";
+					public const string System_1033 = "System";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Status), label, languageCode);
+					}
+				}
+
+				public static class StatusReason 
+				{
+					public const string Custom_1033 = "Custom";
+					public const string System_1033 = "System";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(StatusReason), label, languageCode);
+					}
+				}
+
+				public static class Type 
+				{
+					public const string Custom_1033 = "Custom";
+					public const string System_1033 = "System";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Type), label, languageCode);
+					}
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Fields
+
+		public static class Fields
+		{
+			#region Logical names
+
+			public const string BackgroundColor = "backgroundcolor";
+			public const string ControlBorder = "controlborder";
+			public const string ControlShade = "controlshade";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedByDelegate = "createdonbehalfby";
+			public const string DefaultCustomEntityColor = "defaultcustomentitycolor";
+			public const string DefaultEntityColor = "defaultentitycolor";
+			public const string ExchangeRate = "exchangerate";
+			public const string GlobalLinkColor = "globallinkcolor";
+			public const string HeaderColor = "headercolor";
+			public const string HoverLinkEffect = "hoverlinkeffect";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string DefaultTheme = "isdefaulttheme";
+			public const string Logo = "logoid";
+			public const string LogoTooltip = "logotooltip";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedByDelegate = "modifiedonbehalfby";
+			public const string ThemeName = "name";
+			public const string NavigationBarColor = "navbarbackgroundcolor";
+			public const string NavigationBarShelfColor = "navbarshelfcolor";
+			public const string OrganizationId = "organizationid";
+			public const string RecordCreatedOn = "overriddencreatedon";
+			public const string AccentColorforMobileClient = "processcontrolcolor";
+			public const string SelectedLinkEffect = "selectedlinkeffect";
+			public const string Status = "statecode";
+			public const string StatusReason = "statuscode";
+			public const string ThemeId = "themeid";
+			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
+			public const string Currency = "transactioncurrencyid";
+			public const string Type = "type";
+			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
+			public const string VersionNumber = "versionnumber";
+
+			#endregion
+
+			#region Schema names
+
+			public static class Schema
+			{
+				public const string BackgroundColor = "BackgroundColor";
+				public const string ControlBorder = "ControlBorder";
+				public const string ControlShade = "ControlShade";
+				public const string CreatedBy = "CreatedBy";
+				public const string CreatedOn = "CreatedOn";
+				public const string CreatedByDelegate = "CreatedOnBehalfBy";
+				public const string DefaultCustomEntityColor = "DefaultCustomEntityColor";
+				public const string DefaultEntityColor = "DefaultEntityColor";
+				public const string ExchangeRate = "ExchangeRate";
+				public const string GlobalLinkColor = "GlobalLinkColor";
+				public const string HeaderColor = "HeaderColor";
+				public const string HoverLinkEffect = "HoverLinkEffect";
+				public const string ImportSequenceNumber = "ImportSequenceNumber";
+				public const string DefaultTheme = "IsDefaultTheme";
+				public const string Logo = "LogoId";
+				public const string LogoTooltip = "LogoToolTip";
+				public const string ModifiedBy = "ModifiedBy";
+				public const string ModifiedOn = "ModifiedOn";
+				public const string ModifiedByDelegate = "ModifiedOnBehalfBy";
+				public const string ThemeName = "Name";
+				public const string NavigationBarColor = "NavBarBackgroundColor";
+				public const string NavigationBarShelfColor = "NavBarShelfColor";
+				public const string OrganizationId = "OrganizationId";
+				public const string RecordCreatedOn = "OverriddenCreatedOn";
+				public const string AccentColorforMobileClient = "ProcessControlColor";
+				public const string SelectedLinkEffect = "SelectedLinkEffect";
+				public const string Status = "statecode";
+				public const string StatusReason = "statuscode";
+				public const string ThemeId = "ThemeId";
+				public const string TimeZoneRuleVersionNumber = "TimeZoneRuleVersionNumber";
+				public const string Currency = "TransactionCurrencyId";
+				public const string Type = "Type";
+				public const string UTCConversionTimeZoneCode = "UTCConversionTimeZoneCode";
+				public const string VersionNumber = "VersionNumber";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class BackgroundColor
+				{
+					public const string _1033 = "Background Color";
+				}
+
+				public static class ControlBorder
+				{
+					public const string _1033 = "Control Border";
+				}
+
+				public static class ControlShade
+				{
+					public const string _1033 = "Control Shade";
+				}
+
+				public static class CreatedBy
+				{
+					public const string _1033 = "Created By";
+				}
+
+				public static class CreatedOn
+				{
+					public const string _1033 = "Created On";
+				}
+
+				public static class CreatedByDelegate
+				{
+					public const string _1033 = "Created By (Delegate)";
+				}
+
+				public static class DefaultCustomEntityColor
+				{
+					public const string _1033 = "Default Custom Entity Color";
+				}
+
+				public static class DefaultEntityColor
+				{
+					public const string _1033 = "Default Entity Color";
+				}
+
+				public static class ExchangeRate
+				{
+					public const string _1033 = "ExchangeRate";
+				}
+
+				public static class GlobalLinkColor
+				{
+					public const string _1033 = "Global Link Color";
+				}
+
+				public static class HeaderColor
+				{
+					public const string _1033 = "Header Color";
+				}
+
+				public static class HoverLinkEffect
+				{
+					public const string _1033 = "Hover Link Effect";
+				}
+
+				public static class ImportSequenceNumber
+				{
+					public const string _1033 = "Import Sequence Number";
+				}
+
+				public static class DefaultTheme
+				{
+					public const string _1033 = "Default Theme";
+				}
+
+				public static class Logo
+				{
+					public const string _1033 = "Logo";
+				}
+
+				public static class LogoTooltip
+				{
+					public const string _1033 = "Logo Tooltip";
+				}
+
+				public static class ModifiedBy
+				{
+					public const string _1033 = "Modified By";
+				}
+
+				public static class ModifiedOn
+				{
+					public const string _1033 = "Modified On";
+				}
+
+				public static class ModifiedByDelegate
+				{
+					public const string _1033 = "Modified By (Delegate)";
+				}
+
+				public static class ThemeName
+				{
+					public const string _1033 = "Theme Name";
+				}
+
+				public static class NavigationBarColor
+				{
+					public const string _1033 = "Navigation Bar Color";
+				}
+
+				public static class NavigationBarShelfColor
+				{
+					public const string _1033 = "Navigation Bar Shelf Color";
+				}
+
+				public static class OrganizationId
+				{
+					public const string _1033 = "Organization Id";
+				}
+
+				public static class RecordCreatedOn
+				{
+					public const string _1033 = "Record Created On";
+				}
+
+				public static class AccentColorforMobileClient
+				{
+					public const string _1033 = "Accent Color for Mobile Client";
+				}
+
+				public static class SelectedLinkEffect
+				{
+					public const string _1033 = "Selected Link Effect";
+				}
+
+				public static class Status
+				{
+					public const string _1033 = "Status";
+				}
+
+				public static class StatusReason
+				{
+					public const string _1033 = "Status Reason";
+				}
+
+				public static class ThemeId
+				{
+					public const string _1033 = "Theme";
+				}
+
+				public static class TimeZoneRuleVersionNumber
+				{
+					public const string _1033 = "Time Zone Rule Version Number";
+				}
+
+				public static class Currency
+				{
+					public const string _1033 = "Currency";
+				}
+
+				public static class Type
+				{
+					public const string _1033 = "Type";
+				}
+
+				public static class UTCConversionTimeZoneCode
+				{
+					public const string _1033 = "UTC Conversion Time Zone Code";
+				}
+
+				public static class VersionNumber
+				{
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Relations
+
+		public static class Relations
+		{
+			public static class OneToN
+			{
+			}
+			
+			public static class NToOne
+			{
+				public const string UserAsCreatedBy = "lk_theme_createdby";
+				public const string UserAsCreatedByDelegate = "lk_theme_createdonbehalfby";
+				public const string UserAsModifiedBy = "lk_theme_modifiedby";
+				public const string UserAsModifiedByDelegate = "lk_theme_modifiedonbehalfby";
+				public const string OrganizationAsOrganizationId = "organization_theme";
+
+				public static class Lookups
+				{
+					public const string UserAsCreatedBy = "createdby";
+					public const string UserAsCreatedByDelegate = "createdonbehalfby";
+					public const string UserAsModifiedBy = "modifiedby";
+					public const string UserAsModifiedByDelegate = "modifiedonbehalfby";
+					public const string OrganizationAsOrganizationId = "organizationid";
+				}
+			}
+
+			public static class NToN
+			{
+
+			}
+		}
+
+		#endregion
 
 		#endregion
 	}
@@ -19986,6 +25470,1006 @@ namespace Yagasoft.XrmMockGenerator
 
 		#region Metadata
 
+
+		#region Enums
+
+		public static class Enums
+		{
+			/// <summary>
+			/// Gets the label corresponding to the option-set's value using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="constant">The value from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns></returns>
+			public static string GetLabel(string logicalName, int constant, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetLabel(logicalName, constant, typeof(Enums), languageCode);
+			}
+			/// <summary>
+			/// Gets the value corresponding to the option-set's label using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="label">The label from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns>The value corresponding to the label</returns>
+			public static int GetValue(string logicalName, string label, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetValue(logicalName, label, typeof(Enums), languageCode);
+			}
+
+			#region Logical names
+
+			public static class Names
+			{
+				public const string AllowEmailCredentials = "allowemailcredentials";
+				public const string DataValidationModeForExportToExcel = "datavalidationmodeforexporttoexcel";
+				public const string DefaultSearchExperience = "defaultsearchexperience";
+				public const string FormMode = "entityformmode";
+				public const string GetStartedPaneContentEnabled = "getstartedpanecontentenabled";
+				public const string IgnoreUnsolicitedEmail = "ignoreunsolicitedemail";
+				public const string IncomingEmailFilteringMethod = "incomingemailfilteringmethod";
+				public const string ShowalertforAppsfor365 = "isappsforcrmalertdismissed";
+				public const string IsAutoDataCaptureEnabled = "isautodatacaptureenabled";
+				public const string EnableDefaultCountryCode = "isdefaultcountrycodecheckenabled";
+				public const string IsDuplicateDetectionEnabledWhenGoingOnline = "isduplicatedetectionenabledwhengoingonline";
+				public const string EnableDefaultGuidedHelp = "isguidedhelpenabled";
+				public const string Resourcebookingsynchronizationenabled = "isresourcebookingexchangesyncenabled";
+				public const string IsSendAsAllowed = "issendasallowed";
+				public const string ReportScriptErrors = "reportscripterrors";
+				public const string ShowWeekNumber = "showweeknumber";
+				public const string SplitViewState = "splitviewstate";
+				public const string SyncContactCompany = "synccontactcompany";
+				public const string UseCrmFormForAppointment = "usecrmformforappointment";
+				public const string UseCrmFormForContact = "usecrmformforcontact";
+				public const string UseCrmFormForEmail = "usecrmformforemail";
+				public const string UseCrmFormForTask = "usecrmformfortask";
+				public const string UseImageStrips = "useimagestrips";
+				public const string VisualizationPaneLayout = "visualizationpanelayout";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class AllowEmailCredentials 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(AllowEmailCredentials), label, languageCode);
+					}
+				}
+
+				public static class DataValidationModeForExportToExcel 
+				{
+					public const string Full_1033 = "Full";
+					public const string None_1033 = "None";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DataValidationModeForExportToExcel), label, languageCode);
+					}
+				}
+
+				public static class DefaultSearchExperience 
+				{
+					public const string Relevancesearch_1033 = "Relevance search";
+					public const string Categorizedsearch_1033 = "Categorized search";
+					public const string Uselastsearch_1033 = "Use last search";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(DefaultSearchExperience), label, languageCode);
+					}
+				}
+
+				public static class FormMode 
+				{
+					public const string Organizationdefault_1033 = "Organization default";
+					public const string Readoptimized_1033 = "Read-optimized";
+					public const string Edit_1033 = "Edit";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(FormMode), label, languageCode);
+					}
+				}
+
+				public static class GetStartedPaneContentEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(GetStartedPaneContentEnabled), label, languageCode);
+					}
+				}
+
+				public static class IgnoreUnsolicitedEmail 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IgnoreUnsolicitedEmail), label, languageCode);
+					}
+				}
+
+				public static class IncomingEmailFilteringMethod 
+				{
+					public const string Allemailmessages_1033 = "All email messages";
+					public const string EmailmessagesinresponsetoDynamics365email_1033 = "Email messages in response to Dynamics 365 email";
+					public const string EmailmessagesfromDynamics365LeadsContactsandAccounts_1033 = "Email messages from Dynamics 365 Leads, Contacts and Accounts";
+					public const string EmailmessagesfromDynamics365recordsthatareemailenabled_1033 = "Email messages from Dynamics 365 records that are email enabled";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IncomingEmailFilteringMethod), label, languageCode);
+					}
+				}
+
+				public static class ShowalertforAppsfor365 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ShowalertforAppsfor365), label, languageCode);
+					}
+				}
+
+				public static class IsAutoDataCaptureEnabled 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsAutoDataCaptureEnabled), label, languageCode);
+					}
+				}
+
+				public static class EnableDefaultCountryCode 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableDefaultCountryCode), label, languageCode);
+					}
+				}
+
+				public static class IsDuplicateDetectionEnabledWhenGoingOnline 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsDuplicateDetectionEnabledWhenGoingOnline), label, languageCode);
+					}
+				}
+
+				public static class EnableDefaultGuidedHelp 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(EnableDefaultGuidedHelp), label, languageCode);
+					}
+				}
+
+				public static class Resourcebookingsynchronizationenabled 
+				{
+					public const string Enabled_1033 = "Enabled";
+					public const string Disabled_1033 = "Disabled";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(Resourcebookingsynchronizationenabled), label, languageCode);
+					}
+				}
+
+				public static class IsSendAsAllowed 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(IsSendAsAllowed), label, languageCode);
+					}
+				}
+
+				public static class ReportScriptErrors 
+				{
+					public const string AskmeforpermissiontosendanerrorreporttoMicrosoft_1033 = "Ask me for permission to send an error report to Microsoft";
+					public const string AutomaticallysendanerrorreporttoMicrosoftwithoutaskingmeforpermission_1033 = "Automatically send an error report to Microsoft without asking me for permission";
+					public const string NeversendanerrorreporttoMicrosoftaboutMicrosoftDynamics365_1033 = "Never send an error report to Microsoft about Microsoft Dynamics 365";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ReportScriptErrors), label, languageCode);
+					}
+				}
+
+				public static class ShowWeekNumber 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(ShowWeekNumber), label, languageCode);
+					}
+				}
+
+				public static class SplitViewState 
+				{
+					public const string Expanded_1033 = "Expanded";
+					public const string Collapsed_1033 = "Collapsed";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(SplitViewState), label, languageCode);
+					}
+				}
+
+				public static class SyncContactCompany 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(SyncContactCompany), label, languageCode);
+					}
+				}
+
+				public static class UseCrmFormForAppointment 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseCrmFormForAppointment), label, languageCode);
+					}
+				}
+
+				public static class UseCrmFormForContact 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseCrmFormForContact), label, languageCode);
+					}
+				}
+
+				public static class UseCrmFormForEmail 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseCrmFormForEmail), label, languageCode);
+					}
+				}
+
+				public static class UseCrmFormForTask 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseCrmFormForTask), label, languageCode);
+					}
+				}
+
+				public static class UseImageStrips 
+				{
+					public const string Yes_1033 = "Yes";
+					public const string No_1033 = "No";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(UseImageStrips), label, languageCode);
+					}
+				}
+
+				public static class VisualizationPaneLayout 
+				{
+					public const string Topbottom_1033 = "Top-bottom";
+					public const string Sidebyside_1033 = "Side-by-side";
+
+					public static int GetValue(string label, int languageCode = 1033)
+					{
+						return GeneratorHelpers.GetValue(typeof(VisualizationPaneLayout), label, languageCode);
+					}
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Fields
+
+		public static class Fields
+		{
+			#region Logical names
+
+			public const string AddressBookSyncInterval = "addressbooksyncinterval";
+			public const string AdvancedFindStartupMode = "advancedfindstartupmode";
+			public const string AllowEmailCredentials = "allowemailcredentials";
+			public const string AMDesignator = "amdesignator";
+			public const string AutoCreateContactOnPromote = "autocreatecontactonpromote";
+			public const string BusinessUnitId = "businessunitid";
+			public const string CalendarType = "calendartype";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedByDelegate = "createdonbehalfby";
+			public const string CurrencyDecimalPrecision = "currencydecimalprecision";
+			public const string CurrencyFormatCode = "currencyformatcode";
+			public const string CurrencySymbol = "currencysymbol";
+			public const string DataValidationModeForExportToExcel = "datavalidationmodeforexporttoexcel";
+			public const string DateFormatCode = "dateformatcode";
+			public const string DateFormatString = "dateformatstring";
+			public const string DateSeparator = "dateseparator";
+			public const string DecimalSymbol = "decimalsymbol";
+			public const string DefaultCalendarView = "defaultcalendarview";
+			public const string DefaultCountryCode = "defaultcountrycode";
+			public const string DefaultDashboardId = "defaultdashboardid";
+			public const string DefaultSearchExperience = "defaultsearchexperience";
+			public const string EmailPassword = "emailpassword";
+			public const string EmailUsername = "emailusername";
+			public const string FormMode = "entityformmode";
+			public const string FullNameConventionCode = "fullnameconventioncode";
+			public const string GetStartedPaneContentEnabled = "getstartedpanecontentenabled";
+			public const string HelpLanguageId = "helplanguageid";
+			public const string HomepageArea = "homepagearea";
+			public const string HomepageLayout = "homepagelayout";
+			public const string HomepageSubarea = "homepagesubarea";
+			public const string IgnoreUnsolicitedEmail = "ignoreunsolicitedemail";
+			public const string IncomingEmailFilteringMethod = "incomingemailfilteringmethod";
+			public const string ShowalertforAppsfor365 = "isappsforcrmalertdismissed";
+			public const string IsAutoDataCaptureEnabled = "isautodatacaptureenabled";
+			public const string EnableDefaultCountryCode = "isdefaultcountrycodecheckenabled";
+			public const string IsDuplicateDetectionEnabledWhenGoingOnline = "isduplicatedetectionenabledwhengoingonline";
+			public const string EnableDefaultGuidedHelp = "isguidedhelpenabled";
+			public const string Resourcebookingsynchronizationenabled = "isresourcebookingexchangesyncenabled";
+			public const string IsSendAsAllowed = "issendasallowed";
+			public const string LastAlertsViewedTime = "lastalertsviewedtime";
+			public const string LocaleId = "localeid";
+			public const string LongDateFormatCode = "longdateformatcode";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedByDelegate = "modifiedonbehalfby";
+			public const string NegativeCurrencyFormatCode = "negativecurrencyformatcode";
+			public const string NegativeFormatCode = "negativeformatcode";
+			public const string NextTrackingNumber = "nexttrackingnumber";
+			public const string NumberGroupFormat = "numbergroupformat";
+			public const string NumberSeparator = "numberseparator";
+			public const string OfflineSyncInterval = "offlinesyncinterval";
+			public const string OutlookSyncInterval = "outlooksyncinterval";
+			public const string PagingLimit = "paginglimit";
+			public const string PersonalizationSettings = "personalizationsettings";
+			public const string PMDesignator = "pmdesignator";
+			public const string PricingDecimalPrecision = "pricingdecimalprecision";
+			public const string ReportScriptErrors = "reportscripterrors";
+			public const string Userresourcebookingsynchronizationversion = "resourcebookingexchangesyncversion";
+			public const string ShowWeekNumber = "showweeknumber";
+			public const string SplitViewState = "splitviewstate";
+			public const string SyncContactCompany = "synccontactcompany";
+			public const string SystemUserIdId = "systemuserid";
+			public const string TimeFormatCode = "timeformatcode";
+			public const string TimeFormatString = "timeformatstring";
+			public const string TimeSeparator = "timeseparator";
+			public const string TimeZoneBias = "timezonebias";
+			public const string TimeZoneCode = "timezonecode";
+			public const string TimeZoneDaylightBias = "timezonedaylightbias";
+			public const string TimeZoneDaylightDay = "timezonedaylightday";
+			public const string TimeZoneDaylightDayOfWeek = "timezonedaylightdayofweek";
+			public const string TimeZoneDaylightHour = "timezonedaylighthour";
+			public const string TimeZoneDaylightMinute = "timezonedaylightminute";
+			public const string TimeZoneDaylightMonth = "timezonedaylightmonth";
+			public const string TimeZoneDaylightSecond = "timezonedaylightsecond";
+			public const string TimeZoneDaylightYear = "timezonedaylightyear";
+			public const string TimeZoneStandardBias = "timezonestandardbias";
+			public const string TimeZoneStandardDay = "timezonestandardday";
+			public const string TimeZoneStandardDayOfWeek = "timezonestandarddayofweek";
+			public const string TimeZoneStandardHour = "timezonestandardhour";
+			public const string TimeZoneStandardMinute = "timezonestandardminute";
+			public const string TimeZoneStandardMonth = "timezonestandardmonth";
+			public const string TimeZoneStandardSecond = "timezonestandardsecond";
+			public const string TimeZoneStandardYear = "timezonestandardyear";
+			public const string TrackingTokenId = "trackingtokenid";
+			public const string Currency = "transactioncurrencyid";
+			public const string UILanguageId = "uilanguageid";
+			public const string UseCrmFormForAppointment = "usecrmformforappointment";
+			public const string UseCrmFormForContact = "usecrmformforcontact";
+			public const string UseCrmFormForEmail = "usecrmformforemail";
+			public const string UseCrmFormForTask = "usecrmformfortask";
+			public const string UseImageStrips = "useimagestrips";
+			public const string UserProfile = "userprofile";
+			public const string VersionNumber = "versionnumber";
+			public const string VisualizationPaneLayout = "visualizationpanelayout";
+			public const string WorkdayStartTime = "workdaystarttime";
+			public const string WorkdayStopTime = "workdaystoptime";
+
+			#endregion
+
+			#region Schema names
+
+			public static class Schema
+			{
+				public const string AddressBookSyncInterval = "AddressBookSyncInterval";
+				public const string AdvancedFindStartupMode = "AdvancedFindStartupMode";
+				public const string AllowEmailCredentials = "AllowEmailCredentials";
+				public const string AMDesignator = "AMDesignator";
+				public const string AutoCreateContactOnPromote = "AutoCreateContactOnPromote";
+				public const string BusinessUnitId = "BusinessUnitId";
+				public const string CalendarType = "CalendarType";
+				public const string CreatedBy = "CreatedBy";
+				public const string CreatedOn = "CreatedOn";
+				public const string CreatedByDelegate = "CreatedOnBehalfBy";
+				public const string CurrencyDecimalPrecision = "CurrencyDecimalPrecision";
+				public const string CurrencyFormatCode = "CurrencyFormatCode";
+				public const string CurrencySymbol = "CurrencySymbol";
+				public const string DataValidationModeForExportToExcel = "DataValidationModeForExportToExcel";
+				public const string DateFormatCode = "DateFormatCode";
+				public const string DateFormatString = "DateFormatString";
+				public const string DateSeparator = "DateSeparator";
+				public const string DecimalSymbol = "DecimalSymbol";
+				public const string DefaultCalendarView = "DefaultCalendarView";
+				public const string DefaultCountryCode = "DefaultCountryCode";
+				public const string DefaultDashboardId = "DefaultDashboardId";
+				public const string DefaultSearchExperience = "DefaultSearchExperience";
+				public const string EmailPassword = "EmailPassword";
+				public const string EmailUsername = "EmailUsername";
+				public const string FormMode = "EntityFormMode";
+				public const string FullNameConventionCode = "FullNameConventionCode";
+				public const string GetStartedPaneContentEnabled = "GetStartedPaneContentEnabled";
+				public const string HelpLanguageId = "HelpLanguageId";
+				public const string HomepageArea = "HomepageArea";
+				public const string HomepageLayout = "HomepageLayout";
+				public const string HomepageSubarea = "HomepageSubarea";
+				public const string IgnoreUnsolicitedEmail = "IgnoreUnsolicitedEmail";
+				public const string IncomingEmailFilteringMethod = "IncomingEmailFilteringMethod";
+				public const string ShowalertforAppsfor365 = "IsAppsForCrmAlertDismissed";
+				public const string IsAutoDataCaptureEnabled = "IsAutoDataCaptureEnabled";
+				public const string EnableDefaultCountryCode = "IsDefaultCountryCodeCheckEnabled";
+				public const string IsDuplicateDetectionEnabledWhenGoingOnline = "IsDuplicateDetectionEnabledWhenGoingOnline";
+				public const string EnableDefaultGuidedHelp = "IsGuidedHelpEnabled";
+				public const string Resourcebookingsynchronizationenabled = "IsResourceBookingExchangeSyncEnabled";
+				public const string IsSendAsAllowed = "IsSendAsAllowed";
+				public const string LastAlertsViewedTime = "LastAlertsViewedTime";
+				public const string LocaleId = "LocaleId";
+				public const string LongDateFormatCode = "LongDateFormatCode";
+				public const string ModifiedBy = "ModifiedBy";
+				public const string ModifiedOn = "ModifiedOn";
+				public const string ModifiedByDelegate = "ModifiedOnBehalfBy";
+				public const string NegativeCurrencyFormatCode = "NegativeCurrencyFormatCode";
+				public const string NegativeFormatCode = "NegativeFormatCode";
+				public const string NextTrackingNumber = "NextTrackingNumber";
+				public const string NumberGroupFormat = "NumberGroupFormat";
+				public const string NumberSeparator = "NumberSeparator";
+				public const string OfflineSyncInterval = "OfflineSyncInterval";
+				public const string OutlookSyncInterval = "OutlookSyncInterval";
+				public const string PagingLimit = "PagingLimit";
+				public const string PersonalizationSettings = "PersonalizationSettings";
+				public const string PMDesignator = "PMDesignator";
+				public const string PricingDecimalPrecision = "PricingDecimalPrecision";
+				public const string ReportScriptErrors = "ReportScriptErrors";
+				public const string Userresourcebookingsynchronizationversion = "ResourceBookingExchangeSyncVersion";
+				public const string ShowWeekNumber = "ShowWeekNumber";
+				public const string SplitViewState = "SplitViewState";
+				public const string SyncContactCompany = "SyncContactCompany";
+				public const string SystemUserIdId = "SystemUserId";
+				public const string TimeFormatCode = "TimeFormatCode";
+				public const string TimeFormatString = "TimeFormatString";
+				public const string TimeSeparator = "TimeSeparator";
+				public const string TimeZoneBias = "TimeZoneBias";
+				public const string TimeZoneCode = "TimeZoneCode";
+				public const string TimeZoneDaylightBias = "TimeZoneDaylightBias";
+				public const string TimeZoneDaylightDay = "TimeZoneDaylightDay";
+				public const string TimeZoneDaylightDayOfWeek = "TimeZoneDaylightDayOfWeek";
+				public const string TimeZoneDaylightHour = "TimeZoneDaylightHour";
+				public const string TimeZoneDaylightMinute = "TimeZoneDaylightMinute";
+				public const string TimeZoneDaylightMonth = "TimeZoneDaylightMonth";
+				public const string TimeZoneDaylightSecond = "TimeZoneDaylightSecond";
+				public const string TimeZoneDaylightYear = "TimeZoneDaylightYear";
+				public const string TimeZoneStandardBias = "TimeZoneStandardBias";
+				public const string TimeZoneStandardDay = "TimeZoneStandardDay";
+				public const string TimeZoneStandardDayOfWeek = "TimeZoneStandardDayOfWeek";
+				public const string TimeZoneStandardHour = "TimeZoneStandardHour";
+				public const string TimeZoneStandardMinute = "TimeZoneStandardMinute";
+				public const string TimeZoneStandardMonth = "TimeZoneStandardMonth";
+				public const string TimeZoneStandardSecond = "TimeZoneStandardSecond";
+				public const string TimeZoneStandardYear = "TimeZoneStandardYear";
+				public const string TrackingTokenId = "TrackingTokenId";
+				public const string Currency = "TransactionCurrencyId";
+				public const string UILanguageId = "UILanguageId";
+				public const string UseCrmFormForAppointment = "UseCrmFormForAppointment";
+				public const string UseCrmFormForContact = "UseCrmFormForContact";
+				public const string UseCrmFormForEmail = "UseCrmFormForEmail";
+				public const string UseCrmFormForTask = "UseCrmFormForTask";
+				public const string UseImageStrips = "UseImageStrips";
+				public const string UserProfile = "UserProfile";
+				public const string VersionNumber = "VersionNumber";
+				public const string VisualizationPaneLayout = "VisualizationPaneLayout";
+				public const string WorkdayStartTime = "WorkdayStartTime";
+				public const string WorkdayStopTime = "WorkdayStopTime";
+			}
+
+			#endregion
+
+			#region Labels
+
+			public static class Labels
+			{
+				public static class AddressBookSyncInterval
+				{
+				}
+
+				public static class AdvancedFindStartupMode
+				{
+				}
+
+				public static class AllowEmailCredentials
+				{
+				}
+
+				public static class AMDesignator
+				{
+				}
+
+				public static class AutoCreateContactOnPromote
+				{
+				}
+
+				public static class BusinessUnitId
+				{
+				}
+
+				public static class CalendarType
+				{
+				}
+
+				public static class CreatedBy
+				{
+				}
+
+				public static class CreatedOn
+				{
+				}
+
+				public static class CreatedByDelegate
+				{
+					public const string _1033 = "Created By (Delegate)";
+				}
+
+				public static class CurrencyDecimalPrecision
+				{
+				}
+
+				public static class CurrencyFormatCode
+				{
+				}
+
+				public static class CurrencySymbol
+				{
+				}
+
+				public static class DataValidationModeForExportToExcel
+				{
+					public const string _1033 = "Data Validation Mode For Export To Excel";
+				}
+
+				public static class DateFormatCode
+				{
+				}
+
+				public static class DateFormatString
+				{
+				}
+
+				public static class DateSeparator
+				{
+				}
+
+				public static class DecimalSymbol
+				{
+				}
+
+				public static class DefaultCalendarView
+				{
+				}
+
+				public static class DefaultCountryCode
+				{
+					public const string _1033 = "Default Country Code";
+				}
+
+				public static class DefaultDashboardId
+				{
+				}
+
+				public static class DefaultSearchExperience
+				{
+					public const string _1033 = "Default Search Experience";
+				}
+
+				public static class EmailPassword
+				{
+				}
+
+				public static class EmailUsername
+				{
+				}
+
+				public static class FormMode
+				{
+					public const string _1033 = "Form Mode";
+				}
+
+				public static class FullNameConventionCode
+				{
+				}
+
+				public static class GetStartedPaneContentEnabled
+				{
+				}
+
+				public static class HelpLanguageId
+				{
+				}
+
+				public static class HomepageArea
+				{
+				}
+
+				public static class HomepageLayout
+				{
+				}
+
+				public static class HomepageSubarea
+				{
+				}
+
+				public static class IgnoreUnsolicitedEmail
+				{
+				}
+
+				public static class IncomingEmailFilteringMethod
+				{
+					public const string _1033 = "Incoming Email Filtering Method";
+				}
+
+				public static class ShowalertforAppsfor365
+				{
+					public const string _1033 = "Show alert for Apps for 365.";
+				}
+
+				public static class IsAutoDataCaptureEnabled
+				{
+				}
+
+				public static class EnableDefaultCountryCode
+				{
+					public const string _1033 = "Enable Default Country Code";
+				}
+
+				public static class IsDuplicateDetectionEnabledWhenGoingOnline
+				{
+				}
+
+				public static class EnableDefaultGuidedHelp
+				{
+					public const string _1033 = "Enable Default Guided Help";
+				}
+
+				public static class Resourcebookingsynchronizationenabled
+				{
+					public const string _1033 = "Resource booking synchronization enabled";
+				}
+
+				public static class IsSendAsAllowed
+				{
+				}
+
+				public static class LastAlertsViewedTime
+				{
+				}
+
+				public static class LocaleId
+				{
+				}
+
+				public static class LongDateFormatCode
+				{
+				}
+
+				public static class ModifiedBy
+				{
+				}
+
+				public static class ModifiedOn
+				{
+				}
+
+				public static class ModifiedByDelegate
+				{
+					public const string _1033 = "Modified By (Delegate)";
+				}
+
+				public static class NegativeCurrencyFormatCode
+				{
+				}
+
+				public static class NegativeFormatCode
+				{
+				}
+
+				public static class NextTrackingNumber
+				{
+				}
+
+				public static class NumberGroupFormat
+				{
+				}
+
+				public static class NumberSeparator
+				{
+				}
+
+				public static class OfflineSyncInterval
+				{
+				}
+
+				public static class OutlookSyncInterval
+				{
+				}
+
+				public static class PagingLimit
+				{
+				}
+
+				public static class PersonalizationSettings
+				{
+				}
+
+				public static class PMDesignator
+				{
+				}
+
+				public static class PricingDecimalPrecision
+				{
+				}
+
+				public static class ReportScriptErrors
+				{
+					public const string _1033 = "Report Script Errors";
+				}
+
+				public static class Userresourcebookingsynchronizationversion
+				{
+					public const string _1033 = "User resource booking synchronization version";
+				}
+
+				public static class ShowWeekNumber
+				{
+				}
+
+				public static class SplitViewState
+				{
+				}
+
+				public static class SyncContactCompany
+				{
+				}
+
+				public static class SystemUserIdId
+				{
+				}
+
+				public static class TimeFormatCode
+				{
+				}
+
+				public static class TimeFormatString
+				{
+				}
+
+				public static class TimeSeparator
+				{
+				}
+
+				public static class TimeZoneBias
+				{
+				}
+
+				public static class TimeZoneCode
+				{
+				}
+
+				public static class TimeZoneDaylightBias
+				{
+				}
+
+				public static class TimeZoneDaylightDay
+				{
+				}
+
+				public static class TimeZoneDaylightDayOfWeek
+				{
+				}
+
+				public static class TimeZoneDaylightHour
+				{
+				}
+
+				public static class TimeZoneDaylightMinute
+				{
+				}
+
+				public static class TimeZoneDaylightMonth
+				{
+				}
+
+				public static class TimeZoneDaylightSecond
+				{
+				}
+
+				public static class TimeZoneDaylightYear
+				{
+				}
+
+				public static class TimeZoneStandardBias
+				{
+				}
+
+				public static class TimeZoneStandardDay
+				{
+				}
+
+				public static class TimeZoneStandardDayOfWeek
+				{
+				}
+
+				public static class TimeZoneStandardHour
+				{
+				}
+
+				public static class TimeZoneStandardMinute
+				{
+				}
+
+				public static class TimeZoneStandardMonth
+				{
+				}
+
+				public static class TimeZoneStandardSecond
+				{
+				}
+
+				public static class TimeZoneStandardYear
+				{
+				}
+
+				public static class TrackingTokenId
+				{
+				}
+
+				public static class Currency
+				{
+					public const string _1033 = "Currency";
+				}
+
+				public static class UILanguageId
+				{
+				}
+
+				public static class UseCrmFormForAppointment
+				{
+				}
+
+				public static class UseCrmFormForContact
+				{
+				}
+
+				public static class UseCrmFormForEmail
+				{
+				}
+
+				public static class UseCrmFormForTask
+				{
+				}
+
+				public static class UseImageStrips
+				{
+				}
+
+				public static class UserProfile
+				{
+				}
+
+				public static class VersionNumber
+				{
+				}
+
+				public static class VisualizationPaneLayout
+				{
+					public const string _1033 = "Visualization Pane Layout.";
+				}
+
+				public static class WorkdayStartTime
+				{
+				}
+
+				public static class WorkdayStopTime
+				{
+				}
+
+			}
+
+			#endregion
+		}
+
+		#endregion
+
+		#region Relations
+
+		public static class Relations
+		{
+			public static class OneToN
+			{
+			}
+			
+			public static class NToOne
+			{
+				public const string UserAsCreatedByDelegate = "lk_usersettings_createdonbehalfby";
+				public const string UserAsModifiedByDelegate = "lk_usersettings_modifiedonbehalfby";
+				public const string UserAsCreatedBy = "lk_usersettingsbase_createdby";
+				public const string UserAsModifiedBy = "lk_usersettingsbase_modifiedby";
+				public const string UserAsSystemUserId = "user_settings";
+
+				public static class Lookups
+				{
+					public const string UserAsCreatedByDelegate = "createdonbehalfby";
+					public const string UserAsModifiedByDelegate = "modifiedonbehalfby";
+					public const string UserAsCreatedBy = "createdby";
+					public const string UserAsModifiedBy = "modifiedby";
+					public const string UserAsSystemUserId = "systemuserid";
+				}
+			}
+
+			public static class NToN
+			{
+
+			}
+		}
+
+		#endregion
 
 		#endregion
 	}
