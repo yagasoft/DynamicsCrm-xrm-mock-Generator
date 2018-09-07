@@ -8,17 +8,30 @@
 An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
 
 ## Prerequisites
-The following packages must be installed before using the generated model.
+
+### Offline
+
+The following packages must be installed before using the generated model:
+
++ `@types/xrm`
++ `xrm-mock`
+
+For convenience, run the following command:
+```bash
+npm i -D @types/xrm xrm-mock
+```
+
+### Online
+
+The following packages must be installed before enabling online communication:
 
 + `@types/jquery`
 + `@types/jsdom`
 + `@types/sinon`
-+ `@types/xrm`
 + `jquery`
 + `jsdom`
 + `node-dcrm-service`
 + `sinon`
-+ `xrm-mock`
 
 For convenience, run the following command:
 ```bash
