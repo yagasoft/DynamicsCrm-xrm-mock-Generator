@@ -147,6 +147,7 @@
     <Compile Include="Model\Generator\ModelGeneratorParams.cs" />
     <Compile Include="Model\PluginSettings.cs" />
     <Compile Include="Model\Settings.cs" />
+    <Compile Include="Model\T4TemplateModel.cs" />
     <Compile Include="Model\ViewModel\EntityNameViewModel.cs" />
     <Compile Include="Model\ViewModel\SystemFormViewModel.cs" />
     <Compile Include="Model\ViewModel\UserViewModel.cs" />
@@ -165,7 +166,9 @@
     <None Include="buildscripts\publish-nuget-packages.ps1" />
     <None Include="CrmSchema.dat" />
     <None Include="packages.config" />
-    <None Include="XrmMockGeneratorPlugin.nuspec" />
+    <None Include="XrmMockGeneratorPlugin.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="XrmToolBox.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Yagasoft.XrmMockGenerator.Model
 {
-    public class Settings
+    public class T4TemplateModel
     {
-		public Guid SelectedUserId;
-		public bool? IsGenerateOnlineCode;
-		public List<Guid> SelectedForms;
-	}
+	    public bool? IsGenerateOnlineCode;
+	    public List<XrmModel> Models;
+    }
 }

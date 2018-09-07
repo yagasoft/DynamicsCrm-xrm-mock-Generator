@@ -4,7 +4,7 @@
   <metadata>
     <id>xrm-mock-Generator</id>
     <title>xrm-mock Generator</title>
-    <version>1.2.2.3</version>
+    <version>1.3.1.2</version>
     <authors>Ahmed el-Sawalhy</authors>
     <owners>Ahmed el-Sawalhy</owners>
     <projectUrl>https://github.com/yagasoft/DynamicsCrm-xrm-mock-Generator</projectUrl>
@@ -15,6 +15,9 @@
     <copyright>Copyright 2018 Yagasoft</copyright>
     <tags>XrmToolBox plugin,tool,CRM,Dynamics,365,yagasoft,xrm,mock,test,testing,javascript,form</tags>
     <releaseNotes>
+      * 1.3.1.2
+      Added: option to skip generate online communication code
+      Fixed: Early-bound conflict with other plugins
       * 1.2.2.3
       Added: boolean control support
       Changed: plugin colours

@@ -45,6 +45,7 @@ namespace Yagasoft.XrmMockGenerator.Control
 		private ToolStripButton buttonGenerate;
 		private TextBox textBoxFilterEntities;
 		private Button buttonClearFilter;
+		private CheckBox checkBoxGenOnlineCode;
 		private ToolStrip toolBar;
 
 		#region Base tool implementation
@@ -84,265 +85,277 @@ namespace Yagasoft.XrmMockGenerator.Control
 
 		private void InitializeComponent()
 		{
-			ComponentResourceManager resources = new ComponentResourceManager(typeof(PluginControl));
-			toolBar = new ToolStrip();
-			buttonCloseTool = new ToolStripButton();
-			toolStripSeparator1 = new ToolStripSeparator();
-			buttonFetchData = new ToolStripButton();
-			buttonGenerate = new ToolStripButton();
-			toolStripSeparator2 = new ToolStripSeparator();
-			buttonLoadSettings = new ToolStripButton();
-			buttonSaveSettings = new ToolStripButton();
-			comboBoxUsers = new ComboBox();
-			label1 = new Label();
-			label2 = new Label();
-			listBoxEntities = new ListBox();
-			listBoxForms = new ListBox();
-			label3 = new Label();
-			label4 = new Label();
-			buttonAdd = new Button();
-			buttonRemove = new Button();
-			dataGridSelectedForms = new DataGridView();
-			label5 = new Label();
-			textBoxFilterEntities = new TextBox();
-			buttonClearFilter = new Button();
-			toolBar.SuspendLayout();
-			((ISupportInitialize)(dataGridSelectedForms)).BeginInit();
-			SuspendLayout();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PluginControl));
+			this.toolBar = new System.Windows.Forms.ToolStrip();
+			this.buttonCloseTool = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.buttonFetchData = new System.Windows.Forms.ToolStripButton();
+			this.buttonGenerate = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.buttonLoadSettings = new System.Windows.Forms.ToolStripButton();
+			this.buttonSaveSettings = new System.Windows.Forms.ToolStripButton();
+			this.comboBoxUsers = new System.Windows.Forms.ComboBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.listBoxEntities = new System.Windows.Forms.ListBox();
+			this.listBoxForms = new System.Windows.Forms.ListBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.buttonAdd = new System.Windows.Forms.Button();
+			this.buttonRemove = new System.Windows.Forms.Button();
+			this.dataGridSelectedForms = new System.Windows.Forms.DataGridView();
+			this.label5 = new System.Windows.Forms.Label();
+			this.textBoxFilterEntities = new System.Windows.Forms.TextBox();
+			this.buttonClearFilter = new System.Windows.Forms.Button();
+			this.checkBoxGenOnlineCode = new System.Windows.Forms.CheckBox();
+			this.toolBar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridSelectedForms)).BeginInit();
+			this.SuspendLayout();
 			// 
 			// toolBar
 			// 
-			toolBar.Items.AddRange(new ToolStripItem[]
-								   {
-									   buttonCloseTool,
-									   toolStripSeparator1,
-									   buttonFetchData,
-									   buttonGenerate,
-									   toolStripSeparator2,
-									   buttonLoadSettings,
-									   buttonSaveSettings
-								   });
-			toolBar.Location = new Point(0, 0);
-			toolBar.Name = "toolBar";
-			toolBar.Size = new Size(943, 25);
-			toolBar.TabIndex = 0;
-			toolBar.Text = "toolBar";
+			this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buttonCloseTool,
+            this.toolStripSeparator1,
+            this.buttonFetchData,
+            this.buttonGenerate,
+            this.toolStripSeparator2,
+            this.buttonLoadSettings,
+            this.buttonSaveSettings});
+			this.toolBar.Location = new System.Drawing.Point(0, 0);
+			this.toolBar.Name = "toolBar";
+			this.toolBar.Size = new System.Drawing.Size(943, 25);
+			this.toolBar.TabIndex = 0;
+			this.toolBar.Text = "toolBar";
 			// 
 			// buttonCloseTool
 			// 
-			buttonCloseTool.Image = ((Image)(resources.GetObject("buttonCloseTool.Image")));
-			buttonCloseTool.ImageTransparentColor = Color.Magenta;
-			buttonCloseTool.Name = "buttonCloseTool";
-			buttonCloseTool.Size = new Size(82, 22);
-			buttonCloseTool.Text = "Close Tool";
-			buttonCloseTool.Click += new EventHandler(BtnCloseClick);
+			this.buttonCloseTool.Image = ((System.Drawing.Image)(resources.GetObject("buttonCloseTool.Image")));
+			this.buttonCloseTool.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonCloseTool.Name = "buttonCloseTool";
+			this.buttonCloseTool.Size = new System.Drawing.Size(82, 22);
+			this.buttonCloseTool.Text = "Close Tool";
+			this.buttonCloseTool.Click += new System.EventHandler(this.BtnCloseClick);
 			// 
 			// toolStripSeparator1
 			// 
-			toolStripSeparator1.Name = "toolStripSeparator1";
-			toolStripSeparator1.Size = new Size(6, 25);
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
 			// 
 			// buttonFetchData
 			// 
-			buttonFetchData.Image = ((Image)(resources.GetObject("buttonFetchData.Image")));
-			buttonFetchData.ImageTransparentColor = Color.Magenta;
-			buttonFetchData.Name = "buttonFetchData";
-			buttonFetchData.Size = new Size(83, 22);
-			buttonFetchData.Text = "Fetch Data";
-			buttonFetchData.Click += new EventHandler(buttonFetchData_Click);
+			this.buttonFetchData.Image = ((System.Drawing.Image)(resources.GetObject("buttonFetchData.Image")));
+			this.buttonFetchData.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonFetchData.Name = "buttonFetchData";
+			this.buttonFetchData.Size = new System.Drawing.Size(83, 22);
+			this.buttonFetchData.Text = "Fetch Data";
+			this.buttonFetchData.Click += new System.EventHandler(this.buttonFetchData_Click);
 			// 
 			// buttonGenerate
 			// 
-			buttonGenerate.Image = ((Image)(resources.GetObject("buttonGenerate.Image")));
-			buttonGenerate.ImageTransparentColor = Color.Magenta;
-			buttonGenerate.Name = "buttonGenerate";
-			buttonGenerate.Size = new Size(74, 22);
-			buttonGenerate.Text = "Generate";
-			buttonGenerate.Click += new EventHandler(buttonGenerate_Click);
+			this.buttonGenerate.Image = ((System.Drawing.Image)(resources.GetObject("buttonGenerate.Image")));
+			this.buttonGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonGenerate.Name = "buttonGenerate";
+			this.buttonGenerate.Size = new System.Drawing.Size(74, 22);
+			this.buttonGenerate.Text = "Generate";
+			this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
 			// 
 			// toolStripSeparator2
 			// 
-			toolStripSeparator2.Name = "toolStripSeparator2";
-			toolStripSeparator2.Size = new Size(6, 25);
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
 			// 
 			// buttonLoadSettings
 			// 
-			buttonLoadSettings.Image = ((Image)(resources.GetObject("buttonLoadSettings.Image")));
-			buttonLoadSettings.ImageTransparentColor = Color.Magenta;
-			buttonLoadSettings.Name = "buttonLoadSettings";
-			buttonLoadSettings.Size = new Size(98, 22);
-			buttonLoadSettings.Text = "Load Settings";
-			buttonLoadSettings.Click += new EventHandler(buttonLoadSettings_Click);
+			this.buttonLoadSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonLoadSettings.Image")));
+			this.buttonLoadSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonLoadSettings.Name = "buttonLoadSettings";
+			this.buttonLoadSettings.Size = new System.Drawing.Size(98, 22);
+			this.buttonLoadSettings.Text = "Load Settings";
+			this.buttonLoadSettings.Click += new System.EventHandler(this.buttonLoadSettings_Click);
 			// 
 			// buttonSaveSettings
 			// 
-			buttonSaveSettings.Image = ((Image)(resources.GetObject("buttonSaveSettings.Image")));
-			buttonSaveSettings.ImageTransparentColor = Color.Magenta;
-			buttonSaveSettings.Name = "buttonSaveSettings";
-			buttonSaveSettings.Size = new Size(96, 22);
-			buttonSaveSettings.Text = "Save Settings";
-			buttonSaveSettings.Click += new EventHandler(buttonSaveSettings_Click);
+			this.buttonSaveSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSaveSettings.Image")));
+			this.buttonSaveSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonSaveSettings.Name = "buttonSaveSettings";
+			this.buttonSaveSettings.Size = new System.Drawing.Size(96, 22);
+			this.buttonSaveSettings.Text = "Save Settings";
+			this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
 			// 
 			// comboBoxUsers
 			// 
-			comboBoxUsers.FormattingEnabled = true;
-			comboBoxUsers.Location = new Point(81, 26);
-			comboBoxUsers.Name = "comboBoxUsers";
-			comboBoxUsers.Size = new Size(297, 21);
-			comboBoxUsers.TabIndex = 1;
+			this.comboBoxUsers.FormattingEnabled = true;
+			this.comboBoxUsers.Location = new System.Drawing.Point(81, 26);
+			this.comboBoxUsers.Name = "comboBoxUsers";
+			this.comboBoxUsers.Size = new System.Drawing.Size(327, 21);
+			this.comboBoxUsers.TabIndex = 1;
 			// 
 			// label1
 			// 
-			label1.AutoSize = true;
-			label1.Location = new Point(4, 29);
-			label1.Name = "label1";
-			label1.Size = new Size(71, 13);
-			label1.TabIndex = 2;
-			label1.Text = "Select a User";
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(4, 29);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(71, 13);
+			this.label1.TabIndex = 2;
+			this.label1.Text = "Select a User";
 			// 
 			// label2
 			// 
-			label2.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
-				| AnchorStyles.Right)));
-			label2.BorderStyle = BorderStyle.Fixed3D;
-			label2.Location = new Point(1, 50);
-			label2.Name = "label2";
-			label2.Size = new Size(942, 2);
-			label2.TabIndex = 3;
+			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label2.Location = new System.Drawing.Point(1, 50);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(942, 2);
+			this.label2.TabIndex = 3;
 			// 
 			// listBoxEntities
 			// 
-			listBoxEntities.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom)
-				| AnchorStyles.Left)));
-			listBoxEntities.FormattingEnabled = true;
-			listBoxEntities.Location = new Point(10, 98);
-			listBoxEntities.Name = "listBoxEntities";
-			listBoxEntities.Size = new Size(196, 368);
-			listBoxEntities.TabIndex = 4;
-			listBoxEntities.SelectedIndexChanged += new EventHandler(listBoxEntities_SelectedIndexChanged);
-			listBoxEntities.DoubleClick += new EventHandler(listBoxEntities_DoubleClick);
+			this.listBoxEntities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.listBoxEntities.FormattingEnabled = true;
+			this.listBoxEntities.Location = new System.Drawing.Point(10, 98);
+			this.listBoxEntities.Name = "listBoxEntities";
+			this.listBoxEntities.Size = new System.Drawing.Size(196, 368);
+			this.listBoxEntities.TabIndex = 4;
+			this.listBoxEntities.SelectedIndexChanged += new System.EventHandler(this.listBoxEntities_SelectedIndexChanged);
+			this.listBoxEntities.DoubleClick += new System.EventHandler(this.listBoxEntities_DoubleClick);
 			// 
 			// listBoxForms
 			// 
-			listBoxForms.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom)
-				| AnchorStyles.Left)));
-			listBoxForms.FormattingEnabled = true;
-			listBoxForms.Location = new Point(212, 72);
-			listBoxForms.Name = "listBoxForms";
-			listBoxForms.Size = new Size(196, 394);
-			listBoxForms.TabIndex = 5;
-			listBoxForms.SelectedIndexChanged += new EventHandler(listBoxForms_SelectedIndexChanged);
-			listBoxForms.DoubleClick += new EventHandler(listBoxForms_DoubleClick);
+			this.listBoxForms.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.listBoxForms.FormattingEnabled = true;
+			this.listBoxForms.Location = new System.Drawing.Point(212, 72);
+			this.listBoxForms.Name = "listBoxForms";
+			this.listBoxForms.Size = new System.Drawing.Size(196, 394);
+			this.listBoxForms.TabIndex = 5;
+			this.listBoxForms.SelectedIndexChanged += new System.EventHandler(this.listBoxForms_SelectedIndexChanged);
+			this.listBoxForms.DoubleClick += new System.EventHandler(this.listBoxForms_DoubleClick);
 			// 
 			// label3
 			// 
-			label3.AutoSize = true;
-			label3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-			label3.Location = new Point(7, 56);
-			label3.Name = "label3";
-			label3.Size = new Size(49, 13);
-			label3.TabIndex = 6;
-			label3.Text = "Entities";
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Location = new System.Drawing.Point(7, 56);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(49, 13);
+			this.label3.TabIndex = 6;
+			this.label3.Text = "Entities";
 			// 
 			// label4
 			// 
-			label4.AutoSize = true;
-			label4.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-			label4.Location = new Point(209, 56);
-			label4.Name = "label4";
-			label4.Size = new Size(40, 13);
-			label4.TabIndex = 7;
-			label4.Text = "Forms";
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(209, 56);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(40, 13);
+			this.label4.TabIndex = 7;
+			this.label4.Text = "Forms";
 			// 
 			// buttonAdd
 			// 
-			buttonAdd.Location = new Point(415, 170);
-			buttonAdd.Name = "buttonAdd";
-			buttonAdd.Size = new Size(35, 23);
-			buttonAdd.TabIndex = 8;
-			buttonAdd.Text = ">>";
-			buttonAdd.UseVisualStyleBackColor = true;
-			buttonAdd.Click += new EventHandler(buttonAdd_Click);
+			this.buttonAdd.Location = new System.Drawing.Point(415, 170);
+			this.buttonAdd.Name = "buttonAdd";
+			this.buttonAdd.Size = new System.Drawing.Size(35, 23);
+			this.buttonAdd.TabIndex = 8;
+			this.buttonAdd.Text = ">>";
+			this.buttonAdd.UseVisualStyleBackColor = true;
+			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
 			// 
 			// buttonRemove
 			// 
-			buttonRemove.Location = new Point(415, 200);
-			buttonRemove.Name = "buttonRemove";
-			buttonRemove.Size = new Size(35, 23);
-			buttonRemove.TabIndex = 9;
-			buttonRemove.Text = "<<";
-			buttonRemove.UseVisualStyleBackColor = true;
-			buttonRemove.Click += new EventHandler(buttonRemove_Click);
+			this.buttonRemove.Location = new System.Drawing.Point(415, 200);
+			this.buttonRemove.Name = "buttonRemove";
+			this.buttonRemove.Size = new System.Drawing.Size(35, 23);
+			this.buttonRemove.TabIndex = 9;
+			this.buttonRemove.Text = "<<";
+			this.buttonRemove.UseVisualStyleBackColor = true;
+			this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
 			// 
 			// dataGridSelectedForms
 			// 
-			dataGridSelectedForms.AllowUserToAddRows = false;
-			dataGridSelectedForms.AllowUserToDeleteRows = false;
-			dataGridSelectedForms.AllowUserToOrderColumns = true;
-			dataGridSelectedForms.AllowUserToResizeRows = false;
-			dataGridSelectedForms.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
-				| AnchorStyles.Left)
-				| AnchorStyles.Right)));
-			dataGridSelectedForms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-			dataGridSelectedForms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridSelectedForms.Location = new Point(456, 72);
-			dataGridSelectedForms.Name = "dataGridSelectedForms";
-			dataGridSelectedForms.ReadOnly = true;
-			dataGridSelectedForms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			dataGridSelectedForms.Size = new Size(484, 394);
-			dataGridSelectedForms.TabIndex = 10;
+			this.dataGridSelectedForms.AllowUserToAddRows = false;
+			this.dataGridSelectedForms.AllowUserToDeleteRows = false;
+			this.dataGridSelectedForms.AllowUserToOrderColumns = true;
+			this.dataGridSelectedForms.AllowUserToResizeRows = false;
+			this.dataGridSelectedForms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dataGridSelectedForms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+			this.dataGridSelectedForms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridSelectedForms.Location = new System.Drawing.Point(456, 72);
+			this.dataGridSelectedForms.Name = "dataGridSelectedForms";
+			this.dataGridSelectedForms.ReadOnly = true;
+			this.dataGridSelectedForms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridSelectedForms.Size = new System.Drawing.Size(484, 394);
+			this.dataGridSelectedForms.TabIndex = 10;
 			// 
 			// label5
 			// 
-			label5.AutoSize = true;
-			label5.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-			label5.Location = new Point(453, 56);
-			label5.Name = "label5";
-			label5.Size = new Size(94, 13);
-			label5.TabIndex = 11;
-			label5.Text = "Selected Forms";
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Location = new System.Drawing.Point(453, 56);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(94, 13);
+			this.label5.TabIndex = 11;
+			this.label5.Text = "Selected Forms";
 			// 
 			// textBoxFilterEntities
 			// 
-			textBoxFilterEntities.Location = new Point(10, 72);
-			textBoxFilterEntities.Name = "textBoxFilterEntities";
-			textBoxFilterEntities.Size = new Size(154, 20);
-			textBoxFilterEntities.TabIndex = 12;
-			textBoxFilterEntities.KeyUp += new KeyEventHandler(textBoxFilterEntities_KeyUp);
+			this.textBoxFilterEntities.Location = new System.Drawing.Point(10, 72);
+			this.textBoxFilterEntities.Name = "textBoxFilterEntities";
+			this.textBoxFilterEntities.Size = new System.Drawing.Size(154, 20);
+			this.textBoxFilterEntities.TabIndex = 12;
+			this.textBoxFilterEntities.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxFilterEntities_KeyUp);
 			// 
 			// buttonClearFilter
 			// 
-			buttonClearFilter.Location = new Point(166, 70);
-			buttonClearFilter.Name = "buttonClearFilter";
-			buttonClearFilter.Size = new Size(40, 23);
-			buttonClearFilter.TabIndex = 13;
-			buttonClearFilter.Text = "Clear";
-			buttonClearFilter.UseVisualStyleBackColor = true;
-			buttonClearFilter.Click += new EventHandler(buttonClearFilter_Click);
+			this.buttonClearFilter.Location = new System.Drawing.Point(166, 70);
+			this.buttonClearFilter.Name = "buttonClearFilter";
+			this.buttonClearFilter.Size = new System.Drawing.Size(40, 23);
+			this.buttonClearFilter.TabIndex = 13;
+			this.buttonClearFilter.Text = "Clear";
+			this.buttonClearFilter.UseVisualStyleBackColor = true;
+			this.buttonClearFilter.Click += new System.EventHandler(this.buttonClearFilter_Click);
+			// 
+			// checkBoxGenOnlineCode
+			// 
+			this.checkBoxGenOnlineCode.AutoSize = true;
+			this.checkBoxGenOnlineCode.Location = new System.Drawing.Point(456, 28);
+			this.checkBoxGenOnlineCode.Name = "checkBoxGenOnlineCode";
+			this.checkBoxGenOnlineCode.Size = new System.Drawing.Size(206, 17);
+			this.checkBoxGenOnlineCode.TabIndex = 14;
+			this.checkBoxGenOnlineCode.Text = "Generate Online Communication Code";
+			this.checkBoxGenOnlineCode.UseVisualStyleBackColor = true;
+			this.checkBoxGenOnlineCode.CheckedChanged += new System.EventHandler(this.checkBoxGenOnlineCode_CheckedChanged);
 			// 
 			// PluginControl
 			// 
-			Controls.Add(buttonClearFilter);
-			Controls.Add(textBoxFilterEntities);
-			Controls.Add(label5);
-			Controls.Add(dataGridSelectedForms);
-			Controls.Add(buttonRemove);
-			Controls.Add(buttonAdd);
-			Controls.Add(label4);
-			Controls.Add(label3);
-			Controls.Add(listBoxForms);
-			Controls.Add(listBoxEntities);
-			Controls.Add(label2);
-			Controls.Add(label1);
-			Controls.Add(comboBoxUsers);
-			Controls.Add(toolBar);
-			Name = "PluginControl";
-			Size = new Size(943, 477);
-			toolBar.ResumeLayout(false);
-			toolBar.PerformLayout();
-			((ISupportInitialize)(dataGridSelectedForms)).EndInit();
-			ResumeLayout(false);
-			PerformLayout();
+			this.Controls.Add(this.checkBoxGenOnlineCode);
+			this.Controls.Add(this.buttonClearFilter);
+			this.Controls.Add(this.textBoxFilterEntities);
+			this.Controls.Add(this.label5);
+			this.Controls.Add(this.dataGridSelectedForms);
+			this.Controls.Add(this.buttonRemove);
+			this.Controls.Add(this.buttonAdd);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.listBoxForms);
+			this.Controls.Add(this.listBoxEntities);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.comboBoxUsers);
+			this.Controls.Add(this.toolBar);
+			this.Name = "PluginControl";
+			this.Size = new System.Drawing.Size(943, 477);
+			this.toolBar.ResumeLayout(false);
+			this.toolBar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridSelectedForms)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
 		}
 
 		#endregion
@@ -449,8 +462,15 @@ namespace Yagasoft.XrmMockGenerator.Control
 										}));
 							}
 
+							var templateModel =
+								new T4TemplateModel
+								{
+									IsGenerateOnlineCode = ControlData.IsGenerateOnlineCode,
+									Models = models
+								};
+
 							w.ReportProgress(95, $"Generating TypeScript code ...");
-							var page = new XrmMockGeneratorTemplate(models);
+							var page = new XrmMockGeneratorTemplate(templateModel);
 							var pageContent = page.TransformText();
 
 							e.Result = pageContent;
@@ -510,7 +530,6 @@ namespace Yagasoft.XrmMockGenerator.Control
 					Title = "Save models ...",
 					OverwritePrompt = true,
 					Filter = "JSON files (*.json)|*.json",
-					
 				};
 
 			if (pluginSettings?.LatestPath.IsNotEmpty() == true)
@@ -530,6 +549,7 @@ namespace Yagasoft.XrmMockGenerator.Control
 				var settings =
 					new Settings
 					{
+						IsGenerateOnlineCode = ControlData.IsGenerateOnlineCode,
 						SelectedUserId = ((UserViewModel)comboBoxUsers.SelectedItem)?.Id ?? Guid.Empty,
 						SelectedForms = ControlData.SelectedForms.Select(f => f.Id.GetValueOrDefault()).ToList()
 					};
@@ -579,6 +599,7 @@ namespace Yagasoft.XrmMockGenerator.Control
 				using (var reader = new StreamReader(openDialogue.FileName))
 				{
 					var settings = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
+					checkBoxGenOnlineCode.Checked = settings.IsGenerateOnlineCode.GetValueOrDefault();
 					ControlData.SelectedForms = ControlData.Forms
 						.Where(f => settings.SelectedForms.Any(ff => f.Id == ff)).ToList();
 					RefreshDataGrid();
@@ -592,6 +613,11 @@ namespace Yagasoft.XrmMockGenerator.Control
 				pluginSettings.LatestPath = openDialogue.FileName;
 				SettingsManager.Instance.Save(typeof(XrmMockGeneratorPlugin), pluginSettings);
 			}
+		}
+
+		private void checkBoxGenOnlineCode_CheckedChanged(object sender, EventArgs e)
+		{
+			ControlData.IsGenerateOnlineCode = checkBoxGenOnlineCode.Checked;
 		}
 
 		#endregion

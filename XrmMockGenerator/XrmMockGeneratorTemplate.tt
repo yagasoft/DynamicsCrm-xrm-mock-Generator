@@ -9,6 +9,8 @@
 <#@ import namespace="Yagasoft.XrmMockGenerator.Model"#>
 <#@ import namespace="Yagasoft.XrmMockGenerator.Model.Control"#>
 import { UserSettingsMock, EntityMock, ContextMock, IContextComponents, ClientContextMock, IXrmGeneratorComponents, XrmMockGenerator, IEntityComponents, ItemCollectionMock, UiMock, FormSelectorMock, FormItemMock, ControlMock, OptionSetValueMock, IUiComponents, IOptionSetAttributeComponents, OptionSetAttributeMock, IDateAttributeComponents, INumberAttributeComponents, NumberAttributeMock, ILookupAttributeComponents, LookupAttributeMock, StringAttributeMock, IStringAttributeComponents, DateAttributeMock, IBooleanAttributeComponents, BooleanAttributeMock } from "xrm-mock";
+
+<# if(templateModel.IsGenerateOnlineCode == true) { #>
 import { CrmService, CrmConnectionConfig } from "node-dcrm-service";
 import * as sinon from "sinon";
 
@@ -18,6 +20,7 @@ const { window } = new JSDOM();
 const { document } = (new JSDOM('')).window;
 global["document"] = document;
 global["$"] = global["jQuery"] = require("jquery")(window);
+<# } #>
 
 
 /**
@@ -170,7 +173,9 @@ export namespace XrmModel
 		private formType: XrmEnum.FormType
 		private isBuilt: boolean;
 
+<# if(templateModel.IsGenerateOnlineCode == true) { #>
 		private crmService: CrmService
+<# } #>
     
 		constructor(private rawModel: TEntity, recordId: string = "00000000-0000-0000-0000-000000000000")
 		{
@@ -282,6 +287,7 @@ export namespace XrmModel
 			this.isBuilt = true;
 		}
 
+<# if(templateModel.IsGenerateOnlineCode == true) { #>
 		enableOnlineWebApi(config: CrmConnectionConfig): Promise<CrmService>
 		{
 			if (!this.isBuilt)
@@ -296,7 +302,8 @@ export namespace XrmModel
 
 			return this.crmService.initialise().then(e => this.crmService);
 		}
-    
+ <# } #>
+   
 		private buildAttributes(): void
 		{
 			for (const attribute of this.rawModel.crmAttributes)
@@ -489,6 +496,7 @@ export namespace XrmModel
 			return controls;
 		}
 
+<# if(templateModel.IsGenerateOnlineCode == true) { #>
 		private retrieveEntityWebApiName =
 			(logicalName: string): Promise<string> =>
 				this.crmService.get(`/api/data/v8.2/EntityDefinitions(LogicalName='${logicalName}')?$select=LogicalCollectionName`)
@@ -615,9 +623,9 @@ export namespace XrmModel
 			sinon.stub($, "post").callsFake((url_settings, success_data, dataType_success, success) =>
 				getPostMock(url_settings, success_data, dataType_success, success, "post"));
 		}
-	}
+<# } #>	}
 	<# 
-		foreach (var model in models)
+		foreach (var model in templateModel.Models)
 		{
 	#> 
 	type <#=CheckString(model.EntityName)#>_Forms =

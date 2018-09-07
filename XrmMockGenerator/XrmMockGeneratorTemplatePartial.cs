@@ -5,11 +5,11 @@ namespace Yagasoft.XrmMockGenerator
 {
     public partial class XrmMockGeneratorTemplate
     {
-		private List<XrmModel>  models;
+		private T4TemplateModel  templateModel;
 
-	    public XrmMockGeneratorTemplate(List<XrmModel> models)
+	    public XrmMockGeneratorTemplate(T4TemplateModel templateModel)
 	    {
-		    this.models = models;
+		    this.templateModel = templateModel;
 	    }
     }
 }

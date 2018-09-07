@@ -9,6 +9,7 @@ namespace Yagasoft.XrmMockGenerator.Control
 {
 	public static class ControlData
 	{
+		public static bool? IsGenerateOnlineCode { get; set; }
 		public static List<EntityNameViewModel> EntityNames = new List<EntityNameViewModel>();
 		public static List<SystemFormViewModel> Forms = new List<SystemFormViewModel>();
 		public static List<SystemFormViewModel> SelectedForms = new List<SystemFormViewModel>();
