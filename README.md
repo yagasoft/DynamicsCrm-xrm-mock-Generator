@@ -21,10 +21,6 @@ For convenience, run the following command:
 npm i -D @types/xrm@9.0.9 xrm-mock@3.4.10
 ```
 
-#### _Important note_
-
-This generator targets a version of xrm-mock that has _not_ been released yet. Replace `node_modules/xrm-mock` folder in your project with the contents of this archive: [link](http://blog.yagasoft.com/xrm-mock)
-
 ### Online
 
 The following packages must be installed before enabling online communication:
