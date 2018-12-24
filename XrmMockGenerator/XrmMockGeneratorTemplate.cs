@@ -94,10 +94,10 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
                     "\t\tObject.assign<Context, Context>(this, obj);\r\n\t\t}\r\n\t}\r\n\r\n\texport class ContextP" +
                     "arams\r\n\t{\r\n\t\tclient: Xrm.Client;\r\n\t\tclientState: Xrm.ClientState;\r\n\t\tuserSetting" +
                     "s: UserSettingsMock;\r\n\t}\r\n\r\n\texport class ModelBuilder<TEntity extends CrmEntity" +
-                    "Model<TEntity[\"activeForm\"]>>\r\n\t{\r\n\t\tprivate recordId: string;\r\n\t\tprivate entity" +
-                    ": EntityMock;\r\n\t\tprivate context: ContextMock;\r\n\t\tprivate ui: UiMock;\r\n\t\tprivate" +
-                    " attributes: Xrm.Attributes.Attribute[] = [];\r\n\t\tprivate form: Form;\r\n\r\n\t\tprivat" +
-                    "e formType: XrmEnum.FormType\r\n\t\tprivate isBuilt: boolean;\r\n\r\n");
+                    "Model<string>>\r\n\t{\r\n\t\tprivate recordId: string;\r\n\t\tprivate entity: EntityMock;\r\n" +
+                    "\t\tprivate context: ContextMock;\r\n\t\tprivate ui: UiMock;\r\n\t\tprivate attributes: Xr" +
+                    "m.Attributes.Attribute[] = [];\r\n\t\tprivate form: Form;\r\n\r\n\t\tprivate formType: Xrm" +
+                    "Enum.FormType\r\n\t\tprivate isBuilt: boolean;\r\n\r\n");
             
             #line 176 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  if(templateModel.IsGenerateOnlineCode == true) { 
@@ -267,82 +267,86 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line default
             #line hidden
             this.Write("\t\tprivate retrieveEntityWebApiName =\r\n\t\t\t(logicalName: string): Promise<string> =" +
-                    ">\r\n\t\t\t\tthis.crmService.get(`/api/data/v8.2/EntityDefinitions(LogicalName=\'${logi" +
-                    "calName}\')?$select=LogicalCollectionName`)\r\n\t\t\t\t\t.then(e => e.body.LogicalCollec" +
-                    "tionName);\r\n\r\n\t\tprivate setupXrmWebApiMocks()\r\n\t\t{\r\n\t\t\tsinon.stub(Xrm.WebApi, \"c" +
-                    "reateRecord\").callsFake((entityLogicalName: string, data: any) => this.retrieveE" +
-                    "ntityWebApiName(entityLogicalName)\r\n\t\t\t\t.then(webApiName => this.crmService.post" +
-                    "(`/api/data/v8.2/${webApiName}`, data)\r\n\t\t\t\t\t.then(e => new RegExp(`${webApiName" +
-                    "}\\\\((.*?)\\\\)`).exec(e.headers[\"odata-entityid\"])[1])));\r\n\t\t\tsinon.stub(Xrm.WebAp" +
-                    "i, \"updateRecord\").callsFake((entityLogicalName: string, id: string, data: any) " +
-                    "=> this.retrieveEntityWebApiName(entityLogicalName)\r\n\t\t\t\t.then(webApiName => thi" +
-                    "s.crmService.patch(`/api/data/v8.2/${webApiName}(${id})`, data)\r\n\t\t\t\t\t.then(e =>" +
-                    " new RegExp(`${webApiName}\\\\((.*?)\\\\)`).exec(e.headers[\"odata-entityid\"])[1])));" +
-                    "\r\n\t\t\tsinon.stub(Xrm.WebApi, \"deleteRecord\").callsFake((entityLogicalName: string" +
-                    ", id: string) => this.retrieveEntityWebApiName(entityLogicalName)\r\n\t\t\t\t.then(web" +
-                    "ApiName => this.crmService.delete(`/api/data/v8.2/${webApiName}(${id})`)\r\n\t\t\t\t\t." +
-                    "then(e => id)));\r\n\t\t\tsinon.stub(Xrm.WebApi, \"retrieveRecord\").callsFake((entityL" +
-                    "ogicalName: string, id: string, options?: string) => this.retrieveEntityWebApiNa" +
-                    "me(entityLogicalName)\r\n\t\t\t\t.then(webApiName => this.crmService.get(`/api/data/v8" +
-                    ".2/${webApiName}(${id})${options}`)\r\n\t\t\t\t\t.then(e => e.body)));\r\n\t\t\tsinon.stub(X" +
-                    "rm.WebApi, \"retrieveMultipleRecords\").callsFake((entityLogicalName: string, opti" +
-                    "ons?: string, maxPageSize?: number) => this.retrieveEntityWebApiName(entityLogic" +
-                    "alName)\r\n\t\t\t\t.then(webApiName => this.crmService.get(`/api/data/v8.2/${webApiNam" +
-                    "e}${options}`, new Map<string, string>([[\"Prefer\", `odata.maxpagesize=${maxPageS" +
-                    "ize ? maxPageSize : 5000}`]]))\r\n\t\t\t\t\t.then(e => <Xrm.RetrieveMultipleResult>{ en" +
-                    "tities: e.body.value, nextLink: e.body[\"@odata.nextLink\"] })));\r\n\t\t}\r\n\r\n\t\tprivat" +
-                    "e setupJqueryMocks(config: CrmConnectionConfig)\r\n\t\t{\r\n\t\t\tconst createJqueryStubP" +
-                    "romise =\r\n\t\t\t\t(method, url, data?, successCallback?, errorCallback?): any =>\r\n\t\t" +
-                    "\t\t{\r\n\t\t\t\t\tconst deferred = $.Deferred();\r\n\r\n\t\t\t\t\tlet dataProcessed;\r\n\r\n\t\t\t\t\tif (" +
-                    "data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tdataProcessed = (data as string) ? JSON.parse(<string>data)" +
-                    " : data;\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tthis.crmService[method](url.replace(config.baseUrl, \'\')" +
-                    ", dataProcessed)\r\n\t\t\t\t\t\t.then(e =>\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tconst xhr =\r\n\t\t\t\t\t\t\t\t<JQuery" +
-                    ".jqXHR>\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstatus: e.statusCode, statusText: e.statusCodeMessa" +
-                    "ge,\r\n\t\t\t\t\t\t\t\t\tgetResponseHeader: name => e.headers[name.toLowerCase()]\r\n\t\t\t\t\t\t\t\t" +
-                    "};\r\n\r\n\t\t\t\t\t\t\tif (successCallback)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t(<any>successCallback)(e.bo" +
-                    "dy, \"success\", xhr);\r\n\t\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t\tdeferred.resolve(e.body, \"success\", xhr" +
-                    ");\r\n\t\t\t\t\t\t})\r\n\t\t\t\t\t\t.catch(e =>\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tconst xhr =\r\n\t\t\t\t\t\t\t\t<JQuery.jq" +
-                    "XHR>\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstatus: e.statusCode, statusText: e.statusCodeMessage," +
-                    "\r\n\t\t\t\t\t\t\t\t\tgetResponseHeader: name => e.headers[name.toLowerCase()]\r\n\t\t\t\t\t\t\t\t};\r" +
-                    "\n\r\n\t\t\t\t\t\t\tif (errorCallback)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t(<any>errorCallback)(xhr, \"error" +
-                    "\", e.statusCodeMessage);\r\n\t\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t\tdeferred.reject(xhr, \"error\", e.sta" +
-                    "tusCodeMessage);\r\n\t\t\t\t\t\t});\r\n\r\n\r\n\t\t\t\t\treturn deferred.promise();\r\n\t\t\t\t};\r\n\r\n\t\t\ts" +
-                    "inon.stub($, \"ajax\").callsFake(\r\n\t\t\t\t(ajaxSettings_url: string | JQuery.AjaxSett" +
-                    "ings, ajaxSettings: JQuery.AjaxSettings) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tif (typeof (ajaxSetting" +
-                    "s_url) === \"string\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings.url = ajaxSettings_url;\r\n\t\t\t\t\t}" +
-                    "\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings = ajaxSettings_url;\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tretu" +
-                    "rn createJqueryStubPromise((ajaxSettings.method || ajaxSettings.type).toLowerCas" +
-                    "e(),\r\n\t\t\t\t\t\tajaxSettings.url, ajaxSettings.data, ajaxSettings.success, ajaxSetti" +
-                    "ngs.error)\r\n\t\t\t\t});\r\n\r\n\t\t\tsinon.stub($, \"getJSON\").callsFake((url: string,\r\n\t\t\t\t" +
-                    "success_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,\r\n\t\t\t\tsucc" +
-                    "ess: JQuery.jqXHR.DoneCallback) =>\r\n\t\t\t\tcreateJqueryStubPromise(\"get\", url,\r\n\t\t\t" +
-                    "\t\ttypeof (success_data) === \"function\" ? null : success_data,\r\n\t\t\t\t\ttypeof (succ" +
-                    "ess_data) === \"function\" ? success_data : success));\r\n\r\n\t\t\tconst getPostMock =\r\n" +
-                    "\t\t\t\t(url_settings: string | JQuery.UrlAjaxSettings,\r\n\t\t\t\t\tsuccess_data: JQuery.j" +
-                    "qXHR.DoneCallback | JQuery.PlainObject | string,\r\n\t\t\t\t\tdataType_success?: string" +
-                    " | JQuery.jqXHR.DoneCallback,\r\n\t\t\t\t\tsuccess?: JQuery.jqXHR.DoneCallback, method?" +
-                    ": string) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tconst settings =\r\n\t\t\t\t\t\ttypeof (url_settings) === \"str" +
-                    "ing\"\r\n\t\t\t\t\t\t\t? <JQuery.UrlAjaxSettings>\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tmethod: method || \"ge" +
-                    "t\",\r\n\t\t\t\t\t\t\t\turl: url_settings as string\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t: url_settings;\r\n\r\n\t\t" +
-                    "\t\t\treturn createJqueryStubPromise((settings.method || settings.type).toLowerCase" +
-                    "(),\r\n\t\t\t\t\t\tsettings.url,\r\n\t\t\t\t\t\ttypeof (success_data) === \"function\" ? (typeof (" +
-                    "dataType_success) === \"string\" ? dataType_success : null) : success_data,\r\n\t\t\t\t\t" +
-                    "\ttypeof (success_data) === \"function\" ? success_data : typeof (dataType_success)" +
-                    " === \"string\" ? success : dataType_success,\r\n\t\t\t\t\t\tsettings.error)\r\n\t\t\t\t};\r\n\r\n\t\t" +
-                    "\tsinon.stub($, \"get\").callsFake((url_settings, success_data, dataType_success, s" +
-                    "uccess) =>\r\n\t\t\t\tgetPostMock(url_settings, success_data, dataType_success, succes" +
-                    "s, \"get\"));\r\n\t\t\tsinon.stub($, \"post\").callsFake((url_settings, success_data, dat" +
-                    "aType_success, success) =>\r\n\t\t\t\tgetPostMock(url_settings, success_data, dataType" +
-                    "_success, success, \"post\"));\r\n\t\t}\r\n");
+                    ">\r\n\t\t\t\t<any> this.crmService.get(`EntityDefinitions(LogicalName=\'${logicalName}\'" +
+                    ")?$select=LogicalCollectionName`)\r\n\t\t\t\t\t.then(e => e.body.LogicalCollectionName)" +
+                    ";\r\n\r\n\t\tprivate setupXrmWebApiMocks()\r\n\t\t{\r\n\t\t\tsinon.stub(Xrm.WebApi, \"createReco" +
+                    "rd\").callsFake((entityLogicalName: string, data: any) => <any> this.retrieveEnti" +
+                    "tyWebApiName(entityLogicalName)\r\n\t\t\t\t.then(webApiName => this.crmService.post(`$" +
+                    "{webApiName}`, data)\r\n\t\t\t\t\t.then(e => new RegExp(`${webApiName}\\\\((.*?)\\\\)`).exe" +
+                    "c(e.headers[\"odata-entityid\"])[1])));\r\n\t\t\tsinon.stub(Xrm.WebApi, \"updateRecord\")" +
+                    ".callsFake((entityLogicalName: string, id: string, data: any) => <any> this.retr" +
+                    "ieveEntityWebApiName(entityLogicalName)\r\n\t\t\t\t.then(webApiName => this.crmService" +
+                    ".patch(`${webApiName}(${id})`, data)\r\n\t\t\t\t\t.then(e => new RegExp(`${webApiName}\\" +
+                    "\\((.*?)\\\\)`).exec(e.headers[\"odata-entityid\"])[1])));\r\n\t\t\tsinon.stub(Xrm.WebApi," +
+                    " \"deleteRecord\").callsFake((entityLogicalName: string, id: string) => <any> this" +
+                    ".retrieveEntityWebApiName(entityLogicalName)\r\n\t\t\t\t.then(webApiName => this.crmSe" +
+                    "rvice.delete(`${webApiName}(${id})`)\r\n\t\t\t\t\t.then(e => id)));\r\n\t\t\tsinon.stub(Xrm." +
+                    "WebApi, \"retrieveRecord\").callsFake((entityLogicalName: string, id: string, opti" +
+                    "ons?: string) => <any> this.retrieveEntityWebApiName(entityLogicalName)\r\n\t\t\t\t.th" +
+                    "en(webApiName => this.crmService.get(`${webApiName}(${id})${options}`)\r\n\t\t\t\t\t.th" +
+                    "en(e => e.body)));\r\n\t\t\tsinon.stub(Xrm.WebApi, \"retrieveMultipleRecords\").callsFa" +
+                    "ke((entityLogicalName: string, options?: string, maxPageSize?: number) => <any> " +
+                    "this.retrieveEntityWebApiName(entityLogicalName)\r\n\t\t\t\t.then(webApiName => this.c" +
+                    "rmService.get(`${webApiName}${options}`, new Map<string, string>([[\"Prefer\", `od" +
+                    "ata.maxpagesize=${maxPageSize ? maxPageSize : 5000}`]]))\r\n\t\t\t\t\t.then(e => <Xrm.R" +
+                    "etrieveMultipleResult>{ entities: e.body.value, nextLink: e.body[\"@odata.nextLin" +
+                    "k\"] })));\r\n\t\t}\r\n\r\n\t\tprivate setupJqueryMocks(config: CrmConnectionConfig)\r\n\t\t{\r\n" +
+                    "\t\t\tconst createJqueryStubPromise =\r\n\t\t\t\t(method, url, data?, successCallback?, e" +
+                    "rrorCallback?): any =>\r\n\t\t\t\t{\r\n\t\t\t\t\tconst deferred = $.Deferred();\r\n\r\n\t\t\t\t\tlet d" +
+                    "ataProcessed;\r\n\r\n\t\t\t\t\tif (data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tdataProcessed = (data as string) " +
+                    "? JSON.parse(<string>data) : data;\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tvar processedUrl = url.replac" +
+                    "e(config.baseUrl, \'\').replace(config.urlPrefix, \'\').replace(/^\\/+|\\/+$/g, \'\');\r\n" +
+                    "\r\n\t\t\t\t\tthis.crmService[method](processedUrl, dataProcessed)\r\n\t\t\t\t\t\t.then(e =>\r\n\t" +
+                    "\t\t\t\t\t{\r\n\t\t\t\t\t\t\tconst xhr =\r\n\t\t\t\t\t\t\t\t<JQuery.jqXHR>\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstatus: " +
+                    "e.statusCode, statusText: e.statusCodeMessage,\r\n\t\t\t\t\t\t\t\t\tgetResponseHeader: name" +
+                    " => e.headers[name.toLowerCase()]\r\n\t\t\t\t\t\t\t\t};\r\n\r\n\t\t\t\t\t\t\tif (successCallback)\r\n\t\t" +
+                    "\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t(<any>successCallback)(e.body, \"success\", xhr);\r\n\t\t\t\t\t\t\t}\r\n\r\n\t\t\t" +
+                    "\t\t\t\tdeferred.resolve(e.body, \"success\", xhr);\r\n\t\t\t\t\t\t})\r\n\t\t\t\t\t\t.catch(e =>\r\n\t\t\t\t" +
+                    "\t\t{\r\n\t\t\t\t\t\t\tlet errorObject;\r\n\r\n\t\t\t\t\t\t\ttry \r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\terrorObject = JSO" +
+                    "N.parse(e.text)\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch { }\r\n\r\n\t\t\t\t\t\t\tconst xhr =\r\n\t\t\t\t\t\t\t\t<JQue" +
+                    "ry.jqXHR>\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstatus: e.statusCode, statusText: e.statusCodeMes" +
+                    "sage,\r\n\t\t\t\t\t\t\t\t\tresponseText: e.text, responseJSON: errorObject,\r\n\t\t\t\t\t\t\t\t\tgetRe" +
+                    "sponseHeader: name => e.headers[name.toLowerCase()]\r\n\t\t\t\t\t\t\t\t};\r\n\r\n\t\t\t\t\t\t\tif (er" +
+                    "rorCallback)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t(<any>errorCallback)(xhr, \"error\", e.statusCodeM" +
+                    "essage);\r\n\t\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t\tdeferred.reject(xhr, \"error\", e.statusCodeMessage);" +
+                    "\r\n\t\t\t\t\t\t});\r\n\r\n\r\n\t\t\t\t\treturn deferred.promise();\r\n\t\t\t\t};\r\n\r\n\t\t\tsinon.stub($, \"aj" +
+                    "ax\").callsFake(\r\n\t\t\t// @ts-ignore\r\n\t\t\t\t(ajaxSettings_url: string | JQuery.AjaxSe" +
+                    "ttings, ajaxSettings: JQuery.AjaxSettings) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tif (typeof (ajaxSetti" +
+                    "ngs_url) === \"string\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings.url = ajaxSettings_url;\r\n\t\t\t\t" +
+                    "\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings = ajaxSettings_url;\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tre" +
+                    "turn createJqueryStubPromise((ajaxSettings.method || ajaxSettings.type).toLowerC" +
+                    "ase(),\r\n\t\t\t\t\t\tajaxSettings.url, ajaxSettings.data, ajaxSettings.success, ajaxSet" +
+                    "tings.error)\r\n\t\t\t\t});\r\n\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.stub($, \"getJSON\").callsFake" +
+                    "((url: string,\r\n\t\t\t\tsuccess_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject" +
+                    " | string,\r\n\t\t\t\tsuccess: JQuery.jqXHR.DoneCallback) =>\r\n\t\t\t\tcreateJqueryStubProm" +
+                    "ise(\"get\", url,\r\n\t\t\t\t\ttypeof (success_data) === \"function\" ? null : success_data" +
+                    ",\r\n\t\t\t\t\ttypeof (success_data) === \"function\" ? success_data : success));\r\n\r\n\t\t\tc" +
+                    "onst getPostMock =\r\n\t\t\t\t(url_settings: string | JQuery.UrlAjaxSettings,\r\n\t\t\t\t\tsu" +
+                    "ccess_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,\r\n\t\t\t\t\tdataT" +
+                    "ype_success?: string | JQuery.jqXHR.DoneCallback,\r\n\t\t\t\t\tsuccess?: JQuery.jqXHR.D" +
+                    "oneCallback, method?: string) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tconst settings =\r\n\t\t\t\t\t\ttypeof (ur" +
+                    "l_settings) === \"string\"\r\n\t\t\t\t\t\t\t? <JQuery.UrlAjaxSettings>\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tm" +
+                    "ethod: method || \"get\",\r\n\t\t\t\t\t\t\t\turl: url_settings as string\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t:" +
+                    " url_settings;\r\n\r\n\t\t\t\t\treturn createJqueryStubPromise((settings.method || settin" +
+                    "gs.type).toLowerCase(),\r\n\t\t\t\t\t\tsettings.url,\r\n\t\t\t\t\t\ttypeof (success_data) === \"f" +
+                    "unction\" ? (typeof (dataType_success) === \"string\" ? dataType_success : null) : " +
+                    "success_data,\r\n\t\t\t\t\t\ttypeof (success_data) === \"function\" ? success_data : typeo" +
+                    "f (dataType_success) === \"string\" ? success : dataType_success,\r\n\t\t\t\t\t\tsettings." +
+                    "error)\r\n\t\t\t\t};\r\n\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.stub($, \"get\").callsFake((url_setti" +
+                    "ngs, success_data, dataType_success, success) =>\r\n\t\t\t\tgetPostMock(url_settings, " +
+                    "success_data, dataType_success, success, \"get\"));\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.st" +
+                    "ub($, \"post\").callsFake((url_settings, success_data, dataType_success, success) " +
+                    "=>\r\n\t\t\t\tgetPostMock(url_settings, success_data, dataType_success, success, \"post" +
+                    "\"));\r\n\t\t}\r\n");
             
-            #line 626 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 641 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\t}\r\n\t");
             
-            #line 627 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 642 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  
 		foreach (var model in templateModel.Models)
 		{
@@ -352,98 +356,98 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write(" \r\n\ttype ");
             
-            #line 631 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 646 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write("_Forms =\r\n\t\t");
             
-            #line 632 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 647 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  foreach (var form in model.Forms) { 
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 632 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 647 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(form.Name)));
             
             #line default
             #line hidden
             this.Write("\" |  ");
             
-            #line 632 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 647 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("null;\r\n\r\n\texport class ");
             
-            #line 634 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 649 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write(" extends CrmEntityModel<");
             
-            #line 634 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 649 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write("_Forms>\r\n\t{\r\n\t\tentityName = \"");
             
-            #line 636 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 651 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.EntityName)));
             
             #line default
             #line hidden
             this.Write("\";\r\n\t\tcontext = new Context(<Context>\r\n\t\t\t{\r\n\t\t\t\tuserId: \"");
             
-            #line 639 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 654 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.UserId.ToString())));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\tusername: ");
             
-            #line 640 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 655 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(model.Context.Username))));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tuserFullName: ");
             
-            #line 641 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 656 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(model.Context.UserFullName))));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tisGuidedHelpEnabled: ");
             
-            #line 642 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 657 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.IsGuidedHelpEnabled.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tuserLanguageCode: ");
             
-            #line 643 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 658 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.UserLanguageCode.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\ttimeZoneBias: ");
             
-            #line 644 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 659 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.TimeZoneBias.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tuserRoles:\r\n\t\t\t\t\t[\r\n\t\t\t");
             
-            #line 647 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 662 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				foreach (var role in model.Context.UserRoles)
 				{
@@ -453,14 +457,14 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\"");
             
-            #line 650 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 665 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(role.ToString())));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t");
             
-            #line 651 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 666 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				}
 			
@@ -469,49 +473,49 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t],\r\n\t\t\t\torganisationUrl: \"");
             
-            #line 654 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 669 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.OrganisationUrl)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\tisAutoSaveEnabled: ");
             
-            #line 655 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 670 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.IsAutoSaveEnabled.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\torgLanguageCode: ");
             
-            #line 656 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 671 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.OrgLanguageCode.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\torganisationName: \"");
             
-            #line 657 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 672 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.OrganisationName)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\tthemeName: ");
             
-            #line 658 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 673 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(model.Context.ThemeName))));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\tcrmVersion: \"");
             
-            #line 659 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 674 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(model.Context.CrmVersion)));
             
             #line default
             #line hidden
             this.Write("\"\r\n\t\t\t});\r\n\t\tcrmAttributes =\r\n\t\t\t[\r\n\t\t\t");
             
-            #line 663 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 678 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				foreach (var attribute in model.CrmAttributes)
 				{
@@ -521,77 +525,77 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\tnew CrmAttribute(<CrmAttribute>\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tattributeType: \"");
             
-            #line 668 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 683 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.AttributeType)));
             
             #line default
             #line hidden
             this.Write("\", name: \"");
             
-            #line 668 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 683 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.Name)));
             
             #line default
             #line hidden
             this.Write("\", requiredLevel: \"");
             
-            #line 668 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 683 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.RequiredLevel, "none")));
             
             #line default
             #line hidden
             this.Write("\", format: \"");
             
-            #line 668 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 683 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.Format)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\t\t\tmin: ");
             
-            #line 669 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 684 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.Min?.ToString() ?? "null")));
             
             #line default
             #line hidden
             this.Write(", max: ");
             
-            #line 669 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 684 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.Max?.ToString() ?? "null")));
             
             #line default
             #line hidden
             this.Write(", precision: ");
             
-            #line 669 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 684 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.Precision?.ToString() ?? "null")));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\tmaxLength: ");
             
-            #line 670 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 685 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.MaxLength?.ToString() ?? "null")));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\tdefaultBoolValue: ");
             
-            #line 671 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 686 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.DefaultBoolValue?.ToString().ToLower() ?? "null")));
             
             #line default
             #line hidden
             this.Write(", initialValue: ");
             
-            #line 671 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 686 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(attribute.InitialValue?.ToString() ?? "null")));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\toptions: new Map(\r\n\t\t\t\t\t\t\t[\r\n\t\t\t\t");
             
-            #line 674 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 689 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					if (attribute.Options != null) {
 					foreach (var option in attribute.Options)
@@ -602,14 +606,14 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t[");
             
-            #line 678 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 693 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(option.Key.ToString())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\tnew Map(\r\n\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t");
             
-            #line 681 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 696 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						foreach (var label in option.Value)
 						{
@@ -619,21 +623,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t[");
             
-            #line 684 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 699 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(label.Key.ToString())));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 684 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 699 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("]\r\n\t\t\t\t\t");
             
-            #line 685 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 700 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						}
 					
@@ -642,7 +646,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t])\r\n\t\t\t\t\t\t\t\t],\r\n\t\t\t\t");
             
-            #line 689 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 704 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					}
 					}
@@ -652,7 +656,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t])\r\n\t\t\t\t\t}),\r\n\t\t\t");
             
-            #line 694 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 709 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				}
 			
@@ -661,7 +665,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("];\r\n\t\tforms =\r\n\t\t\t[\r\n\t\t\t");
             
-            #line 699 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 714 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				foreach (var form in model.Forms)
 				{
@@ -671,21 +675,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\tnew Form(<Form>\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tid: \"");
             
-            #line 704 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 719 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(form.Id)));
             
             #line default
             #line hidden
             this.Write("\", name: \"");
             
-            #line 704 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 719 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(form.Name)));
             
             #line default
             #line hidden
             this.Write("\",\r\n\t\t\t\t\t\ttabs:\r\n\t\t\t\t\t\t\t[\r\n\t\t\t\t");
             
-            #line 707 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 722 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					foreach (var tab in form.Tabs)
 					{
@@ -695,21 +699,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\tnew Tab(<Tab>\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tid: \"");
             
-            #line 712 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 727 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(tab.Id)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 712 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 727 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(tab.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t");
             
-            #line 715 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 730 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						foreach (var label in tab.Labels)
 						{
@@ -719,21 +723,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t[");
             
-            #line 718 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 733 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 718 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 733 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t");
             
-            #line 719 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 734 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 						}
 					
@@ -742,7 +746,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t]),\r\n\t\t\t\t\t\t\t\t\t\tsections:\r\n\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t");
             
-            #line 724 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 739 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 							foreach (var section in tab.Sections)
 							{
@@ -752,21 +756,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\tnew Section(<Section>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tid: \"");
             
-            #line 729 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 744 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(section.Id)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 729 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 744 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(section.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t");
             
-            #line 732 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 747 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 								foreach (var label in section.Labels)
 								{
@@ -776,21 +780,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t\t[");
             
-            #line 735 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 750 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 735 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 750 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t\t\t");
             
-            #line 736 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 751 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 								}
 							
@@ -799,7 +803,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t]),\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcontrols:\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t\t");
             
-            #line 741 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 756 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									foreach (var control in section.Controls.OfType<FieldControl>())
 									{
@@ -810,28 +814,28 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             this.Write("\t\t\t\t\t\t\t\tnew FieldControl(<FieldControl>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tna" +
                     "me: \"");
             
-            #line 746 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 761 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.Name)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 746 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 761 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(", isDisabled: ");
             
-            #line 746 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 761 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.IsDisabled.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 749 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 764 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										foreach (var label in control.Labels)
 										{
@@ -841,21 +845,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t\t\t\t[");
             
-            #line 752 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 767 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 752 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 767 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t])\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 754 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 769 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										}
 									
@@ -864,7 +868,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t\t\t\t\t");
             
-            #line 757 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 772 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									}
 								
@@ -872,7 +876,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line default
             #line hidden
             
-            #line 759 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 774 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									foreach (var control in section.Controls.OfType<GridControl>())
 									{
@@ -883,21 +887,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             this.Write("\t\t\t\t\t\t\t\tnew GridControl(<GridControl>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tname" +
                     ": \"");
             
-            #line 764 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 779 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.Name)));
             
             #line default
             #line hidden
             this.Write("\", isVisible: ");
             
-            #line 764 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 779 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CheckString(control.IsVisible.ToString().ToLower())));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tlabels: new Map(\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 767 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 782 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										foreach (var label in control.Labels)
 										{
@@ -907,21 +911,21 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t\t\t\t[");
             
-            #line 770 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 785 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(label.Key));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 770 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 785 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToLiteral(CheckString(label.Value))));
             
             #line default
             #line hidden
             this.Write("],\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t])\r\n\t\t\t\t\t\t\t\t\t");
             
-            #line 772 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 787 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 										}
 									
@@ -930,7 +934,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t\t\t\t\t");
             
-            #line 775 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 790 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 									}
 								
@@ -939,7 +943,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t\t\t]\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t\t\t");
             
-            #line 779 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 794 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 							}
 						
@@ -948,7 +952,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t\t\t]\r\n\t\t\t\t\t\t\t\t\t}),\r\n\t\t\t\t");
             
-            #line 783 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 798 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 					}
 				
@@ -957,7 +961,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("\t\t\t]\r\n\t\t\t\t\t}),\r\n\t\t\t");
             
-            #line 787 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 802 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 				}
 			
@@ -966,7 +970,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             #line hidden
             this.Write("];\r\n\t}\r\n");
             
-            #line 791 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+            #line 806 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
 		}
 
@@ -977,7 +981,7 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 794 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
+        #line 809 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
 
     // Credit :http://stackoverflow.com/questions/323640/can-i-convert-a-c-sharp-string-value-to-an-escaped-string-literal
     private static string ToLiteral(string input)

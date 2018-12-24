@@ -2,10 +2,10 @@
 
 [![Join the chat at https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator](https://badges.gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator.svg)](https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Version: 1.3.1.2
+### Version: 1.3.2.1
 ---
 
-An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock testing framework.
+An XrmToolBox plugin that can be used to generate the XRM form model for xrm-mock test framework.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ The following packages must be installed before using the generated model:
 
 For convenience, run the following command:
 ```bash
-npm i -D @types/xrm xrm-mock
+npm i -D @types/xrm@9.0.9 xrm-mock@3.4.10
 ```
 
 ### Online
@@ -35,7 +35,7 @@ The following packages must be installed before enabling online communication:
 
 For convenience, run the following command:
 ```bash
-npm i -D @types/jquery @types/jsdom @types/sinon @types/xrm jquery jsdom node-dcrm-service sinon xrm-mock
+npm i -D @types/jquery@3.3.28 @types/jsdom@12.2.0 @types/sinon@7.0.2 @types/xrm@9.0.9 jquery@3.3.1 jsdom@13.1.0 node-dcrm-service@3.1.4 sinon@7.2.2 xrm-mock@3.4.10
 ```
 
 ## Usage
@@ -71,6 +71,8 @@ Configuration details can be found at [DynamicsCrm-NodeCrmService](https://www.n
 		
 ## Changes
 
+#### _v1.3.2.1 (2018-12-24)_
++ Fixed: compile issues with generated code
 #### _v1.3.1.2 (2018-09-07)_
 + Added: option to skip generate online communication code
 + Fixed: Early-bound conflict with other plugins

@@ -161,7 +161,7 @@ export namespace XrmModel
 		userSettings: UserSettingsMock;
 	}
 
-	export class ModelBuilder<TEntity extends CrmEntityModel<TEntity["activeForm"]>>
+	export class ModelBuilder<TEntity extends CrmEntityModel<string>>
 	{
 		private recordId: string;
 		private entity: EntityMock;
@@ -499,25 +499,25 @@ export namespace XrmModel
 <# if(templateModel.IsGenerateOnlineCode == true) { #>
 		private retrieveEntityWebApiName =
 			(logicalName: string): Promise<string> =>
-				this.crmService.get(`/api/data/v8.2/EntityDefinitions(LogicalName='${logicalName}')?$select=LogicalCollectionName`)
+				<any> this.crmService.get(`EntityDefinitions(LogicalName='${logicalName}')?$select=LogicalCollectionName`)
 					.then(e => e.body.LogicalCollectionName);
 
 		private setupXrmWebApiMocks()
 		{
-			sinon.stub(Xrm.WebApi, "createRecord").callsFake((entityLogicalName: string, data: any) => this.retrieveEntityWebApiName(entityLogicalName)
-				.then(webApiName => this.crmService.post(`/api/data/v8.2/${webApiName}`, data)
+			sinon.stub(Xrm.WebApi, "createRecord").callsFake((entityLogicalName: string, data: any) => <any> this.retrieveEntityWebApiName(entityLogicalName)
+				.then(webApiName => this.crmService.post(`${webApiName}`, data)
 					.then(e => new RegExp(`${webApiName}\\((.*?)\\)`).exec(e.headers["odata-entityid"])[1])));
-			sinon.stub(Xrm.WebApi, "updateRecord").callsFake((entityLogicalName: string, id: string, data: any) => this.retrieveEntityWebApiName(entityLogicalName)
-				.then(webApiName => this.crmService.patch(`/api/data/v8.2/${webApiName}(${id})`, data)
+			sinon.stub(Xrm.WebApi, "updateRecord").callsFake((entityLogicalName: string, id: string, data: any) => <any> this.retrieveEntityWebApiName(entityLogicalName)
+				.then(webApiName => this.crmService.patch(`${webApiName}(${id})`, data)
 					.then(e => new RegExp(`${webApiName}\\((.*?)\\)`).exec(e.headers["odata-entityid"])[1])));
-			sinon.stub(Xrm.WebApi, "deleteRecord").callsFake((entityLogicalName: string, id: string) => this.retrieveEntityWebApiName(entityLogicalName)
-				.then(webApiName => this.crmService.delete(`/api/data/v8.2/${webApiName}(${id})`)
+			sinon.stub(Xrm.WebApi, "deleteRecord").callsFake((entityLogicalName: string, id: string) => <any> this.retrieveEntityWebApiName(entityLogicalName)
+				.then(webApiName => this.crmService.delete(`${webApiName}(${id})`)
 					.then(e => id)));
-			sinon.stub(Xrm.WebApi, "retrieveRecord").callsFake((entityLogicalName: string, id: string, options?: string) => this.retrieveEntityWebApiName(entityLogicalName)
-				.then(webApiName => this.crmService.get(`/api/data/v8.2/${webApiName}(${id})${options}`)
+			sinon.stub(Xrm.WebApi, "retrieveRecord").callsFake((entityLogicalName: string, id: string, options?: string) => <any> this.retrieveEntityWebApiName(entityLogicalName)
+				.then(webApiName => this.crmService.get(`${webApiName}(${id})${options}`)
 					.then(e => e.body)));
-			sinon.stub(Xrm.WebApi, "retrieveMultipleRecords").callsFake((entityLogicalName: string, options?: string, maxPageSize?: number) => this.retrieveEntityWebApiName(entityLogicalName)
-				.then(webApiName => this.crmService.get(`/api/data/v8.2/${webApiName}${options}`, new Map<string, string>([["Prefer", `odata.maxpagesize=${maxPageSize ? maxPageSize : 5000}`]]))
+			sinon.stub(Xrm.WebApi, "retrieveMultipleRecords").callsFake((entityLogicalName: string, options?: string, maxPageSize?: number) => <any> this.retrieveEntityWebApiName(entityLogicalName)
+				.then(webApiName => this.crmService.get(`${webApiName}${options}`, new Map<string, string>([["Prefer", `odata.maxpagesize=${maxPageSize ? maxPageSize : 5000}`]]))
 					.then(e => <Xrm.RetrieveMultipleResult>{ entities: e.body.value, nextLink: e.body["@odata.nextLink"] })));
 		}
 
@@ -535,7 +535,9 @@ export namespace XrmModel
 						dataProcessed = (data as string) ? JSON.parse(<string>data) : data;
 					}
 
-					this.crmService[method](url.replace(config.baseUrl, ''), dataProcessed)
+					var processedUrl = url.replace(config.baseUrl, '').replace(config.urlPrefix, '').replace(/^\/+|\/+$/g, '');
+
+					this.crmService[method](processedUrl, dataProcessed)
 						.then(e =>
 						{
 							const xhr =
@@ -554,10 +556,19 @@ export namespace XrmModel
 						})
 						.catch(e =>
 						{
+							let errorObject;
+
+							try 
+							{
+								errorObject = JSON.parse(e.text)
+							}
+							catch { }
+
 							const xhr =
 								<JQuery.jqXHR>
 								{
 									status: e.statusCode, statusText: e.statusCodeMessage,
+									responseText: e.text, responseJSON: errorObject,
 									getResponseHeader: name => e.headers[name.toLowerCase()]
 								};
 
@@ -574,6 +585,7 @@ export namespace XrmModel
 				};
 
 			sinon.stub($, "ajax").callsFake(
+			// @ts-ignore
 				(ajaxSettings_url: string | JQuery.AjaxSettings, ajaxSettings: JQuery.AjaxSettings) =>
 				{
 					if (typeof (ajaxSettings_url) === "string")
@@ -589,6 +601,7 @@ export namespace XrmModel
 						ajaxSettings.url, ajaxSettings.data, ajaxSettings.success, ajaxSettings.error)
 				});
 
+			// @ts-ignore
 			sinon.stub($, "getJSON").callsFake((url: string,
 				success_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,
 				success: JQuery.jqXHR.DoneCallback) =>
@@ -618,8 +631,10 @@ export namespace XrmModel
 						settings.error)
 				};
 
+			// @ts-ignore
 			sinon.stub($, "get").callsFake((url_settings, success_data, dataType_success, success) =>
 				getPostMock(url_settings, success_data, dataType_success, success, "get"));
+			// @ts-ignore
 			sinon.stub($, "post").callsFake((url_settings, success_data, dataType_success, success) =>
 				getPostMock(url_settings, success_data, dataType_success, success, "post"));
 		}
