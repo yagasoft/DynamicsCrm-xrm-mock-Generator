@@ -28,7 +28,6 @@ The following packages must be installed before enabling online communication:
 + `@types/jquery`
 + `@types/jsdom`
 + `@types/sinon`
-+ `httpntlm`
 + `jquery`
 + `jsdom`
 + `node-dcrm-service`
@@ -36,7 +35,6 @@ The following packages must be installed before enabling online communication:
 
 For convenience, run the following command:
 ```bash
-npm i httpntlm@1.7.6 --save
 npm i -D @types/jquery@3.3.28 @types/jsdom@12.2.0 @types/sinon@7.0.2 @types/xrm@9.0.9 jquery@3.3.1 jsdom@13.1.0 node-dcrm-service@3.1.4 sinon@7.2.2 xrm-mock@3.4.10
 ```
 
