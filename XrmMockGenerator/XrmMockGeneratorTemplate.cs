@@ -303,41 +303,41 @@ global[""$""] = global[""jQuery""] = require(""jquery"")(window);
                     "\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t(<any>successCallback)(e.body, \"success\", xhr);\r\n\t\t\t\t\t\t\t}\r\n\r\n\t\t\t" +
                     "\t\t\t\tdeferred.resolve(e.body, \"success\", xhr);\r\n\t\t\t\t\t\t})\r\n\t\t\t\t\t\t.catch(e =>\r\n\t\t\t\t" +
                     "\t\t{\r\n\t\t\t\t\t\t\tlet errorObject;\r\n\r\n\t\t\t\t\t\t\ttry \r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\terrorObject = JSO" +
-                    "N.parse(e.text)\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch { }\r\n\r\n\t\t\t\t\t\t\tconst xhr =\r\n\t\t\t\t\t\t\t\t<JQue" +
-                    "ry.jqXHR>\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstatus: e.statusCode, statusText: e.statusCodeMes" +
-                    "sage,\r\n\t\t\t\t\t\t\t\t\tresponseText: e.text, responseJSON: errorObject,\r\n\t\t\t\t\t\t\t\t\tgetRe" +
-                    "sponseHeader: name => e.headers[name.toLowerCase()]\r\n\t\t\t\t\t\t\t\t};\r\n\r\n\t\t\t\t\t\t\tif (er" +
-                    "rorCallback)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t(<any>errorCallback)(xhr, \"error\", e.statusCodeM" +
-                    "essage);\r\n\t\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t\tdeferred.reject(xhr, \"error\", e.statusCodeMessage);" +
-                    "\r\n\t\t\t\t\t\t});\r\n\r\n\r\n\t\t\t\t\treturn deferred.promise();\r\n\t\t\t\t};\r\n\r\n\t\t\tsinon.stub($, \"aj" +
-                    "ax\").callsFake(\r\n\t\t\t// @ts-ignore\r\n\t\t\t\t(ajaxSettings_url: string | JQuery.AjaxSe" +
-                    "ttings, ajaxSettings: JQuery.AjaxSettings) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tif (typeof (ajaxSetti" +
-                    "ngs_url) === \"string\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings.url = ajaxSettings_url;\r\n\t\t\t\t" +
-                    "\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings = ajaxSettings_url;\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tre" +
-                    "turn createJqueryStubPromise((ajaxSettings.method || ajaxSettings.type).toLowerC" +
-                    "ase(),\r\n\t\t\t\t\t\tajaxSettings.url, ajaxSettings.data, ajaxSettings.success, ajaxSet" +
-                    "tings.error)\r\n\t\t\t\t});\r\n\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.stub($, \"getJSON\").callsFake" +
-                    "((url: string,\r\n\t\t\t\tsuccess_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject" +
-                    " | string,\r\n\t\t\t\tsuccess: JQuery.jqXHR.DoneCallback) =>\r\n\t\t\t\tcreateJqueryStubProm" +
-                    "ise(\"get\", url,\r\n\t\t\t\t\ttypeof (success_data) === \"function\" ? null : success_data" +
-                    ",\r\n\t\t\t\t\ttypeof (success_data) === \"function\" ? success_data : success));\r\n\r\n\t\t\tc" +
-                    "onst getPostMock =\r\n\t\t\t\t(url_settings: string | JQuery.UrlAjaxSettings,\r\n\t\t\t\t\tsu" +
-                    "ccess_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,\r\n\t\t\t\t\tdataT" +
-                    "ype_success?: string | JQuery.jqXHR.DoneCallback,\r\n\t\t\t\t\tsuccess?: JQuery.jqXHR.D" +
-                    "oneCallback, method?: string) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tconst settings =\r\n\t\t\t\t\t\ttypeof (ur" +
-                    "l_settings) === \"string\"\r\n\t\t\t\t\t\t\t? <JQuery.UrlAjaxSettings>\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tm" +
-                    "ethod: method || \"get\",\r\n\t\t\t\t\t\t\t\turl: url_settings as string\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t:" +
-                    " url_settings;\r\n\r\n\t\t\t\t\treturn createJqueryStubPromise((settings.method || settin" +
-                    "gs.type).toLowerCase(),\r\n\t\t\t\t\t\tsettings.url,\r\n\t\t\t\t\t\ttypeof (success_data) === \"f" +
-                    "unction\" ? (typeof (dataType_success) === \"string\" ? dataType_success : null) : " +
-                    "success_data,\r\n\t\t\t\t\t\ttypeof (success_data) === \"function\" ? success_data : typeo" +
-                    "f (dataType_success) === \"string\" ? success : dataType_success,\r\n\t\t\t\t\t\tsettings." +
-                    "error)\r\n\t\t\t\t};\r\n\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.stub($, \"get\").callsFake((url_setti" +
-                    "ngs, success_data, dataType_success, success) =>\r\n\t\t\t\tgetPostMock(url_settings, " +
-                    "success_data, dataType_success, success, \"get\"));\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.st" +
-                    "ub($, \"post\").callsFake((url_settings, success_data, dataType_success, success) " +
-                    "=>\r\n\t\t\t\tgetPostMock(url_settings, success_data, dataType_success, success, \"post" +
-                    "\"));\r\n\t\t}\r\n");
+                    "N.parse(e.text);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch (e) { }\r\n\r\n\t\t\t\t\t\t\tconst xhr =\r\n\t\t\t\t\t\t\t\t" +
+                    "<JQuery.jqXHR>\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstatus: e.statusCode, statusText: e.statusCo" +
+                    "deMessage,\r\n\t\t\t\t\t\t\t\t\tresponseText: e.text, responseJSON: errorObject,\r\n\t\t\t\t\t\t\t\t\t" +
+                    "getResponseHeader: name => e.headers[name.toLowerCase()]\r\n\t\t\t\t\t\t\t\t};\r\n\r\n\t\t\t\t\t\t\ti" +
+                    "f (errorCallback)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t(<any>errorCallback)(xhr, \"error\", e.status" +
+                    "CodeMessage);\r\n\t\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t\tdeferred.reject(xhr, \"error\", e.statusCodeMess" +
+                    "age);\r\n\t\t\t\t\t\t});\r\n\r\n\r\n\t\t\t\t\treturn deferred.promise();\r\n\t\t\t\t};\r\n\r\n\t\t\tsinon.stub($" +
+                    ", \"ajax\").callsFake(\r\n\t\t\t// @ts-ignore\r\n\t\t\t\t(ajaxSettings_url: string | JQuery.A" +
+                    "jaxSettings, ajaxSettings: JQuery.AjaxSettings) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tif (typeof (ajax" +
+                    "Settings_url) === \"string\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings.url = ajaxSettings_url;\r" +
+                    "\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tajaxSettings = ajaxSettings_url;\r\n\t\t\t\t\t}\r\n\r\n\t\t" +
+                    "\t\t\treturn createJqueryStubPromise((ajaxSettings.method || ajaxSettings.type).toL" +
+                    "owerCase(),\r\n\t\t\t\t\t\tajaxSettings.url, ajaxSettings.data, ajaxSettings.success, aj" +
+                    "axSettings.error)\r\n\t\t\t\t});\r\n\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.stub($, \"getJSON\").call" +
+                    "sFake((url: string,\r\n\t\t\t\tsuccess_data: JQuery.jqXHR.DoneCallback | JQuery.PlainO" +
+                    "bject | string,\r\n\t\t\t\tsuccess: JQuery.jqXHR.DoneCallback) =>\r\n\t\t\t\tcreateJqueryStu" +
+                    "bPromise(\"get\", url,\r\n\t\t\t\t\ttypeof (success_data) === \"function\" ? null : success" +
+                    "_data,\r\n\t\t\t\t\ttypeof (success_data) === \"function\" ? success_data : success));\r\n\r" +
+                    "\n\t\t\tconst getPostMock =\r\n\t\t\t\t(url_settings: string | JQuery.UrlAjaxSettings,\r\n\t\t" +
+                    "\t\t\tsuccess_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,\r\n\t\t\t\t\t" +
+                    "dataType_success?: string | JQuery.jqXHR.DoneCallback,\r\n\t\t\t\t\tsuccess?: JQuery.jq" +
+                    "XHR.DoneCallback, method?: string) =>\r\n\t\t\t\t{\r\n\t\t\t\t\tconst settings =\r\n\t\t\t\t\t\ttypeo" +
+                    "f (url_settings) === \"string\"\r\n\t\t\t\t\t\t\t? <JQuery.UrlAjaxSettings>\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t" +
+                    "\t\t\t\tmethod: method || \"get\",\r\n\t\t\t\t\t\t\t\turl: url_settings as string\r\n\t\t\t\t\t\t\t}\r\n\t\t\t" +
+                    "\t\t\t\t: url_settings;\r\n\r\n\t\t\t\t\treturn createJqueryStubPromise((settings.method || s" +
+                    "ettings.type).toLowerCase(),\r\n\t\t\t\t\t\tsettings.url,\r\n\t\t\t\t\t\ttypeof (success_data) =" +
+                    "== \"function\" ? (typeof (dataType_success) === \"string\" ? dataType_success : nul" +
+                    "l) : success_data,\r\n\t\t\t\t\t\ttypeof (success_data) === \"function\" ? success_data : " +
+                    "typeof (dataType_success) === \"string\" ? success : dataType_success,\r\n\t\t\t\t\t\tsett" +
+                    "ings.error)\r\n\t\t\t\t};\r\n\r\n\t\t\t// @ts-ignore\r\n\t\t\tsinon.stub($, \"get\").callsFake((url_" +
+                    "settings, success_data, dataType_success, success) =>\r\n\t\t\t\tgetPostMock(url_setti" +
+                    "ngs, success_data, dataType_success, success, \"get\"));\r\n\t\t\t// @ts-ignore\r\n\t\t\tsin" +
+                    "on.stub($, \"post\").callsFake((url_settings, success_data, dataType_success, succ" +
+                    "ess) =>\r\n\t\t\t\tgetPostMock(url_settings, success_data, dataType_success, success, " +
+                    "\"post\"));\r\n\t\t}\r\n");
             
             #line 641 "D:\Drive\Git\DynamicsCrm-xrm-mock-Generator\XrmMockGenerator\XrmMockGeneratorTemplate.tt"
  } 

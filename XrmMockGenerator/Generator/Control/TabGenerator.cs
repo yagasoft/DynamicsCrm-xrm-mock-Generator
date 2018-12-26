@@ -17,7 +17,7 @@ namespace Yagasoft.XrmMockGenerator.Generator.Control
 			return
 				new Tab
 				{
-					Id = tabXml.SelectSingleNode("@id")?.Value,
+					Id = tabXml.SelectSingleNode("@name")?.Value,
 					Labels = tabXml.SelectNodes(FormXmlContants.LabelPath)?.Cast<XmlNode>()
 						.ToDictionary(
 							e => int.Parse(e.SelectSingleNode("@languagecode")?.Value ?? "1033"),

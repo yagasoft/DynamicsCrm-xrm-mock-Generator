@@ -560,9 +560,9 @@ export namespace XrmModel
 
 							try 
 							{
-								errorObject = JSON.parse(e.text)
+								errorObject = JSON.parse(e.text);
 							}
-							catch { }
+							catch (e) { }
 
 							const xhr =
 								<JQuery.jqXHR>

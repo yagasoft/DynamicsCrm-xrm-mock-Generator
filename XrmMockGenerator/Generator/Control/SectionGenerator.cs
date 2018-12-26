@@ -17,7 +17,7 @@ namespace Yagasoft.XrmMockGenerator.Generator.Control
 			return
 				new Section
 				{
-					Id = sectionXml.SelectSingleNode("@id")?.Value,
+					Id = sectionXml.SelectSingleNode("@name")?.Value,
 					Labels = sectionXml.SelectNodes(FormXmlContants.LabelPath)?.Cast<XmlNode>()
 						.ToDictionary(
 							e => int.Parse(e.SelectSingleNode("@languagecode")?.Value ?? "1033"),
