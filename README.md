@@ -1,5 +1,7 @@
 # DynamicsCrm-xrm-mock-Generator
 
+(No longer maintained!)
+
 [![Join the chat at https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator](https://badges.gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator.svg)](https://gitter.im/yagasoft/DynamicsCrm-xrm-mock-Generator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### Version: 1.3.2.3
